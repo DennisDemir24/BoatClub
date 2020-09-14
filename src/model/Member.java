@@ -17,7 +17,7 @@ public class Member {
     }
 
     public int setMemberId() {
-        return 0;
+        return Integer.toString(socialSec).hashCode();
     }
 
     public String getFirstName() {
