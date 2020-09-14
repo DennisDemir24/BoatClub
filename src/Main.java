@@ -1,5 +1,8 @@
+import view.MainMenu;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Welcome to Boat Club");
+        MainMenu menu = new MainMenu();
+        menu.welcomeMessage();
     }
 }
