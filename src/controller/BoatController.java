@@ -1,8 +1,8 @@
-package persistance;
+package controller;
 
 /**
  *
  * @author ph222ue (Patrik Hasselblad)
  */
-public class Storage {
+public class BoatController {
 }
