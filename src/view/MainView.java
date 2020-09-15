@@ -1,32 +1,31 @@
 package view;
 
 import java.util.Scanner;
-import model.Member;
 
 /**
- * A Class that...
- * @author "insert name"
+ * A Class for the Main View
+ * @author "dd222gc Dennis Demir"
  */
-public class MainMenu {
+public class MainView {
     private Scanner sc = new Scanner(System.in);
 
-    public MainMenu() {
+    public MainView() {
     }
 
     /**
      * Method that prints a welcome message.
-     * @author "insert name"
+     * @author "dd222gc Dennis Demir"
      */
-    public void welcomeMessage() {
+    public void displayWelcomeMessage() {
         System.out.println("**** Welcome To Boat Club ****");
-        menuOptions();
+        displayMenuOptions();
     }
 
     /**
      * Method that display the menu
-     * @author "insert name"
+     * @author "dd222gc Dennis Demir"
      */
-    public void menuOptions() {
+    public void displayMenuOptions() {
         do {
             System.out.println("******");
             System.out.println("1. Show Compact List Of Members");
@@ -49,10 +48,10 @@ public class MainMenu {
 
             switch (input) {
                 case 1:
-                    showCompactList();
+                    displayCompactList();
                     break;
                 case 2:
-                    showVerboseList();
+                    displayVerboseList();
                     break;
                 case 3:
                     break;
@@ -69,6 +68,7 @@ public class MainMenu {
                 case 9:
                     break;
                 case 10:
+                    displayBoatInfo();
                     break;
                 case 0:
                     break;
@@ -78,7 +78,11 @@ public class MainMenu {
         } while (1 != 0);
     }
 
-    public void showCompactList() {
+    /**
+     * Method that display the compact list
+     * @author "dd222gc Dennis Demir"
+     */
+    public void displayCompactList() {
         System.out.println(
                 "Name: " +  " " +  "\n" +
                         "Member ID: " +  "\n" +
@@ -86,12 +90,25 @@ public class MainMenu {
         );
     }
 
-    public void showVerboseList() {
+    /**
+     * Method that display the verbose list
+     * @author "dd222gc Dennis Demir"
+     */
+    public void displayVerboseList() {
         System.out.println(
                 "Name: " +  " " +  "\n" +
-                       "Personal Number: " +  "\n" +
+                        "Personal Number: " +  "\n" +
                         "Member ID: " +  "\n" +
                         "Boats: " + "\n"
         );
+    }
+
+    /**
+     * Method that display boat info
+     * @author "dd222gc Dennis Demir"
+     */
+    public void displayBoatInfo() {
+        String boatInfo = "Boat: " + "BOAT TYPE" + " - " + "Length: " + "BOAT LENGTH";
+        System.out.println(boatInfo);
     }
 }
