@@ -26,6 +26,6 @@ public class Main {
 
 
         // Förmodligen bäst att spara strax innan avslut.
-        saveMember.loadData();
+        saveMember.saveData();
     }
 }

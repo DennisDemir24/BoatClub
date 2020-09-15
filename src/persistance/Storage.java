@@ -2,8 +2,6 @@ package persistance;
 
 import model.Boat;
 import model.Member;
-import org.codehaus.jackson.JsonParseException;
-import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 
@@ -95,10 +93,6 @@ public class Storage {
 
         try {
             members = mapper.readValue(file, new TypeReference<List<Member>>(){});
-        } catch (JsonParseException e) {
-            e.printStackTrace();
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
