@@ -20,6 +20,7 @@ public class Member {
         // Generate a 3 digit random number as an ID.
         int id = (int) (Math.random() * Math.pow(10, 3));
         return id;
+
     }
 
     public String getFirstName() {
