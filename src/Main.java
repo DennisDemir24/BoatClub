@@ -1,3 +1,4 @@
+import controller.MainController;
 import view.*;
 
 /**
@@ -6,7 +7,8 @@ import view.*;
  */
 public class Main {
     public static void main(String[] args) {
-        MainMenu menu = new MainMenu();
-        menu.welcomeMessage();
+        MainView menu = new MainView();
+        MainController mainController = new MainController(menu);
+        mainController.startMenu();
     }
 }

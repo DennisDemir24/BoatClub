@@ -17,7 +17,10 @@ public class Member {
     }
 
     public int setMemberId() {
-        return Integer.toString(socialSec).hashCode();
+        // Generate a 3 digit random number as an ID.
+        int id = (int) (Math.random() * Math.pow(10, 3));
+        return id;
+
     }
 
     public String getFirstName() {
