@@ -17,7 +17,9 @@ public class Member {
     }
 
     public int setMemberId() {
-        return 0;
+        // Generate a 3 digit random number as an ID.
+        int id = (int) (Math.random() * Math.pow(10, 3));
+        return id;
     }
 
     public String getFirstName() {
