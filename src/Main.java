@@ -13,14 +13,19 @@ public class Main {
         MainMenu menu = new MainMenu();
         menu.welcomeMessage();
 
-        Member patrik = new Member("Patrik", "Hasselblad", 83040700);
         Storage saveMember = new Storage();
 
-        saveMember.saveData(patrik);
+        Member patrik = new Member("Patrik", "Hasselblad", 83040700);
+        saveMember.addMember(patrik);
 
         Member rutger = new Member("Rutger", "Hauer", 453423);
-        saveMember.saveData(rutger);
+        saveMember.addMember(rutger);
 
+//        saveMember.editMember(patrik.getMemberId(), patrik);
+
+
+
+        // Förmodligen bäst att spara strax innan avslut.
         saveMember.loadData();
     }
 }

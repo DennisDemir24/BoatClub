@@ -1,14 +1,16 @@
 package persistance;
 
+import model.Boat;
 import model.Member;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.type.TypeReference;
 
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -16,10 +18,12 @@ import java.util.ArrayList;
  */
 public class Storage {
     private ArrayList<Member> members;
-    JSONArray list = new JSONArray();
+    private ObjectMapper mapper;
 
-    public Storage() throws IOException {
+    public Storage() {
         this.members = new ArrayList<>();
+        this.mapper = new ObjectMapper();
+        loadData();
     }
 
     /**
@@ -35,27 +39,50 @@ public class Storage {
         this.members.add(member);
     }
 
-    public void editMember(int memberID, Member member) {
+    public void editMember(int id, Member member) {
+        for (Member currentMember : members) {
+
+            if (currentMember.getMemberId() == id) {
+                int i = members.indexOf(member);
+                System.out.println("A member: " + currentMember.getFirstName());
+                System.out.println(i);
+                currentMember.setFirstName("Rolf");
+                currentMember.setLastName("Ismärla");
+                this.members.set(i, currentMember);
+                //saveData();
+                System.out.println("Hur många: " + members.size());
+            }
+        }
+    }
+
+    public void deleteMember(int memberId) {
+
+        try {
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getMember(int memberId) {
+
+        try {
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addBoat(Boat boat) {
 
     }
 
-    public void deleteMember() {
+    public void editBoat(Boat boat, int memberId) {
 
     }
 
-    public void getMember() {
-
-    }
-
-    public void addBoat() {
-
-    }
-
-    public void editBoat() {
-
-    }
-
-    public void deleteBoat() {
+    public void deleteBoat(Boat boat, int memberId) {
 
     }
 
@@ -64,64 +91,30 @@ public class Storage {
      * @author ph222ue (Patrik Hasselblad)
      */
     public void loadData() {
-        JSONParser jsonParser = new JSONParser();
+        File file = new File("members.json");
 
-        try (FileReader reader = new FileReader("members.json")){
-            Object obj = jsonParser.parse(reader);
-            JSONArray memberList = (JSONArray) obj;
-            System.out.println(memberList);
-
-            memberList.forEach(mem -> parseMemberObject( (JSONObject) mem) );
-
-
-        } catch (Exception e) {
+        try {
+            members = mapper.readValue(file, new TypeReference<List<Member>>(){});
+        } catch (JsonParseException e) {
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     /**
      * Method that saves member data to a JSON file.
-     * @param member - Member details to be saved.
      * @author ph222ue (Patrik Hasselblad)
      */
-    public void saveData(Member member) {
-        JSONObject memberDetails = new JSONObject();
-        JSONObject members = new JSONObject();
+    public void saveData() {
 
-        memberDetails.put("firstName", member.getFirstName());
-        memberDetails.put("lastName", member.getLastName());
-        memberDetails.put("socialSec", member.getSocialSec());
-        memberDetails.put("memberId", member.getMemberId());
-
-        members.put("member", memberDetails);
-
-        list.add(members);
-
-        try (FileWriter file = new FileWriter("members.json")) {
-
-            file.write(list.toJSONString());
-            file.flush();
-
+        try {
+            mapper.writeValue(new File("members.json"), this.members);
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Method that parses the JSON member objects.
-     * @param members - JSON member object from file.
-     * @author ph222ue (Patrik Hasselblad)
-     */
-    private static void parseMemberObject(JSONObject members) {
-        JSONObject memberObject = (JSONObject) members.get("member");
-
-        String firstName = (String) memberObject.get("firstName");
-        String lastName = (String) memberObject.get("lastName");
-        long socialSec = (long) memberObject.get("socialSec");
-        long memberId = (long) memberObject.get("memberId");
-
-        System.out.println(firstName + " " + lastName + "\n" + socialSec + "\n" + memberId + "\n");
     }
 
 }
