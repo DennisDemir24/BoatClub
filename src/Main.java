@@ -16,6 +16,9 @@ public class Main {
         Storage saveMember = new Storage();
 
         Member patrik = new Member("Patrik", "Hasselblad", 83040700);
+//        patrik.setFirstName("Patrik");
+//        patrik.setLastName("Hasselblad");
+//        patrik.setSocialSec(83040700);
         saveMember.addMember(patrik);
 
         Member rutger = new Member("Rutger", "Hauer", 453423);
