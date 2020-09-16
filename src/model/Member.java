@@ -9,7 +9,7 @@ public class Member {
     private String lastName;
     private int socialSec;
     private int memberId;
-    private ArrayList<Boat> boatList;
+    private ArrayList<Boat> boatList = new ArrayList<>();
 
 //    public Member(String firstName, String lastName, int socialSec) {
 //        this.firstName = firstName;
@@ -25,7 +25,7 @@ public class Member {
      * @param socialNr - social security number.
      * @author ph222ue (Patrik Hasselblad)
      */
-    public Member(@JsonProperty("firstName")String fN, @JsonProperty("lastName")String lN, @JsonProperty("socialSec")int socialNr, @JsonProperty("memberId")int id) {
+    public Member(@JsonProperty("firstName") String fN, @JsonProperty("lastName") String lN, @JsonProperty("socialSec") int socialNr, @JsonProperty("memberId") int id) {
         this.firstName = fN;
         this.lastName = lN;
         this.socialSec = socialNr;

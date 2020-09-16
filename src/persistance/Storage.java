@@ -18,7 +18,7 @@ public class Storage {
     private final ObjectMapper mapper;
     private static Storage INSTANCE;
 
-    public Storage() throws IOException {
+    public Storage() {
         this.members = new ArrayList<>();
         this.mapper = new ObjectMapper();
         loadData();
