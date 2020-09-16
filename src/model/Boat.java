@@ -7,7 +7,7 @@ public class Boat {
     private final double length;
     private final int ownerId;
 
-    public Boat(Type boatType, double length, int ownerId) { //(BoatType type, double length, int ownerId) {
+    public Boat(Type boatType, double length, int ownerId) {
         this.type = boatType;
         this.length = length;
         this.ownerId = ownerId;

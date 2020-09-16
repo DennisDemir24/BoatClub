@@ -119,6 +119,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Method to return a list of all members
+     * @return ArrayList
+     * @author ph222ue (Patrik Hasselblad)
+     */
     public ArrayList<Member> getMemberList() {
         return members;
     }
