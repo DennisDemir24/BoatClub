@@ -1,9 +1,9 @@
 import controller.BoatController;
+import controller.MainController;
 import model.Boat;
 import model.Member;
 import model.Type;
 import persistance.Storage;
-import view.MainMenu;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,11 +18,11 @@ import view.*;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        MainMenu menu = new MainMenu();
-        menu.welcomeMessage();
 
         Storage saveMember = new Storage();
         BoatController boatController = new BoatController();
+        MainView mainView = new MainView();
+        MainController main = new MainController(mainView);
         System.out.println(saveMember.registrySize());
 
         Member patrik = new Member("Patrik", "Hasselblad", 83040700, 0);
@@ -52,6 +52,7 @@ public class Main {
 
         Member temp1 = saveMember.getMember(patrik.getMemberId());
         System.out.println(temp1.getFirstName() + " " + temp1.getLastName() + "\n" + temp1.getSocialSec() + "\n" + temp1.getMemberId());
+        main.startMenu();
 
         // Förmodligen bäst att spara strax innan avslut.
         saveMember.saveData();
