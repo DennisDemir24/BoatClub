@@ -4,11 +4,10 @@ import model.Boat;
 import model.Member;
 import model.Type;
 import persistance.Storage;
+import view.MainView;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-import view.*;
 
 /**
  * Main class
@@ -25,10 +24,19 @@ public class Main {
         System.out.println(saveMember.registrySize());
 
         // Testing to add members and boats
-        Member patrik = new Member("Patrik", "Hasselblad", 83040700, 0);
+//        Member patrik = new Member("Patrik", "Hasselblad", 83040700, 0);
+        Member patrik = new Member();
+        patrik.setFirstName("Patrik");
+        patrik.setLastName("Hasselblad");
+        patrik.setSocialSec(83040700);
+
         saveMember.addMember(patrik);
         Boat patsBoat = new Boat(Type.KAYAK, 3.0, patrik.getMemberId());
+        Boat patsSecondBoat = new Boat(Type.MOTORSAILER, 4.3, patrik.getMemberId());
         boatController.createBoat(patrik, patsBoat);
+        boatController.createBoat(patrik, patsSecondBoat);
+
+        Member test = new Member();
 
         // Fetching a members boat list
         ArrayList<Boat> boatList = patrik.getBoatList();
@@ -39,8 +47,8 @@ public class Main {
         System.out.println();
 
         // Adding another member
-        Member rutger = new Member("Rutger", "Hauer", 453423, 0);
-        saveMember.addMember(rutger);
+//        Member rutger = new Member("Rutger", "Hauer", 453423, 0);
+//        saveMember.addMember(rutger);
 
         System.out.println("Registry size: " + saveMember.registrySize());
         System.out.println();
