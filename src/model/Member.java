@@ -30,17 +30,19 @@ public class Member {
         this.lastName = lN;
         this.boatList = loadedBoatList;
         this.socialSec = socialNr;
-        if (id == 0) { //--------------------- Vi kanske bör flytta ID hanteringen till ett bättre ställe.
-            memberId = setMemberId();
-        } else {
+//        if (id == 0) { //--------------------- Vi kanske bör flytta ID hanteringen till ett bättre ställe.
+//            memberId = setMemberId();
+//        } else {
             this.memberId = id;
-        }
+//        }
     }
 
+    /**
+     * Terminal constructor.
+     */
     public Member() {}
 
     public int setMemberId() {
-
         int temp = Integer.toString(socialSec).hashCode();
         if (temp < 0) {
             temp = temp * 2;
