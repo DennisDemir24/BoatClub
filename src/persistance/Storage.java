@@ -119,4 +119,8 @@ public class Storage {
         }
     }
 
+    public ArrayList<Member> getMemberList() {
+        return members;
+    }
+
 }

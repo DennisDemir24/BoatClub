@@ -36,6 +36,8 @@ public class Member {
         }
     }
 
+    public Member() {}
+
     public int setMemberId() {
 
         int temp = Integer.toString(socialSec).hashCode();
