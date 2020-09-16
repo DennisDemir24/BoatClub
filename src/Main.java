@@ -23,9 +23,12 @@ public class Main {
         saveMember.addMember(rutger);
 
         System.out.println(saveMember.registrySize());
-        saveMember.deleteMember(patrik.getMemberId());
-        saveMember.deleteMember(rutger.getMemberId());
-        System.out.println(saveMember.registrySize());
+//        saveMember.deleteMember(patrik.getMemberId());
+//        saveMember.deleteMember(rutger.getMemberId());
+//        System.out.println(saveMember.registrySize());
+
+        Member temp = saveMember.getMember(patrik.getMemberId());
+        System.out.println(temp.getFirstName() + " " + temp.getLastName() + "\n" + temp.getSocialSec() + "\n" + temp.getMemberId());
 
         // Förmodligen bäst att spara strax innan avslut.
         saveMember.saveData();
