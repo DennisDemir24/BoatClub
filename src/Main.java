@@ -45,8 +45,8 @@ public class Main {
         System.out.println();
 
         // Adding another member
-//        Member rutger = new Member("Rutger", "Hauer", 453423, 0);
-//        saveMember.addMember(rutger);
+        Member rutger = new Member("Rutger", "Hauer", 453423);
+        saveMember.addMember(rutger);
 
         System.out.println("Registry size: " + saveMember.registrySize());
         System.out.println();

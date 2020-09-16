@@ -37,14 +37,14 @@ public class Member {
 
     /**
      * Terminal constructor.
+     * @author dd222gc (Dennis Demir), ph222ue (Patrik Hasselblad)
      */
     public Member(String fN, String lN, int socialNr) {
         this.firstName = fN;
         this.lastName = lN;
         this.socialSec = socialNr;
-
-
-    } // Kanske ska vi lägga in variablerna här också så att vi kan ta bort alla setters? (Kör vi med JSON constructorn så måste vi ange båtar och memberId också, vilket bara blir konstigt och invecklat.
+        this.memberId = setMemberId();
+    }
 
     private int setMemberId() {
         int temp = Integer.toString(socialSec).hashCode();
