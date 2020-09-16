@@ -30,6 +30,11 @@ public class Main {
         Member temp = saveMember.getMember(patrik.getMemberId());
         System.out.println(temp.getFirstName() + " " + temp.getLastName() + "\n" + temp.getSocialSec() + "\n" + temp.getMemberId());
 
+        saveMember.editMember(patrik.getMemberId());
+
+        Member temp1 = saveMember.getMember(patrik.getMemberId());
+        System.out.println(temp1.getFirstName() + " " + temp1.getLastName() + "\n" + temp1.getSocialSec() + "\n" + temp1.getMemberId());
+
         // Förmodligen bäst att spara strax innan avslut.
         saveMember.saveData();
     }

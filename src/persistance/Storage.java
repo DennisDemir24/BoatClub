@@ -49,18 +49,18 @@ public class Storage {
         return members.size();
     }
 
-    public void editMember(int id, Member member) {
-        for (Member currentMember : members) {
+    /**
+     * Method that alters a certain member's information.
+     * @param id - The id of the member.
+     * @author ph222ue (Patrik Hasselblad)
+     */
+    public void editMember(int id) {
+        for (int i = 0; i < members.size(); i ++) {
 
-            if (currentMember.getMemberId() == id) {
-                int i = members.indexOf(member);
-                System.out.println("A member: " + currentMember.getFirstName());
-                System.out.println(i);
-                currentMember.setFirstName("Rolf");
-                currentMember.setLastName("Ismärla");
-                this.members.set(i, currentMember);
-                //saveData();
-                System.out.println("Hur många: " + members.size());
+            if (members.get(i).getMemberId() == id) {
+                members.get(i).setFirstName("Rolf");
+                members.get(i).setLastName("Ismärla");
+                this.members.set(i, members.get(i));
             }
         }
     }
@@ -78,6 +78,12 @@ public class Storage {
         }
     }
 
+    /**
+     * Method to return a specific member.
+     * @param memberId - the member sought for.
+     * @return Member
+     * @author ph222ue (Patrik Hasselblad)
+     */
     public Member getMember(int memberId) {
 
         for (Member mem : members) {
