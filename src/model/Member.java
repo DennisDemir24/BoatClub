@@ -23,15 +23,15 @@ public class Member {
      * @param socialNr - social security number.
      * @author ph222ue (Patrik Hasselblad)
      */
-    public Member(@JsonProperty("firstName")String fN, @JsonProperty("lastName")String lN, @JsonProperty("socialSec")int socialNr) { //}, @JsonProperty("memberId")int id) {
+    public Member(@JsonProperty("firstName")String fN, @JsonProperty("lastName")String lN, @JsonProperty("socialSec")int socialNr, @JsonProperty("memberId")int id) {
         this.firstName = fN;
         this.lastName = lN;
         this.socialSec = socialNr;
-        //if (id == 0) { --------------------- Vi kanske bör flytta ID hanteringen till ett bättre ställe.
+        if (id == 0) { //--------------------- Vi kanske bör flytta ID hanteringen till ett bättre ställe.
             memberId = setMemberId();
-        //} else {
-          //  this.memberId = id;
-       // }
+        } else {
+            this.memberId = id;
+        }
     }
 
     public int setMemberId() {

@@ -14,19 +14,18 @@ public class Main {
         menu.welcomeMessage();
 
         Storage saveMember = new Storage();
+        System.out.println(saveMember.registrySize());
 
-        Member patrik = new Member("Patrik", "Hasselblad", 83040700);
-//        patrik.setFirstName("Patrik");
-//        patrik.setLastName("Hasselblad");
-//        patrik.setSocialSec(83040700);
+        Member patrik = new Member("Patrik", "Hasselblad", 83040700, 0);
         saveMember.addMember(patrik);
 
-        Member rutger = new Member("Rutger", "Hauer", 453423);
+        Member rutger = new Member("Rutger", "Hauer", 453423, 0);
         saveMember.addMember(rutger);
 
-//        saveMember.editMember(patrik.getMemberId(), patrik);
-
-
+        System.out.println(saveMember.registrySize());
+        saveMember.deleteMember(patrik.getMemberId());
+        saveMember.deleteMember(rutger.getMemberId());
+        System.out.println(saveMember.registrySize());
 
         // Förmodligen bäst att spara strax innan avslut.
         saveMember.saveData();

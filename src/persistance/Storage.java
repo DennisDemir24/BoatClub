@@ -16,12 +16,20 @@ import java.util.List;
  */
 public class Storage {
     private ArrayList<Member> members;
-    private ObjectMapper mapper;
+    private final ObjectMapper mapper;
+    private static Storage INSTANCE;
 
-    public Storage() {
+    public Storage() throws IOException {
         this.members = new ArrayList<>();
         this.mapper = new ObjectMapper();
         loadData();
+    }
+
+    public static Storage getInstance() throws IOException {
+        if (INSTANCE == null) {
+            INSTANCE = new Storage();
+        }
+        return INSTANCE;
     }
 
     /**
@@ -34,7 +42,11 @@ public class Storage {
         if (this.members.contains(member)) {
             throw new IllegalArgumentException("Member already exists.");
         }
-        this.members.add(member);
+            this.members.add(member);
+    }
+
+    public int registrySize() {
+        return members.size();
     }
 
     public void editMember(int id, Member member) {
@@ -53,23 +65,27 @@ public class Storage {
         }
     }
 
+    /**
+     * Method that removes a member with a certain Id.
+     * @param memberId - member Id to search for in the List.
+     * @author ph222ue (Patrik Hasselblad)
+     */
     public void deleteMember(int memberId) {
-
-        try {
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        for (int i = 0; i < members.size(); i ++) {
+            if (members.get(i).getMemberId() == memberId) {
+                members.remove(i);
+            }
         }
     }
 
-    public void getMember(int memberId) {
+    public Member getMember(int memberId) {
 
-        try {
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        for (Member mem : members) {
+            if (mem.getMemberId() == memberId) {
+                return mem;
+            }
         }
+        return null;
     }
 
     public void addBoat(Boat boat) {
@@ -103,7 +119,6 @@ public class Storage {
      * @author ph222ue (Patrik Hasselblad)
      */
     public void saveData() {
-
         try {
             mapper.writeValue(new File("members.json"), this.members);
         } catch (Exception e) {
