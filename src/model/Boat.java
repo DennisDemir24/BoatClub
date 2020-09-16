@@ -1,12 +1,14 @@
 package model;
 
+
+
 public class Boat {
-    //private BoatType type;
+    private Type type;
     private final double length;
     private final int ownerId;
 
-    public Boat(double length, int ownerId) { //(BoatType type, double length, int ownerId) {
-        //this.type = type;
+    public Boat(Type boatType, double length, int ownerId) { //(BoatType type, double length, int ownerId) {
+        this.type = boatType;
         this.length = length;
         this.ownerId = ownerId;
     }
@@ -17,5 +19,9 @@ public class Boat {
 
     public int getOwnerId() {
         return ownerId;
+    }
+
+    public Type getType() {
+        return type;
     }
 }
