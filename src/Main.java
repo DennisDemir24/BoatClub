@@ -8,11 +8,15 @@ import view.MainMenu;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import view.*;
+
+
 /**
  * Main class
  * @author "insert name"
  */
 public class Main {
+
     public static void main(String[] args) throws IOException {
         MainMenu menu = new MainMenu();
         menu.welcomeMessage();
