@@ -24,11 +24,8 @@ public class Main {
         System.out.println(saveMember.registrySize());
 
         // Testing to add members and boats
-//        Member patrik = new Member("Patrik", "Hasselblad", 83040700, 0);
-        Member patrik = new Member();
-        patrik.setFirstName("Patrik");
-        patrik.setLastName("Hasselblad");
-        patrik.setSocialSec(83040700);
+        Member patrik = new Member("Rakel", "Spektakel", 123456);
+
 
         saveMember.addMember(patrik);
         Boat patsBoat = new Boat(Type.KAYAK, 3.0, patrik.getMemberId());
@@ -36,7 +33,8 @@ public class Main {
         boatController.createBoat(patrik, patsBoat);
         boatController.createBoat(patrik, patsSecondBoat);
 
-        Member test = new Member();
+        Member test = new Member("Patrik", "Hasselblad", 83040700);
+
 
         // Fetching a members boat list
         ArrayList<Boat> boatList = patrik.getBoatList();

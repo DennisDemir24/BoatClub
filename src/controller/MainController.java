@@ -1,6 +1,5 @@
 package controller;
 
-import model.Member;
 import persistance.Storage;
 import view.MainView;
 import view.MemberView;
@@ -72,7 +71,7 @@ public class MainController {
     }
 
     public void createNewMember() {
-        Member member = new Member();
+//        Member member = new Member();
 
         memView.displayMemberName();
         String memName = sc.nextLine();
@@ -80,8 +79,8 @@ public class MainController {
         memView.displayMemberPersonalNumber();
         int personalNum = sc.nextInt();
 
-        member.setFirstName(memName);
-        member.setSocialSec(personalNum);
+//        member.setFirstName(memName);
+//        member.setSocialSec(personalNum);
 
     }
 }
