@@ -3,10 +3,8 @@ package controller;
 import model.Boat;
 import model.Member;
 
-import java.util.ArrayList;
-
 /**
- *
+ * A class that handles the member boats; adding, editing, removing and viewing.
  * @author ph222ue (Patrik Hasselblad)
  */
 public class BoatController {
@@ -33,10 +31,9 @@ public class BoatController {
      * @author ph222ue (Patrik Hasselblad)
      */
     public void editBoat(Member member, Boat oldBoat, Boat newBoat) {
-        ArrayList<Boat> boatList = member.getBoatList();
-        for (int i = 0; i < boatList.size(); i++) {
-            if (boatList.get(i).equals(oldBoat)) {
-                boatList.add(i, newBoat);
+        for (int i = 0; i < member.getBoatList().size(); i++) {
+            if (member.getBoatList().get(i).equals(oldBoat)) {
+                member.getBoatList().add(i, newBoat);
             } else {
                 throw new IllegalArgumentException("There is no boat with that description");
             }
@@ -50,10 +47,9 @@ public class BoatController {
      * @author ph222ue (Patrik Hasselblad)
      */
     public void removeBoat(Member member, Boat boat) {
-        ArrayList<Boat> boatList = member.getBoatList();
-        for (int i = 0; i < boatList.size(); i++) {
-            if (boatList.get(i).equals(boat)) {
-                boatList.remove(i);
+        for (int i = 0; i < member.getBoatList().size(); i++) {
+            if (member.getBoatList().get(i).equals(boat)) {
+                member.getBoatList().remove(i);
             } else {
                 throw new IllegalArgumentException("There is no boat with that description");
             }
@@ -68,10 +64,9 @@ public class BoatController {
      * @author ph222ue (Patrik Hasselblad)
      */
     public Boat viewBoat(Member member, Boat boat) {
-        ArrayList<Boat> boatList = member.getBoatList();
-        for (int i = 0; i < boatList.size(); i++) {
-            if (boatList.get(i).equals(boat)) {
-                return boatList.get(i);
+        for (int i = 0; i < member.getBoatList().size(); i++) {
+            if (member.getBoatList().get(i).equals(boat)) {
+                return member.getBoatList().get(i);
             }
         }
         return null;
