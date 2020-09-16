@@ -2,12 +2,14 @@ package model;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 
+import java.util.ArrayList;
+
 public class Member {
     private String firstName;
     private String lastName;
     private int socialSec;
     private int memberId;
-    //private ArrayList<Boat> boatList;
+    private ArrayList<Boat> boatList;
 
 //    public Member(String firstName, String lastName, int socialSec) {
 //        this.firstName = firstName;
@@ -68,7 +70,11 @@ public class Member {
         return memberId;
     }
 
-//    public ArrayList<Boat> getBoatList() {
-//        return boatList;
-//    }
+    public void addBoat(Boat boat) {
+        boatList.add(boat);
+    }
+
+    public ArrayList<Boat> getBoatList() {
+        return boatList;
+    }
 }

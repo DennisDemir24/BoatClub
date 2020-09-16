@@ -1,6 +1,5 @@
 package persistance;
 
-import model.Boat;
 import model.Member;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
@@ -92,18 +91,6 @@ public class Storage {
             }
         }
         return null;
-    }
-
-    public void addBoat(Boat boat) {
-
-    }
-
-    public void editBoat(Boat boat, int memberId) {
-
-    }
-
-    public void deleteBoat(Boat boat, int memberId) {
-
     }
 
     /**
