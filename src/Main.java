@@ -1,6 +1,7 @@
 import controller.BoatController;
 import model.Boat;
 import model.Member;
+import model.Type;
 import persistance.Storage;
 import view.MainMenu;
 
@@ -22,13 +23,13 @@ public class Main {
 
         Member patrik = new Member("Patrik", "Hasselblad", 83040700, 0);
         saveMember.addMember(patrik);
-        Boat patsBoat = new Boat(3.0, patrik.getMemberId());
+        Boat patsBoat = new Boat(Type.KAYAK, 3.0, patrik.getMemberId());
         boatController.createBoat(patrik, patsBoat);
 
         ArrayList<Boat> boatList = patrik.getBoatList();
         System.out.println("My boats: " );
         for (int i = 0 ; i < boatList.size(); i++) {
-            System.out.println(boatList.get(i).getLength());
+            System.out.println(boatList.get(i).getType() + " " + boatList.get(i).getLength());
         }
 
 
