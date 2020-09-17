@@ -20,7 +20,7 @@ public class BoatController {
      * @author ph222ue (Patrik Hasselblad)
      */
     public void createBoat(Member member, Boat boat) {
-        member.addBoat(boat);
+        member.addBoat(member.getBoatList().size(), boat);
     }
 
     /**
@@ -31,13 +31,11 @@ public class BoatController {
      * @author ph222ue (Patrik Hasselblad)
      */
     public void editBoat(Member member, Boat oldBoat, Boat newBoat) {
-        for (int i = 0; i < member.getBoatList().size(); i++) {
-            if (member.getBoatList().get(i).equals(oldBoat)) {
-                member.getBoatList().add(i, newBoat);
-            } else {
+        int index = member.getBoat(oldBoat);
+        if (index == -1) {
                 throw new IllegalArgumentException("There is no boat with that description");
             }
-        }
+        member.addBoat(index, newBoat);
     }
 
     /**
@@ -47,13 +45,11 @@ public class BoatController {
      * @author ph222ue (Patrik Hasselblad)
      */
     public void removeBoat(Member member, Boat boat) {
-        for (int i = 0; i < member.getBoatList().size(); i++) {
-            if (member.getBoatList().get(i).equals(boat)) {
-                member.getBoatList().remove(i);
-            } else {
+        int index = member.getBoat(boat);
+            if (index == -1) {
                 throw new IllegalArgumentException("There is no boat with that description");
             }
-        }
+        member.getBoatList().remove(index);
     }
 
     /**
@@ -64,12 +60,13 @@ public class BoatController {
      * @author ph222ue (Patrik Hasselblad)
      */
     public Boat viewBoat(Member member, Boat boat) {
-        for (int i = 0; i < member.getBoatList().size(); i++) {
-            if (member.getBoatList().get(i).equals(boat)) {
-                return member.getBoatList().get(i);
-            }
+        int index = member.getBoat(boat);
+
+        if (index == -1) {
+            throw new IllegalArgumentException("There is no boat with that description");
         }
-        return null;
+
+        return member.getBoatList().get(index);
     }
 
 }

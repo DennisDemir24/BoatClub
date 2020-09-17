@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Class to handle database and storage.
  * @author ph222ue (Patrik Hasselblad)
  */
 public class Storage {
@@ -44,6 +44,11 @@ public class Storage {
             this.members.add(member);
     }
 
+    /**
+     * Returns the number of members.
+     * @return int
+     * @author ph222ue (Patrik Hasselblad)
+     */
     public int registrySize() {
         return members.size();
     }
@@ -56,7 +61,7 @@ public class Storage {
     public void editMember(int id) {
         for (int i = 0; i < members.size(); i ++) {
 
-            if (members.get(i).getMemberId() == id) {
+            if (members.get(i).getMemberId() == id) { // Detta är bara tillfälligt. Ska förstås inte sätta förändringar här.
                 members.get(i).setFirstName("Rolf");
                 members.get(i).setLastName("Ismärla");
                 this.members.set(i, members.get(i));

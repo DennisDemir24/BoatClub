@@ -80,8 +80,12 @@ public class Member {
         return memberId;
     }
 
-    public void addBoat(Boat boat) {
-        boatList.add(boat);
+    public void addBoat(int id, Boat boat) {
+        boatList.add(id, boat);
+    }
+
+    public int getBoat(Boat boat) {
+        return boatList.indexOf(boat);
     }
 
     public ArrayList<Boat> getBoatList() {

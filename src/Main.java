@@ -63,6 +63,13 @@ public class Main {
         System.out.println(temp1.getFirstName() + " " + temp1.getLastName() + "\n" + temp1.getSocialSec() + "\n" + temp1.getMemberId());
         main.startMenu();
 
+        // Testing to edit a boat.
+        boatController.editBoat(patrik, patsSecondBoat, new Boat(Type.OTHER, 7.4, patrik.getMemberId()));
+        // Testing to remove a boat.
+//        boatController.removeBoat(patrik, patsBoat);
+        // Testing to view a boat.
+        System.out.println(boatController.viewBoat(patrik, patsBoat).getType());
+
         // Förmodligen bäst att spara strax innan avslut.
         saveMember.saveData();
     }
