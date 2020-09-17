@@ -25,9 +25,10 @@ public class Member {
      * @param socialNr - social security number.
      * @author ph222ue (Patrik Hasselblad)
      */
-    public Member(@JsonProperty("firstName") String fN, @JsonProperty("lastName") String lN, @JsonProperty("socialSec") int socialNr, @JsonProperty("memberId") int id) {
+    public Member(@JsonProperty("firstName") String fN, @JsonProperty("lastName") String lN, @JsonProperty("socialSec") int socialNr, @JsonProperty("memberId") int id, @JsonProperty("boatList") ArrayList<Boat> loadedBoatList) {
         this.firstName = fN;
         this.lastName = lN;
+        this.boatList = loadedBoatList;
         this.socialSec = socialNr;
         if (id == 0) { //--------------------- Vi kanske bör flytta ID hanteringen till ett bättre ställe.
             memberId = setMemberId();
