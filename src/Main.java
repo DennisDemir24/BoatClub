@@ -1,13 +1,7 @@
-import controller.BoatController;
-import controller.MainController;
-import model.Boat;
-import model.Member;
-import model.Type;
-import persistance.Storage;
-import view.MainView;
 
+import controller.MainController;
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 /**
  * Main class
@@ -16,6 +10,7 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) throws IOException {
+
 
         Storage saveMember = new Storage();
         BoatController boatController = new BoatController();
@@ -72,5 +67,9 @@ public class Main {
 
         // Förmodligen bäst att spara strax innan avslut.
         saveMember.saveData();
+
+        MainController main = new MainController();
+        main.startMenu();
+
     }
 }
