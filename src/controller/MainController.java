@@ -5,23 +5,24 @@ import persistance.Storage;
 import view.MainView;
 import view.MemberView;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
  * A class that handles the main controller
- * @author dd222gc (Dennis Demir)
+ * @author dd222gc (Dennis Demir) & nh222mr (Nicklas Hansson)
  */
 public class MainController {
     private MainView mainView;
-    //private MemberController memberController;
+    private MemberController memberController;
     private BoatController boatController;
     private Storage storage;
     private MemberView memView;
     private Scanner sc = new Scanner(System.in);;
 
-    public MainController(MainView mainView) {
+    public MainController(MainView mainView) throws IOException {
         this.mainView = mainView;
-        //this.memberController = new MemberController();
+        this.memberController = new MemberController();
         //this.boatController = new BoatController();
     }
 

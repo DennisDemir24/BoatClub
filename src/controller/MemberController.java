@@ -14,7 +14,7 @@ public class MemberController {
     private Storage storage;
     private MemberView memView;
 
-    public MemberController(Storage storage, MemberView memView) throws IOException {
+    public MemberController() throws IOException {
         this.storage = Storage.getInstance();
         this.memView = new MemberView();
     }
@@ -24,8 +24,24 @@ public class MemberController {
      * @param member - Member Object
      * @author dd222gc (Dennis Demir)
      */
-    public void createMember(Member member) {
+    public void create(Member member) {
         storage.addMember(member);
+    }
+
+    /**
+     * Method for returning a new member from the storage
+     * @param id - int memberId
+     * @author nh222mr (Nicklas Hansson)
+     */
+    public Member read(int id) { return storage.getMember(id); }
+
+    /**
+     * Method for returning a new member from the storage
+     * @param id - int memberId
+     * @author nh222mr (Nicklas Hansson)
+     */
+    public void update(int id) {
+        storage.getMember(id);
     }
 
     /**
