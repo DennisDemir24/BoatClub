@@ -1,10 +1,14 @@
 package controller;
 
+import model.Boat;
 import model.Member;
+import model.Type;
 import persistance.Storage;
 import view.MemberView;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * A class that handles the member controller
@@ -12,20 +16,54 @@ import java.io.IOException;
  */
 public class MemberController {
     private Storage storage;
+    private BoatController boatController;
     private MemberView memView;
 
-    public MemberController(Storage storage, MemberView memView) throws IOException {
+    public MemberController() throws IOException {
         this.storage = Storage.getInstance();
         this.memView = new MemberView();
+        this.boatController = new BoatController();
     }
 
     /**
-     * Method for creating a new member in the storage
-     * @param member - Member Object
-     * @author dd222gc (Dennis Demir)
+     * Method for creating a new member
+     * @param first - String - first name of new member
+     * @param last - String - last name of new member
+     * @param personalNumber - int - social security number of new member
+     * @author dd222gc (Dennis Demir) & nh222mr (Nicklas Hansson)
      */
-    public void createMember(Member member) {
+    public void create(String first, String last, int personalNumber) {
+        Type canoe = Type.CANOE;
+        Random rand = new Random();
+        int id = rand.nextInt(1000000);
+
+        ArrayList<Boat> boatList = new ArrayList<>();
+        boatList.add(boatController.createBoat(canoe, 18, id));
+
+        Member member = new Member(first, last, personalNumber, id, boatList);
         storage.addMember(member);
+        ArrayList<Member> memList = storage.getMemberList();
+
+        memList.forEach((m) -> System.out.println(m.getFirstName()));
+
+        storage.saveData();
+        // Add function call for displaying correct view message
+    }
+
+    /**
+     * Method for returning a new member from the storage
+     * @param id - int memberId
+     * @author nh222mr (Nicklas Hansson)
+     */
+    public Member read(int id) { return storage.getMember(id); }
+
+    /**
+     * Method for returning a new member from the storage
+     * @param id - int memberId
+     * @author nh222mr (Nicklas Hansson)
+     */
+    public void update(int id) {
+        storage.getMember(id);
     }
 
     /**

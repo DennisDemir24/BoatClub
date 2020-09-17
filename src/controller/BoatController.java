@@ -2,6 +2,8 @@ package controller;
 
 import model.Boat;
 import model.Member;
+import model.Type;
+import view.MemberView;
 
 /**
  * A class that handles the member boats; adding, editing, removing and viewing.
@@ -9,18 +11,21 @@ import model.Member;
  */
 public class BoatController {
 
-    public static void boatView () {
+    public BoatController () {
+
 
     }
 
     /**
      * Adds a boat to a certain member.
-     * @param member - The member to store a boat to.
-     * @param boat - The boat to store to the member information.
-     * @author ph222ue (Patrik Hasselblad)
+     * @param boatType - The boat type
+     * @param length - The length of the boat in meters
+     * @param ownerId - The id of the owner of the boat
+     * @author ph222ue (Patrik Hasselblad) & nh222mr (Nicklas Hansson)
      */
-    public void createBoat(Member member, Boat boat) {
-        member.addBoat(boat);
+    public Boat createBoat(Type boatType, int length, int ownerId) {
+        Boat newBoat = new Boat(boatType, length, ownerId);
+        return newBoat;
     }
 
     /**
