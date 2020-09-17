@@ -89,7 +89,7 @@ public class MainController {
     public void createNewMember() {
 
 //        Member member = new Member();
-=======
+
         sc = new Scanner(System.in);
 
 
