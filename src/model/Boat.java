@@ -8,6 +8,13 @@ public class Boat {
     private final double length;
     private final int ownerId;
 
+    /**
+     * A JSON friendly constructor used by Storage and BoatController.
+     * @param boatType - Boat type.
+     * @param length - Length of boat.
+     * @param ownerId - Id of owner.
+     * @author ph222ue (Patrik Hasselblad)
+     */
     public Boat(@JsonProperty("type") Type boatType, @JsonProperty("length") double length, @JsonProperty("ownerId") int ownerId) {
         this.type = boatType;
         this.length = length;
