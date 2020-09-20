@@ -13,23 +13,27 @@ public class MemberView {
      */
     public void displayCompactList(Member member) {
         System.out.println(
-                "First Name: " +  member.getFirstName() +  "\n" +
-                        "Member ID: " +  "\n" +
-                        "Number of Boats: "
+                "First Name: " + member.getFirstName() +  "\n" +
+                        "Last Name: " +  member.getLastName() +  "\n" +
+                        "Member ID: " + member.getMemberId() +  "\n" +
+                        "Number of Boats: " + member.getBoatList()
         );
+        System.out.println("*************");
     }
 
     /**
      * Method that display the verbose list
      * @author "dd222gc Dennis Demir"
      */
-    public void displayVerboseList(Member member) {
+    public void displayVerboseList() {
         System.out.println(
-                "First Name: " +  member.getFirstName() +  "\n" +
+                "First Name: " +  "" +  "\n" +
+                        "Last Name: " +  "" +  "\n" +
                         "Personal Number: " +  "\n" +
                         "Member ID: " +  "\n" +
                         "Boats: " + "\n"
         );
+        System.out.println("*************");
     }
 
 
@@ -37,8 +41,12 @@ public class MemberView {
      * Method that ask for members name
      * @author "dd222gc Dennis Demir"
      */
-    public void displayMemberName() {
-        System.out.println("Name: ");
+    public void displayMemberFirstName() {
+        System.out.println("First Name: ");
+    }
+
+    public void displayMemberLastName() {
+        System.out.println("Last Name: ");
     }
 
     /**

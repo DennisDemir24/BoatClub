@@ -80,6 +80,16 @@ public class MemberController {
         return member;
     }
 
+    /**
+     * Method for viewing member with specific id.
+     * @param id - Id of the targeted member to view
+     *
+     * @author dd222gc (Dennis Demir)
+     */
+    public void viewCompact(int id) {
+        this.memView.displayCompactList(storage.getSpecificMember(id));
+    }
+
 
 
 }

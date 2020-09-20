@@ -29,7 +29,7 @@ public class MainView {
      * @author "dd222gc Dennis Demir"
      */
     public void displayMenuOptions() {
-            System.out.println("******");
+            System.out.println();
             System.out.println("1. Show Compact List Of Members");
             System.out.println("2. Show Verbose List Of Members");
             System.out.println("3. Register New Member");
