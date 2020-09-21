@@ -58,7 +58,7 @@ public class MainView {
      * @author "dd222gc Dennis Demir"
      */
     public void displayBoatNumber() {
-        System.out.println("Boat Number: ");
+        System.out.println("Owner member ID: ");
     }
 
     /**
