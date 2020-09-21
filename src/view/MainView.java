@@ -1,18 +1,13 @@
 package view;
 
-import controller.MainController;
 import model.Boat;
 import model.Member;
-
-import java.util.Scanner;
 
 /**
  * A Class for the Main View
  * @author "dd222gc Dennis Demir"
  */
 public class MainView {
-    private Scanner sc = new Scanner(System.in);
-    private MainController mainController;
 
     public MainView() {
     }
@@ -31,18 +26,18 @@ public class MainView {
      * @author "dd222gc Dennis Demir"
      */
     public void displayMenuOptions() {
-            System.out.println();
-            System.out.println("1. Show Compact List Of Members");
-            System.out.println("2. Show Verbose List Of Members");
-            System.out.println("3. Register New Member");
-            System.out.println("4. Change Member Information");
-            System.out.println("5. Delete Member");
-            System.out.println("6. View Member Information");
-            System.out.println("7. Create Boat");
-            System.out.println("8. Update Boat");
-            System.out.println("9. Delete Boat");
-            System.out.println("10. View Boat");
-            System.out.println("0. Quit");
+        System.out.println();
+        System.out.println("1. Show Compact List Of Members");
+        System.out.println("2. Show Verbose List Of Members");
+        System.out.println("3. Register New Member");
+        System.out.println("4. Change Member Information");
+        System.out.println("5. Delete Member");
+        System.out.println("6. View Member Information");
+        System.out.println("7. Create Boat");
+        System.out.println("8. Update Boat");
+        System.out.println("9. Delete Boat");
+        System.out.println("10. View Boat");
+        System.out.println("0. Quit");
     }
 
     /**

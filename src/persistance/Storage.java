@@ -41,7 +41,7 @@ public class Storage {
         if (this.members.contains(member)) {
             throw new IllegalArgumentException("Member already exists.");
         }
-            this.members.add(member);
+        this.members.add(member);
     }
 
     /**
@@ -82,13 +82,8 @@ public class Storage {
                 System.out.println("There is no member with that ID");
                 System.out.println();
             }
+        }
 
-//                members.remove(i);
-//                members.add(i, new Member(fName, lName, socNr));
-
-        } //else {
-//                throw new IllegalArgumentException("There is no such member registered.");
-            //}
     }
 
     /**

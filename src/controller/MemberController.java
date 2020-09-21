@@ -56,7 +56,6 @@ public class MemberController {
     /**
      * Method for creating a new member in the storage
      * @param id - Id of the member to be deleted from storage
-     *
      * @return - Returns deleted member
      * @author dd222gc (Dennis Demir) & ph222ue (Patrik Hasselblad)
      */

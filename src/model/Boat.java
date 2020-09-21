@@ -1,8 +1,11 @@
 package model;
 
-
 import org.codehaus.jackson.annotate.JsonProperty;
 
+/**
+ * Boat constructor with getters & setters.
+ * @author ph222ue (Patrik Hasselblad) & dd222gc (Dennis Demir) & nh222mr (Nicklas Hansson)
+ */
 public class Boat {
     private Type type;
     private double length;
