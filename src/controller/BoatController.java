@@ -4,7 +4,6 @@ import model.Boat;
 import model.Member;
 import model.Type;
 import persistance.Storage;
-import view.MemberView;
 
 /**
  * A class that handles the member boats; adding, editing, removing and viewing.
@@ -12,7 +11,6 @@ import view.MemberView;
  */
 public class BoatController {
     private final Storage storage;
-    private final MemberView  memberView = new MemberView();
 
     public BoatController () {
         this.storage = Storage.getInstance();
@@ -40,22 +38,23 @@ public class BoatController {
 
     /**
      * Method that handles boat editing.
-     * @param owner - The boat owner.
-     * @param id - The old boat value.
+     * @param ownerId - The boat owners ID.
+     * @param id - The boat ID.
      * @param type - The new boat type.
      * @param length - The new boat length.
      * @author ph222ue (Patrik Hasselblad)
      */
-    public void editBoat(Member owner, int id, Type type, double length) { //ToDo: This method does not work properly.
+    public void editBoat(int ownerId, int id, Type type, double length) {
+        Member owner = storage.getMember(ownerId);
 
         for (int i = 0; i < owner.getBoatList().size(); i++) {
             if (owner.getBoatList().get(i).getBoatId() == id) {
-            owner.getBoatList().get(i).setType(type);
-            owner.getBoatList().get(i).setLength(length);
-        } else {
-                System.out.println("There is no boat with that ID");
+                owner.getBoatList().get(i).setType(type);
+                owner.getBoatList().get(i).setLength(length);
+            } else {
+                System.out.println("No boat exists with that ID");
             }
-            }
+        }
         storage.saveData();
     }
 
@@ -75,6 +74,7 @@ public class BoatController {
             } else {
                 System.out.println("No boat exists with that ID");
             }
+            storage.saveData();
         }
         //ToDo: When removing a boat, the ID we will be forfeit. Same with members, perhaps think about this.
     }
