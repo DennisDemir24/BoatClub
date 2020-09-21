@@ -27,6 +27,9 @@ public class BoatController {
     public void createBoat(Type boatType, double length, int ownerId) {
         Boat newBoat = new Boat(boatType, length, ownerId);
         Member member = storage.getMember(ownerId);
+        int boatId = member.getBoatList().size() + 1;
+        newBoat.setBoatId(boatId);
+
         int index = member.getBoatList().size();
 
         member.addBoat(index, newBoat);
@@ -35,17 +38,22 @@ public class BoatController {
 
     /**
      * Method that handles boat editing.
-     * @param member - The boat owner.
-     * @param oldBoat - The old boat value.
-     * @param newBoat - The new boat value.
+     * @param owner - The boat owner.
+     * @param id - The old boat value.
+     * @param type - The new boat type.
+     * @param length - The new boat length.
      * @author ph222ue (Patrik Hasselblad)
      */
-    public void editBoat(Member member, Boat oldBoat, Boat newBoat) {
-        int index = member.getBoat(oldBoat);
-        if (index == -1) {
+    public void editBoat(Member owner, int id, Type type, double length) {
+        Member member = owner;
+        Boat boat = member.getBoatList().get(id);
+        boat.setType(type);
+        boat.setLength(length);
+
+        if (id == -1) {
                 throw new IllegalArgumentException("There is no boat with that description");
             }
-        member.addBoat(index, newBoat);
+        storage.saveData();
     }
 
     /**
@@ -55,11 +63,11 @@ public class BoatController {
      * @author ph222ue (Patrik Hasselblad)
      */
     public void removeBoat(Member member, Boat boat) {
-        int index = member.getBoat(boat);
-            if (index == -1) {
-                throw new IllegalArgumentException("There is no boat with that description");
-            }
-        member.getBoatList().remove(index);
+//        int index = member.getBoat(boat.getBoatId());
+//            if (index == -1) {
+//                throw new IllegalArgumentException("There is no boat with that description");
+//            }
+//        member.getBoatList().remove(index);
     }
 
     /**
@@ -70,13 +78,14 @@ public class BoatController {
      * @author ph222ue (Patrik Hasselblad)
      */
     public Boat viewBoat(Member member, Boat boat) {
-        int index = member.getBoat(boat);
-
-        if (index == -1) {
-            throw new IllegalArgumentException("There is no boat with that description");
-        }
-
-        return member.getBoatList().get(index);
+//        int index = member.getBoat(boat);
+//
+//        if (index == -1) {
+//            throw new IllegalArgumentException("There is no boat with that description");
+//        }
+//
+//        return member.getBoatList().get(index);
+        return null;
     }
 
 }

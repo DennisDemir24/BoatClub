@@ -160,7 +160,7 @@ public class Storage {
      * @author dd222gc (Dennis Demir)
      */
     public Member getSpecificMember(int index) {
-        return this.members.get(index);
+        return this.members.get(index - 1);
     }
 
 }

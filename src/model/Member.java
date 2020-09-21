@@ -78,8 +78,13 @@ public class Member {
         boatList.add(index, boat);
     }
 
-    public int getBoat(Boat boat) {
-        return boatList.indexOf(boat);
+    public Boat getBoat(int boatId) {
+        for (Boat boat : boatList) {
+            if (boat.getBoatId() == boatId) {
+                return boat;
+            }
+        }
+        return null;
     }
 
     public ArrayList<Boat> getBoatList() {
