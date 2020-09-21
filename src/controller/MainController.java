@@ -47,10 +47,10 @@ public class MainController {
 
            switch (input) {
                case 1:
-                   sc.close();
+                   compactList();
                    break;
                case 2:
-                   sc.close();
+                   verboseList();
                    break;
                case 3:
                    createNewMember();
@@ -83,20 +83,40 @@ public class MainController {
     }
 
     /**
+     * Method for getting member and using viewCompact to print info
+     * @author dd222gc (Dennis Demir)
+     */
+    private void compactList() {
+        int members = this.storage.registrySize();
+
+        for (int i = 0; i < members; i++) {
+            this.memberController.viewCompact(i);
+        }
+    }
+
+    /**
+     * Method for getting member and using viewVerbose to print info
+     * @author dd222gc (Dennis Demir)
+     */
+    private void verboseList() {
+        memView.displayVerboseList();
+    }
+
+    /**
      * Method for creating a member
      * @author dd222gc (Dennis Demir) & nh222mr (Nicklas Hansson)
      */
     public void createNewMember() {
 
 //        Member member = new Member();
-=======
+
         sc = new Scanner(System.in);
 
 
-        memView.displayMemberName();
+        memView.displayMemberFirstName();
         String memFirstName = sc.nextLine();
 
-        memView.displayMemberName();
+        memView.displayMemberLastName();
         String memLastName = sc.nextLine();
 
         memView.displayMemberPersonalNumber();

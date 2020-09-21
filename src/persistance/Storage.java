@@ -50,7 +50,7 @@ public class Storage {
      * @author ph222ue (Patrik Hasselblad)
      */
     public int registrySize() {
-        return members.size();
+        return this.members.size();
     }
 
     /**
@@ -131,6 +131,14 @@ public class Storage {
      */
     public ArrayList<Member> getMemberList() {
         return members;
+    }
+
+    /**
+     * Method that gets member with id from database(JSON file)
+     * @author dd222gc (Dennis Demir)
+     */
+    public Member getSpecificMember(int index) {
+        return this.members.get(index);
     }
 
 }
