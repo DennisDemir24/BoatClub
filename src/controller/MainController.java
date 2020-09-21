@@ -59,7 +59,7 @@ public class MainController {
                     changeMemberInformation();
                     break;
                 case 5:
-                    sc.close();
+                    deleteMember();
                     break;
                 case 6:
                     sc.close();
@@ -153,5 +153,14 @@ public class MainController {
         int personalNum = sc.nextInt();
 
         memberController.update(oldPersonalNum, memFirstName, memLastName, personalNum);
+    }
+
+    public void deleteMember() {
+        sc = new Scanner(System.in);
+
+        memView.displayMemberPersonalNumber();
+        int personalNum = sc.nextInt();
+
+        memberController.delete(personalNum);
     }
 }

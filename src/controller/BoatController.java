@@ -11,8 +11,6 @@ import model.Type;
 public class BoatController {
 
     public BoatController () {
-
-
     }
 
     /**

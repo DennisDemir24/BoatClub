@@ -69,7 +69,7 @@ public class Storage {
         int memberId = createMemberId(id);
         for (int i = 0; i < members.size(); i ++) {
 
-            if (members.get(i).getMemberId() == memberId) {
+            if (members.get(i).getMemberId() == memberId) { // --------------Måste lägga över boatArrayen också innan man raderar.
                 members.remove(i);
                 members.add(i, new Member(fName, lName, socNr));
 
@@ -81,10 +81,11 @@ public class Storage {
 
     /**
      * Method that removes a member with a certain Id.
-     * @param memberId - member Id to search for in the List.
+     * @param id - member Id to search for in the List.
      * @author ph222ue (Patrik Hasselblad)
      */
-    public void deleteMember(int memberId) {
+    public void deleteMember(int id) {
+        int memberId = createMemberId(id);
         for (int i = 0; i < members.size(); i ++) {
             if (members.get(i).getMemberId() == memberId) {
                 members.remove(i);

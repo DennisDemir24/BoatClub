@@ -50,10 +50,9 @@ public class MemberController {
     /**
      * Method for returning a new member from the storage
      * @param id - int memberId
-     * @author nh222mr (Nicklas Hansson)
+     * @author nh222mr (Nicklas Hansson) & ph222ue (Patrik Hasselblad)
      */
     public void update(int id, String newFName, String newLName, int newSocNr) {
-//        Member member = storage.getMember(id);
         storage.editMember(id, newFName, newLName, newSocNr);
         storage.saveData();
     }
@@ -63,13 +62,11 @@ public class MemberController {
      * @param id - Id of the member to be deleted from storage
      *
      * @return - Returns deleted member
-     * @author dd222gc (Dennis Demir)
+     * @author dd222gc (Dennis Demir) & ph222ue (Patrik Hasselblad)
      */
-    public Member delete(int id) {
-        Member member = storage.getMember(id);
+    public void delete(int id) {
         storage.deleteMember(id);
-
-        return member;
+        storage.saveData();
     }
 
     /**
