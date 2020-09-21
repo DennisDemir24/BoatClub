@@ -1,6 +1,5 @@
 package controller;
 
-import model.Boat;
 import model.Member;
 import model.Type;
 import persistance.Storage;
@@ -65,13 +64,13 @@ public class MainController {
                     deleteMember();
                     break;
                 case 6:
-                    sc.close();
+                    viewSpecificMember();
                     break;
                 case 7:
                     createBoat();
                     break;
                 case 8:
-                    sc.close();
+                    editBoat();
                     break;
                 case 9:
                     sc.close();
@@ -124,6 +123,22 @@ public class MainController {
         int personalNum = sc.nextInt();
 
         memberController.create(memFirstName, memLastName, personalNum);
+    }
+
+    /**
+     * Method to get one single member information
+     * @author dd222gc (Dennis Demir)
+     */
+    public void viewSpecificMember() {
+        sc = new Scanner(System.in);
+        memView.displayMemberID();
+        int memberId = sc.nextInt();
+
+        if (memberId <= storage.getMemberList().size()) {
+            this.memberController.viewCompact(memberId);
+        } else {
+            System.out.println("There is no member with that ID");
+        }
     }
 
     /**
@@ -182,19 +197,31 @@ public class MainController {
 
         boatController.createBoat(type, length, id);
     }
+
+    /**
+     * Method for editing an existing boat.
+     * @author ph222ue (Patrik Hasselblad)
+     */
     public void editBoat() {
         sc = new Scanner(System.in);
         Type type;
 
         mainView.displayBoatNumber();
-        int id = sc.nextInt();
+        int memberId = sc.nextInt();
 
         mainView.displayBoatId();
         int boatId = sc.nextInt();
+        Member member = storage.getMember(memberId);
 
-        Member member = storage.getMember(id);
-        Boat boat = member.getBoatList().get(boatId);
+        mainView.displayBoatType();
+        String boatType = sc.next().toLowerCase();
+        type = registerBoatType(boatType);
 
+        mainView.displayBoatLength();
+        String temp = sc.next();
+        double length = Double.parseDouble(temp);
+
+        boatController.editBoat(member, boatId, type, length);
     }
 
     /**
