@@ -25,14 +25,26 @@ public class MemberView {
      * Method that display the verbose list
      * @author "dd222gc Dennis Demir"
      */
-    public void displayVerboseList() {
-        System.out.println(
-                "First Name: " +  "" +  "\n" +
-                        "Last Name: " +  "" +  "\n" +
-                        "Personal Number: " +  "\n" +
-                        "Member ID: " +  "\n" +
+    public void displayVerboseList(Member member) {
+        System.out.print(
+                "First Name: " +  member.getFirstName() +  "\n" +
+                        "Last Name: " +  member.getLastName() +  "\n" +
+                        "Personal Number: " + member.getSocialSec() +  "\n" +
+                        "Member ID: " + member.getMemberId() + "\n" +
                         "Boats: " + "\n"
         );
+
+        if (member.getBoatList().size() > 0) {
+            for (int i = 0; i < member.getBoatList().size(); i++) {
+                System.out.println("\tID: " + member.getBoatList().get(i).getBoatId() + "\n" +
+                        "\tType: " + member.getBoatList().get(i).getType() + "\n" +
+                        "\tLength: " + member.getBoatList().get(i).getLength() + "\n"
+                );
+            }
+        } else {
+            System.out.println("\tNo boats registered\n");
+        }
+
         System.out.println("*************");
     }
 

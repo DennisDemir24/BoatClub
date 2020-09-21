@@ -78,7 +78,9 @@ public class MemberController {
     public void viewCompact(int id) {
         this.memView.displayCompactList(storage.getSpecificMember(id));
     }
-
+    public void viewVerbose(int id) {
+        this.memView.displayVerboseList(storage.getSpecificMember(id));
+    }
 
 
 }

@@ -103,7 +103,12 @@ public class MainController {
      */
     private void verboseList() {
         storage.loadData();
-        memView.displayVerboseList();
+        int members = this.storage.registrySize();
+
+        for (int i = 0; i < members; i++) {
+            this.memberController.viewVerbose(i + 1);
+        }
+
     }
 
     /**
