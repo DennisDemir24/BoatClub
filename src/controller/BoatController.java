@@ -3,7 +3,6 @@ package controller;
 import model.Boat;
 import model.Member;
 import model.Type;
-import view.MemberView;
 
 /**
  * A class that handles the member boats; adding, editing, removing and viewing.
@@ -27,7 +26,7 @@ public class BoatController {
     //public void createBoat(Member member, Boat boat) {
       //  member.addBoat(member.getBoatList().size(), boat);
 
-    public Boat createBoat(Type boatType, int length, int ownerId) {
+    public Boat createBoat(Type boatType, double length, int ownerId) {
         Boat newBoat = new Boat(boatType, length, ownerId);
         return newBoat;
 
