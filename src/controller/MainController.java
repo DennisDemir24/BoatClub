@@ -128,7 +128,7 @@ public class MainController {
 
         memberController.create(memFirstName, memLastName, personalNum);
 
-        storage.saveData();
+//        storage.saveData();
 
 
     }
