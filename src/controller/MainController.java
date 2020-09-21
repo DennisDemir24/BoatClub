@@ -12,11 +12,11 @@ import java.util.Scanner;
  * @author dd222gc (Dennis Demir) & nh222mr (Nicklas Hansson)
  */
 public class MainController {
-    private MainView mainView;
-    private MemberController memberController;
+    private final MainView mainView;
+    private final MemberController memberController;
     private BoatController boatController;
-    private Storage storage;
-    private MemberView memView;
+    private final Storage storage;
+    private final MemberView memView;
     private Scanner sc;
 
     public MainController() throws IOException {
@@ -56,7 +56,7 @@ public class MainController {
                     createNewMember();
                     break;
                 case 4:
-                    sc.close();
+                    changeMemberInformation();
                     break;
                 case 5:
                     sc.close();
@@ -131,5 +131,27 @@ public class MainController {
 //        storage.saveData();
 
 
+    }
+
+    /**
+     * Method for editing a member.
+     * @author ph222ue (Patrik Hasselblad)
+     */
+    public void changeMemberInformation() {
+        sc = new Scanner(System.in);
+
+        memView.displayMemberPersonalNumber();
+        int oldPersonalNum = sc.nextInt();
+
+        memView.displayMemberFirstName();
+        String memFirstName = sc.next();
+
+        memView.displayMemberLastName();
+        String memLastName = sc.next();
+
+        memView.displayMemberPersonalNumber();
+        int personalNum = sc.nextInt();
+
+        memberController.update(oldPersonalNum, memFirstName, memLastName, personalNum);
     }
 }

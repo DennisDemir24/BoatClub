@@ -12,9 +12,9 @@ import java.util.ArrayList;
  * @author dd222gc (Dennis Demir)
  */
 public class MemberController {
-    private Storage storage;
-    private BoatController boatController;
-    private MemberView memView;
+    private final Storage storage;
+    private final BoatController boatController;
+    private final MemberView memView;
 
     public MemberController() throws IOException {
         this.storage = Storage.getInstance();
@@ -30,13 +30,6 @@ public class MemberController {
      * @author dd222gc (Dennis Demir) & nh222mr (Nicklas Hansson) & ph222ue (Patrik Hasselblad)
      */
     public void create(String first, String last, int personalNumber) {
-//        Type canoe = Type.CANOE;
-//        Random rand = new Random();
-//        int id = rand.nextInt(1000000);
-//
-//        ArrayList<Boat> boatList = new ArrayList<>();
-//        boatList.add(boatController.createBoat(canoe, 18, id));
-
         Member member = new Member(first, last, personalNumber);
         storage.addMember(member);
         ArrayList<Member> memList = storage.getMemberList();
@@ -59,8 +52,10 @@ public class MemberController {
      * @param id - int memberId
      * @author nh222mr (Nicklas Hansson)
      */
-    public void update(int id) {
-        storage.getMember(id);
+    public void update(int id, String newFName, String newLName, int newSocNr) {
+//        Member member = storage.getMember(id);
+        storage.editMember(id, newFName, newLName, newSocNr);
+        storage.saveData();
     }
 
     /**

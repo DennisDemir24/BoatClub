@@ -24,7 +24,7 @@ public class Storage {
         loadData();
     }
 
-    public static Storage getInstance() throws IOException {
+    public static Storage getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new Storage();
         }
@@ -52,19 +52,29 @@ public class Storage {
     public int registrySize() {
         return this.members.size();
     }
+    public int createMemberId(int id) {
+        int temp = Integer.toString(id).hashCode();
+        if (temp < 0) {
+            temp = temp * 2;
+        }
+        return temp;
+    }
 
     /**
      * Method that alters a certain member's information.
      * @param id - The id of the member.
      * @author ph222ue (Patrik Hasselblad)
      */
-    public void editMember(int id) {
+    public void editMember(int id, String fName, String lName, int socNr) {
+        int memberId = createMemberId(id);
         for (int i = 0; i < members.size(); i ++) {
 
-            if (members.get(i).getMemberId() == id) { // Detta är bara tillfälligt. Ska förstås inte sätta förändringar här.
-                members.get(i).setFirstName("Rolf");
-                members.get(i).setLastName("Ismärla");
-                this.members.set(i, members.get(i));
+            if (members.get(i).getMemberId() == memberId) {
+                members.remove(i);
+                members.add(i, new Member(fName, lName, socNr));
+
+            } else {
+                throw new IllegalArgumentException("There is no such member registered.");
             }
         }
     }
@@ -108,7 +118,7 @@ public class Storage {
         try {
             members = mapper.readValue(file, new TypeReference<List<Member>>(){});
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("The database is empty.");
         }
     }
 
