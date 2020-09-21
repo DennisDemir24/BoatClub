@@ -24,7 +24,7 @@ public class Storage {
         loadData();
     }
 
-    public static Storage getInstance() throws IOException {
+    public static Storage getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new Storage();
         }
@@ -50,7 +50,14 @@ public class Storage {
      * @author ph222ue (Patrik Hasselblad)
      */
     public int registrySize() {
-        return members.size();
+        return this.members.size();
+    }
+    public int createMemberId(int id) {
+        int temp = Integer.toString(id).hashCode();
+        if (temp < 0) {
+            temp = temp * 2;
+        }
+        return temp;
     }
 
     /**
@@ -58,23 +65,27 @@ public class Storage {
      * @param id - The id of the member.
      * @author ph222ue (Patrik Hasselblad)
      */
-    public void editMember(int id) {
+    public void editMember(int id, String fName, String lName, int socNr) {
+        int memberId = createMemberId(id);
         for (int i = 0; i < members.size(); i ++) {
 
-            if (members.get(i).getMemberId() == id) { // Detta är bara tillfälligt. Ska förstås inte sätta förändringar här.
-                members.get(i).setFirstName("Rolf");
-                members.get(i).setLastName("Ismärla");
-                this.members.set(i, members.get(i));
+            if (members.get(i).getMemberId() == memberId) { // --------------Måste lägga över boatArrayen också innan man raderar.
+                members.remove(i);
+                members.add(i, new Member(fName, lName, socNr));
+
+            } else {
+                throw new IllegalArgumentException("There is no such member registered.");
             }
         }
     }
 
     /**
      * Method that removes a member with a certain Id.
-     * @param memberId - member Id to search for in the List.
+     * @param id - member Id to search for in the List.
      * @author ph222ue (Patrik Hasselblad)
      */
-    public void deleteMember(int memberId) {
+    public void deleteMember(int id) {
+        int memberId = createMemberId(id);
         for (int i = 0; i < members.size(); i ++) {
             if (members.get(i).getMemberId() == memberId) {
                 members.remove(i);
@@ -108,7 +119,7 @@ public class Storage {
         try {
             members = mapper.readValue(file, new TypeReference<List<Member>>(){});
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("The database is empty.");
         }
     }
 
@@ -131,6 +142,14 @@ public class Storage {
      */
     public ArrayList<Member> getMemberList() {
         return members;
+    }
+
+    /**
+     * Method that gets member with id from database(JSON file)
+     * @author dd222gc (Dennis Demir)
+     */
+    public Member getSpecificMember(int index) {
+        return this.members.get(index);
     }
 
 }
