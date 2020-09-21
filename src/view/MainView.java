@@ -79,6 +79,10 @@ public class MainView {
         System.out.println("Boat Type (C = Canoe, S = sailboat, M = motorsailer, K = kayak, O = other): ");
     }
 
+    /**
+     * Method that ask for boat ID.
+     * @author ph222ue (Patrik Hasselbald)
+     */
     public void displayBoatId() {
         System.out.println("Boat Id: ");
     }

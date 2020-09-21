@@ -108,7 +108,6 @@ public class MainController {
         for (int i = 0; i < members; i++) {
             this.memberController.viewVerbose(i + 1);
         }
-
     }
 
     /**
@@ -145,6 +144,7 @@ public class MainController {
             System.out.println("There is no member with that ID");
         }
     }
+    //ToDo: Vi måste göra felmeddelandena aningen mer lika genom programmet.
 
     /**
      * Method for editing a member.
