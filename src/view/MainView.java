@@ -1,6 +1,8 @@
 package view;
 
 import controller.MainController;
+import model.Boat;
+import model.Member;
 
 import java.util.Scanner;
 
@@ -43,14 +45,19 @@ public class MainView {
             System.out.println("0. Quit");
     }
 
-
     /**
-     * Method that display boat info
-     * @author "dd222gc Dennis Demir"
+     * Method that views a certain boat.
+     * @param member - The boat owner.
+     * @param boatId - The specific boats ID.
+     * @author dd222gc (Dennis Demir) & ph222ue (Patrik Hasselblad)
      */
-    public void displayBoatInfo() {
-        String boatInfo = "Boat: " + "BOAT TYPE" + " - " + "Length: " + "BOAT LENGTH";
-        System.out.println(boatInfo);
+    public void displayBoatInfo(Member member, int boatId) {
+        Boat boat = member.getBoat(boatId);
+
+        System.out.println("Boat Owner: " + member.getFirstName() + " " + member.getLastName() + "\n" +
+                "Boat ID: " + boat.getBoatId() + "\n" +
+                "Boat Type: " + boat.getType() + "\n" +
+                "Boat Length: " + boat.getLength() + "\n");
     }
 
     /**
@@ -80,6 +87,5 @@ public class MainView {
     public void displayBoatId() {
         System.out.println("Boat Id: ");
     }
-
 
 }
