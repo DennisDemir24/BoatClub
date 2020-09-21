@@ -58,11 +58,13 @@ public class BoatController {
 
     /**
      * Removes a certain boat from the member boat list.
-     * @param member - The boat owner.
-     * @param boat - The specific boat.
+     * @param ownerId - The boat owner ID.
+     * @param boatId - The specific boat ID.
      * @author ph222ue (Patrik Hasselblad)
      */
-    public void removeBoat(Member member, Boat boat) {
+    public void removeBoat(int ownerId, int boatId) {
+//        for (int i = 0; )storage.getMemberList().get()
+
 //        int index = member.getBoat(boat.getBoatId());
 //            if (index == -1) {
 //                throw new IllegalArgumentException("There is no boat with that description");

@@ -93,7 +93,7 @@ public class MainController {
         int members = this.storage.registrySize();
 
         for (int i = 0; i < members; i++) {
-            this.memberController.viewCompact(i);
+            this.memberController.viewCompact(i + 1);
         }
     }
 
@@ -222,6 +222,19 @@ public class MainController {
         double length = Double.parseDouble(temp);
 
         boatController.editBoat(member, boatId, type, length);
+    }
+
+    /**
+     * Method for deletion of a certain boat.
+     */
+    public void deleteBoat() {
+        sc = new Scanner(System.in);
+
+        mainView.displayBoatNumber();
+        int ownerId = sc.nextInt();
+        mainView.displayBoatId();
+        int boatId = sc.nextInt();
+        boatController.removeBoat(ownerId, boatId);
     }
 
     /**
