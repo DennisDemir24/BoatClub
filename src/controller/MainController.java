@@ -65,7 +65,7 @@ public class MainController {
                     deleteMember();
                     break;
                 case 6:
-                    sc.close();
+                    viewSpecificMember();
                     break;
                 case 7:
                     createBoat();
@@ -104,7 +104,12 @@ public class MainController {
      */
     private void verboseList() {
         storage.loadData();
-        memView.displayVerboseList();
+        int members = this.storage.registrySize();
+
+        for (int i = 0; i < members; i++) {
+            this.memberController.viewVerbose(i);
+        }
+
     }
 
     /**
@@ -124,6 +129,29 @@ public class MainController {
         int personalNum = sc.nextInt();
 
         memberController.create(memFirstName, memLastName, personalNum);
+    }
+
+    /**
+     * Method to get one single member information
+     * @author dd222gc (Dennis Demir)
+     */
+    public void viewSpecificMember() {
+        sc = new Scanner(System.in);
+
+        memView.displayMemberID();
+        int memberId = sc.nextInt();
+
+        int members = this.storage.registrySize();
+
+            for (int i = 0; i < members; i++) {
+                Member mem = this.storage.getMember(i);
+
+                if(mem.getMemberId() == memberId) {
+                    this.memberController.viewCompact(memberId);
+                } else {
+                    System.out.println("No such member");
+                }
+            }
     }
 
     /**

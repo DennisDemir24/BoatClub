@@ -16,7 +16,7 @@ public class MemberView {
                 "First Name: " + member.getFirstName() +  "\n" +
                         "Last Name: " +  member.getLastName() +  "\n" +
                         "Member ID: " + member.getMemberId() +  "\n" +
-                        "Number of Boats: " + member.getBoatList().size()
+                        "Number of Boats: " + member.getBoatListSize()
         );
         System.out.println("*************");
     }
@@ -25,14 +25,20 @@ public class MemberView {
      * Method that display the verbose list
      * @author "dd222gc Dennis Demir"
      */
-    public void displayVerboseList() {
+    public void displayVerboseList(Member member) {
+        String s = "";
         System.out.println(
-                "First Name: " +  "" +  "\n" +
-                        "Last Name: " +  "" +  "\n" +
-                        "Personal Number: " +  "\n" +
-                        "Member ID: " +  "\n" +
+                "First Name: " + member.getFirstName()  +  "\n" +
+                        "Last Name: " +  member.getLastName() +  "\n" +
+                        "Personal Number: " + member.getSocialSec() +  "\n" +
+                        "Member ID: " + member.getMemberId() +  "\n" +
                         "Boats: " + "\n"
         );
+        for (int i = 0; i < member.getBoatListSize(); i++) {
+            s += "Type: " +  member.getBoatIndex(i).getType() + " - " +
+                    "Length: " + member.getBoatIndex(i).getLength() + ", ";
+        }
+        System.out.println(s);
         System.out.println("*************");
     }
 
