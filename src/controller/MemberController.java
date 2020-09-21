@@ -5,7 +5,6 @@ import persistance.Storage;
 import view.MemberView;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * A class that handles the member controller
@@ -32,9 +31,6 @@ public class MemberController {
     public void create(String first, String last, int personalNumber) {
         Member member = new Member(first, last, personalNumber);
         storage.addMember(member);
-        ArrayList<Member> memList = storage.getMemberList();
-
-        memList.forEach((m) -> System.out.println(m.getFirstName()));
 
         storage.saveData();
         // Add function call for displaying correct view message

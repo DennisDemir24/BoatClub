@@ -73,10 +73,10 @@ public class MainController {
                     editBoat();
                     break;
                 case 9:
-                    sc.close();
+                    deleteBoat();
                     break;
                 case 10:
-                    mainView.displayBoatInfo();
+                    viewBoat();
                     break;
                 default:
                     System.out.println("Please use a number to make a choice");
@@ -212,11 +212,10 @@ public class MainController {
         Type type;
 
         mainView.displayBoatNumber();
-        int memberId = sc.nextInt();
+        int ownerId = sc.nextInt();
 
         mainView.displayBoatId();
         int boatId = sc.nextInt();
-        Member member = storage.getMember(memberId);
 
         mainView.displayBoatType();
         String boatType = sc.next().toLowerCase();
@@ -226,7 +225,7 @@ public class MainController {
         String temp = sc.next();
         double length = Double.parseDouble(temp);
 
-        boatController.editBoat(member, boatId, type, length);
+        boatController.editBoat(ownerId, boatId, type, length);
     }
 
     /**
@@ -237,9 +236,24 @@ public class MainController {
 
         mainView.displayBoatNumber();
         int ownerId = sc.nextInt();
+
         mainView.displayBoatId();
         int boatId = sc.nextInt();
+
         boatController.removeBoat(ownerId, boatId);
+    }
+
+    public void viewBoat() {
+        sc = new Scanner(System.in);
+
+        mainView.displayBoatNumber();
+        int ownerId = sc.nextInt();
+        Member member = storage.getMember(ownerId);
+
+        mainView.displayBoatId();
+        int boatId = sc.nextInt();
+
+        mainView.displayBoatInfo(member, boatId);
     }
 
     /**
