@@ -52,31 +52,43 @@ public class Storage {
     public int registrySize() {
         return this.members.size();
     }
-    public int createMemberId(int id) {
-        int temp = Integer.toString(id).hashCode();
-        if (temp < 0) {
-            temp = temp * 2;
-        }
-        return temp;
+
+    /**
+     * Method that creates a unique member-Id based on the members-list length.
+     * @return int.
+     * @author ph222ue (Patrik Hasselblad)
+     */
+    public int createMemberId() {
+        return members.size() + 1;
     }
 
     /**
      * Method that alters a certain member's information.
      * @param id - The id of the member.
+     * @param fName - New first name.
+     * @param lName - New last name.
+     * @param socNr - New social security number.
      * @author ph222ue (Patrik Hasselblad)
      */
     public void editMember(int id, String fName, String lName, int socNr) {
-        int memberId = createMemberId(id);
-        for (int i = 0; i < members.size(); i ++) {
 
-            if (members.get(i).getMemberId() == memberId) { // --------------Måste lägga över boatArrayen också innan man raderar.
-                members.remove(i);
-                members.add(i, new Member(fName, lName, socNr));
-
+        for (Member member : members) {
+            if (member.getMemberId() == id) { // --------------Måste lägga över boatArrayen också innan man raderar.
+                System.out.println(member.getMemberId());
+                member.setFirstName(fName);
+                member.setLastName(lName);
+                member.setSocialSec(socNr);
             } else {
-                throw new IllegalArgumentException("There is no such member registered.");
+                System.out.println("There is no member with that ID");
+                System.out.println();
             }
-        }
+
+//                members.remove(i);
+//                members.add(i, new Member(fName, lName, socNr));
+
+        } //else {
+//                throw new IllegalArgumentException("There is no such member registered.");
+            //}
     }
 
     /**
@@ -85,9 +97,8 @@ public class Storage {
      * @author ph222ue (Patrik Hasselblad)
      */
     public void deleteMember(int id) {
-        int memberId = createMemberId(id);
         for (int i = 0; i < members.size(); i ++) {
-            if (members.get(i).getMemberId() == memberId) {
+            if (members.get(i).getMemberId() == id) {
                 members.remove(i);
             }
         }

@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  * A class that handles the main controller
- * @author dd222gc (Dennis Demir) & nh222mr (Nicklas Hansson)
+ * @author dd222gc (Dennis Demir) & nh222mr (Nicklas Hansson) & ph222ue (Patrik Hasselblad)
  */
 public class MainController {
     private final MainView mainView;
@@ -87,6 +87,7 @@ public class MainController {
      * @author dd222gc (Dennis Demir)
      */
     private void compactList() {
+        storage.loadData();
         int members = this.storage.registrySize();
 
         for (int i = 0; i < members; i++) {
@@ -99,6 +100,7 @@ public class MainController {
      * @author dd222gc (Dennis Demir)
      */
     private void verboseList() {
+        storage.loadData();
         memView.displayVerboseList();
     }
 
@@ -140,8 +142,8 @@ public class MainController {
     public void changeMemberInformation() {
         sc = new Scanner(System.in);
 
-        memView.displayMemberPersonalNumber();
-        int oldPersonalNum = sc.nextInt();
+        memView.displayMemberID();
+        int memberId = sc.nextInt();
 
         memView.displayMemberFirstName();
         String memFirstName = sc.next();
@@ -152,15 +154,15 @@ public class MainController {
         memView.displayMemberPersonalNumber();
         int personalNum = sc.nextInt();
 
-        memberController.update(oldPersonalNum, memFirstName, memLastName, personalNum);
+        memberController.update(memberId, memFirstName, memLastName, personalNum);
     }
 
     public void deleteMember() {
         sc = new Scanner(System.in);
 
-        memView.displayMemberPersonalNumber();
-        int personalNum = sc.nextInt();
+        memView.displayMemberID();
+        int memberId = sc.nextInt();
 
-        memberController.delete(personalNum);
+        memberController.delete(memberId);
     }
 }

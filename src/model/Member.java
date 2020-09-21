@@ -1,6 +1,7 @@
 package model;
 
 import org.codehaus.jackson.annotate.JsonProperty;
+import persistance.Storage;
 
 import java.util.ArrayList;
 
@@ -12,7 +13,7 @@ public class Member {
     private String firstName;
     private String lastName;
     private int socialSec;
-    private int memberId;
+    private final int memberId;
     private ArrayList<Boat> boatList = new ArrayList<>();
 
     /**
@@ -28,11 +29,7 @@ public class Member {
         this.lastName = lN;
         this.boatList = loadedBoatList;
         this.socialSec = socialNr;
-//        if (id == 0) { //--------------------- Vi kanske bör flytta ID hanteringen till ett bättre ställe.
-//            memberId = setMemberId();
-//        } else {
-            this.memberId = id;
-//        }
+        this.memberId = id;
     }
 
     /**
@@ -47,11 +44,8 @@ public class Member {
     }
 
     private int setMemberId() {
-        int temp = Integer.toString(socialSec).hashCode();
-        if (temp < 0) {
-            temp = temp * 2;
-        }
-        return temp;
+        Storage storage = new Storage();
+        return storage.createMemberId();
     }
 
     public String getFirstName() {
