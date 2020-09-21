@@ -137,21 +137,21 @@ public class MainController {
      */
     public void viewSpecificMember() {
         sc = new Scanner(System.in);
-
         memView.displayMemberID();
         int memberId = sc.nextInt();
 
         int members = this.storage.registrySize();
+        System.out.println(members);
 
-            for (int i = 0; i < members; i++) {
-                Member mem = this.storage.getMember(i);
+        for (int i = 0; i < storage.getMemberList().size(); i++) {
+            Member mem = storage.getMemberList().get(i);
 
-                if(mem.getMemberId() == memberId) {
-                    this.memberController.viewCompact(memberId);
-                } else {
-                    System.out.println("No such member");
-                }
+            if(mem.getMemberId() == memberId) {
+                this.memberController.viewCompact(memberId);
+            } else {
+                System.out.println("No such member");
             }
+        }
     }
 
     /**
