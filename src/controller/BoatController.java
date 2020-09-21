@@ -10,9 +10,10 @@ import persistance.Storage;
  * @author ph222ue (Patrik Hasselblad)
  */
 public class BoatController {
-    Storage storage = new Storage();
+    private final Storage storage;
 
     public BoatController () {
+        this.storage = Storage.getInstance();
 
     }
 
@@ -23,10 +24,6 @@ public class BoatController {
      * @param ownerId - The id of the owner of the boat
      * @author ph222ue (Patrik Hasselblad) & nh222mr (Nicklas Hansson)
      */
-
-    //public void createBoat(Member member, Boat boat) {
-      //  member.addBoat(member.getBoatList().size(), boat);
-
     public void createBoat(Type boatType, double length, int ownerId) {
         Boat newBoat = new Boat(boatType, length, ownerId);
         Member member = storage.getMember(ownerId);

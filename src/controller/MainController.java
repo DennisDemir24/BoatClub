@@ -1,5 +1,7 @@
 package controller;
 
+import model.Boat;
+import model.Member;
 import model.Type;
 import persistance.Storage;
 import view.MainView;
@@ -169,14 +171,7 @@ public class MainController {
 
         mainView.displayBoatType();
         String boatType = sc.next().toLowerCase();
-        type = switch (boatType) {
-            case "c" -> Type.CANOE;
-            case "s" -> Type.SAILBOAT;
-            case "k" -> Type.KAYAK;
-            case "m" -> Type.MOTORSAILER;
-            case "o" -> Type.OTHER;
-            default -> throw new IllegalStateException("Unexpected value: " + boatType);
-        };
+        type = registerBoatType(boatType);
 
         mainView.displayBoatLength();
         String temp = sc.next();
@@ -186,5 +181,44 @@ public class MainController {
         int id = sc.nextInt();
 
         boatController.createBoat(type, length, id);
+    }
+    public void editBoat() {
+        sc = new Scanner(System.in);
+        Type type;
+
+        mainView.displayBoatNumber();
+        int id = sc.nextInt();
+
+        mainView.displayBoatId();
+        int boatId = sc.nextInt();
+
+        Member member = storage.getMember(id);
+        Boat boat = member.getBoatList().get(boatId);
+
+    }
+
+    /**
+     * Help method to determine boat type.
+     * @param boatType incoming user input.
+     * @return Type
+     */
+    public Type registerBoatType(String boatType) {
+        Type type;
+
+        if (boatType.equals("c")) {
+            type = Type.CANOE;
+        } else if (boatType.equals("s")) {
+            type = Type.SAILBOAT;
+        } else if (boatType.equals("k")) {
+            type = Type.KAYAK;
+        } else if (boatType.equals("m")) {
+            type = Type.MOTORSAILER;
+        } else if (boatType.equals("o")) {
+            type = Type.OTHER;
+        } else {
+            throw new IllegalStateException("Unexpected value: " + boatType);
+        }
+
+        return type;
     }
 }
