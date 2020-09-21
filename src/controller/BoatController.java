@@ -3,14 +3,17 @@ package controller;
 import model.Boat;
 import model.Member;
 import model.Type;
+import persistance.Storage;
 
 /**
  * A class that handles the member boats; adding, editing, removing and viewing.
  * @author ph222ue (Patrik Hasselblad)
  */
 public class BoatController {
+    Storage storage = new Storage();
 
     public BoatController () {
+
     }
 
     /**
@@ -24,10 +27,13 @@ public class BoatController {
     //public void createBoat(Member member, Boat boat) {
       //  member.addBoat(member.getBoatList().size(), boat);
 
-    public Boat createBoat(Type boatType, double length, int ownerId) {
+    public void createBoat(Type boatType, double length, int ownerId) {
         Boat newBoat = new Boat(boatType, length, ownerId);
-        return newBoat;
+        Member member = storage.getMember(ownerId);
+        int index = member.getBoatList().size();
 
+        member.addBoat(index, newBoat);
+        storage.saveData();
     }
 
     /**

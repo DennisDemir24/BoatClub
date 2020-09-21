@@ -1,5 +1,6 @@
 package controller;
 
+import model.Type;
 import persistance.Storage;
 import view.MainView;
 import view.MemberView;
@@ -14,7 +15,7 @@ import java.util.Scanner;
 public class MainController {
     private final MainView mainView;
     private final MemberController memberController;
-    private BoatController boatController;
+    private final BoatController boatController;
     private final Storage storage;
     private final MemberView memView;
     private Scanner sc;
@@ -24,7 +25,7 @@ public class MainController {
         this.memView = new MemberView();
         this.memberController = new MemberController();
         this.storage = new Storage();
-        // this.boatController = new BoatController();
+        this.boatController = new BoatController();
     }
 
 
@@ -65,7 +66,7 @@ public class MainController {
                     sc.close();
                     break;
                 case 7:
-                    sc.close();
+                    createBoat();
                     break;
                 case 8:
                     sc.close();
@@ -109,11 +110,7 @@ public class MainController {
      * @author dd222gc (Dennis Demir) & nh222mr (Nicklas Hansson)
      */
     public void createNewMember() {
-
-//        Member member = new Member();
-
         sc = new Scanner(System.in);
-
 
         memView.displayMemberFirstName();
         String memFirstName = sc.nextLine();
@@ -124,15 +121,7 @@ public class MainController {
         memView.displayMemberPersonalNumber();
         int personalNum = sc.nextInt();
 
-
-//        member.setFirstName(memName);
-//        member.setSocialSec(personalNum);
-
         memberController.create(memFirstName, memLastName, personalNum);
-
-//        storage.saveData();
-
-
     }
 
     /**
@@ -157,6 +146,10 @@ public class MainController {
         memberController.update(memberId, memFirstName, memLastName, personalNum);
     }
 
+    /**
+     * Method for deleting a member.
+     * @author ph222ue (Patrik Hasselblad)
+     */
     public void deleteMember() {
         sc = new Scanner(System.in);
 
@@ -164,5 +157,34 @@ public class MainController {
         int memberId = sc.nextInt();
 
         memberController.delete(memberId);
+    }
+
+    /**
+     * Method for creating a boat.
+     * @author ph222ue (Patrik Hasselblad)
+     */
+    public void createBoat() {
+        sc = new Scanner(System.in);
+        Type type;
+
+        mainView.displayBoatType();
+        String boatType = sc.next().toLowerCase();
+        type = switch (boatType) {
+            case "c" -> Type.CANOE;
+            case "s" -> Type.SAILBOAT;
+            case "k" -> Type.KAYAK;
+            case "m" -> Type.MOTORSAILER;
+            case "o" -> Type.OTHER;
+            default -> throw new IllegalStateException("Unexpected value: " + boatType);
+        };
+
+        mainView.displayBoatLength();
+        String temp = sc.next();
+        double length = Double.parseDouble(temp);
+
+        mainView.displayBoatNumber();
+        int id = sc.nextInt();
+
+        boatController.createBoat(type, length, id);
     }
 }

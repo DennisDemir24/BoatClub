@@ -74,8 +74,8 @@ public class Member {
         return memberId;
     }
 
-    public void addBoat(int id, Boat boat) {
-        boatList.add(id, boat);
+    public void addBoat(int index, Boat boat) {
+        boatList.add(index, boat);
     }
 
     public int getBoat(Boat boat) {
