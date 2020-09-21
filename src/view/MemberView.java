@@ -16,7 +16,7 @@ public class MemberView {
                 "First Name: " + member.getFirstName() +  "\n" +
                         "Last Name: " +  member.getLastName() +  "\n" +
                         "Member ID: " + member.getMemberId() +  "\n" +
-                        "Number of Boats: " + member.getBoatList()
+                        "Number of Boats: " + member.getBoatList().size()
         );
         System.out.println("*************");
     }

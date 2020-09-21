@@ -4,7 +4,7 @@ package model;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 public class Boat {
-    private Type type;
+    private final Type type;
     private final double length;
     private final int ownerId;
 

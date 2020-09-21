@@ -58,7 +58,7 @@ public class MainView {
      * @author "dd222gc Dennis Demir"
      */
     public void displayBoatNumber() {
-        System.out.println("Boat Number: ");
+        System.out.println("Owner member ID: ");
     }
 
     /**
@@ -74,7 +74,7 @@ public class MainView {
      * @author "dd222gc Dennis Demir"
      */
     public void displayBoatType() {
-        System.out.println("Boat Type: ");
+        System.out.println("Boat Type (C = Canoe, S = sailboat, M = motorsailer, K = kayak, O = other): ");
     }
 
 
