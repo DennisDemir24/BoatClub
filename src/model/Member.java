@@ -95,14 +95,4 @@ public class Member {
     public ArrayList<Boat> getBoatList() {
         return boatList;
     }
-
-    /*
-    public int getBoatListSize() {
-        return boatList.size();
-    }*/
-
-    /*
-    public Boat getBoatIndex(int index) {
-        return this.boatList.get(index);
-    }*/
 }

@@ -37,51 +37,66 @@ public class MainController {
     public void startMenu() {
         sc = new Scanner(System.in);
 
-        int input;
+        String input;
         do {
             mainView.displayWelcomeMessage();
-            input = sc.nextInt();
+            input = sc.next();
 
-            if (input == 0) {
+            if (input == "0") {
                 sc.close();
                 break;
             }
 
+
+
             switch (input) {
-                case 1:
+                case "1":
                     compactList();
                     break;
-                case 2:
+                case "2":
                     verboseList();
                     break;
-                case 3:
+                case "3":
                     createNewMember();
                     break;
-                case 4:
+                case "4":
                     changeMemberInformation();
                     break;
-                case 5:
+                case "5":
                     deleteMember();
                     break;
-                case 6:
+                case "6":
                     viewSpecificMember();
                     break;
-                case 7:
+                case "7":
                     createBoat();
                     break;
-                case 8:
+                case "8":
                     editBoat();
                     break;
-                case 9:
+                case "9":
                     deleteBoat();
                     break;
-                case 10:
+                case "10":
                     viewBoat();
                     break;
+                case "0":
+                    sc.close();
+                    break;
                 default:
-                    System.out.println("Please use a number to make a choice");
+                    wrongInput(input);
             }
         } while (true);
+    }
+
+    /**
+     * Method for checking that input is a number and between 1-10
+     * @author dd222gc (Dennis Demir)
+     */
+    public void wrongInput(String input) {
+        if (!input.matches("[1-10]")) {
+            mainView.displayWrongInputMessage();
+        }
     }
 
     /**
@@ -108,7 +123,6 @@ public class MainController {
         for (int i = 0; i < members; i++) {
             this.memberController.viewVerbose(i + 1);
         }
-
     }
 
     /**
@@ -139,18 +153,13 @@ public class MainController {
         memView.displayMemberID();
         int memberId = sc.nextInt();
 
-        int members = this.storage.registrySize();
-        System.out.println(members);
-
-        for (int i = 0; i < storage.getMemberList().size(); i++) {
-
-            if (memberId <= storage.getMemberList().size()) {
-                this.memberController.viewCompact(memberId);
-            } else {
-                System.out.println("There is no member with that ID");
-            }
+        if (memberId <= storage.getMemberList().size()) {
+            this.memberController.viewCompact(memberId);
+        } else {
+            mainView.displayErrorMessageIfWrongUserID();
         }
     }
+    //ToDo: Vi måste göra felmeddelandena aningen mer lika genom programmet.
 
     /**
      * Method for editing a member.

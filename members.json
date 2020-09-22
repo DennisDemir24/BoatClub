@@ -1,2 +1,1 @@
-
-[{"firstName":"Dennis","lastName":"Demir","socialSec":123456,"memberId":1,"boatList":[],"boatListSize":0}]
+[{"firstName":"Dennis","lastName":"Demir","socialSec":123456,"memberId":1,"boatList":[{"type":"CANOE","length":20.0,"boatId":1}]}]

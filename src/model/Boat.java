@@ -45,10 +45,6 @@ public class Boat {
         return length;
     }
 
-    public int getOwnerId() {
-        return ownerId;
-    }
-
     public Type getType() {
         return type;
     }

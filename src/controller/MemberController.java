@@ -12,13 +12,11 @@ import java.io.IOException;
  */
 public class MemberController {
     private final Storage storage;
-    private final BoatController boatController;
     private final MemberView memView;
 
     public MemberController() throws IOException {
         this.storage = Storage.getInstance();
         this.memView = new MemberView();
-        this.boatController = new BoatController();
     }
 
     /**
@@ -65,7 +63,7 @@ public class MemberController {
     }
 
     /**
-     * Method for viewing member with specific id in compact.
+     * Method for viewing member with specific id.
      * @param id - Id of the targeted member to view
      *
      * @author dd222gc (Dennis Demir)
@@ -75,14 +73,12 @@ public class MemberController {
     }
 
     /**
-     * Method for viewing member with specific id in verbose.
-     * @param id - Id of the targeted member to view
+     * Method for viewing member with specific id.
+     * @param id - Id of the targeted member to view.
      *
      * @author dd222gc (Dennis Demir)
      */
     public void viewVerbose(int id) {
         this.memView.displayVerboseList(storage.getSpecificMember(id));
     }
-
-
 }

@@ -73,7 +73,7 @@ public class Storage {
     public void editMember(int id, String fName, String lName, int socNr) {
 
         for (Member member : members) {
-            if (member.getMemberId() == id) { // --------------Måste lägga över boatArrayen också innan man raderar.
+            if (member.getMemberId() == id) {
                 System.out.println(member.getMemberId());
                 member.setFirstName(fName);
                 member.setLastName(lName);
@@ -128,6 +128,7 @@ public class Storage {
             System.out.println("The database is empty.");
         }
     }
+    //ToDo: Programmet laddar fler gånger än det behöver, detta kan vara värt att kolla på.
 
     /**
      * Method that saves member data to a JSON file.
@@ -157,5 +158,5 @@ public class Storage {
     public Member getSpecificMember(int index) {
         return this.members.get(index - 1);
     }
-
+    //ToDo: Vi hämtar använder på 2 sätt, kanske kan vi slå ihop dessa till enbart 1 metod.
 }
