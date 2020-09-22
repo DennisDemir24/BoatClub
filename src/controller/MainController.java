@@ -1,6 +1,5 @@
 package controller;
 
-import model.Boat;
 import model.Member;
 import model.Type;
 import persistance.Storage;
@@ -71,13 +70,13 @@ public class MainController {
                     createBoat();
                     break;
                 case 8:
-                    sc.close();
+                    editBoat();
                     break;
                 case 9:
-                    sc.close();
+                    deleteBoat();
                     break;
                 case 10:
-                    mainView.displayBoatInfo();
+                    viewBoat();
                     break;
                 default:
                     System.out.println("Please use a number to make a choice");
@@ -94,7 +93,7 @@ public class MainController {
         int members = this.storage.registrySize();
 
         for (int i = 0; i < members; i++) {
-            this.memberController.viewCompact(i);
+            this.memberController.viewCompact(i + 1);
         }
     }
 
@@ -107,9 +106,8 @@ public class MainController {
         int members = this.storage.registrySize();
 
         for (int i = 0; i < members; i++) {
-            this.memberController.viewVerbose(i);
+            this.memberController.viewVerbose(i + 1);
         }
-
     }
 
     /**
@@ -140,17 +138,10 @@ public class MainController {
         memView.displayMemberID();
         int memberId = sc.nextInt();
 
-        int members = this.storage.registrySize();
-        System.out.println(members);
-
-        for (int i = 0; i < storage.getMemberList().size(); i++) {
-            Member mem = storage.getMemberList().get(i);
-
-            if(mem.getMemberId() == memberId) {
-                this.memberController.viewCompact(memberId);
-            } else {
-                System.out.println("No such member");
-            }
+        if (memberId <= storage.getMemberList().size()) {
+            this.memberController.viewCompact(memberId);
+        } else {
+            System.out.println("There is no member with that ID");
         }
     }
 
@@ -210,19 +201,58 @@ public class MainController {
 
         boatController.createBoat(type, length, id);
     }
+
+    /**
+     * Method for editing an existing boat.
+     * @author ph222ue (Patrik Hasselblad)
+     */
     public void editBoat() {
         sc = new Scanner(System.in);
         Type type;
 
         mainView.displayBoatNumber();
-        int id = sc.nextInt();
+        int ownerId = sc.nextInt();
 
         mainView.displayBoatId();
         int boatId = sc.nextInt();
 
-        Member member = storage.getMember(id);
-        Boat boat = member.getBoatList().get(boatId);
+        mainView.displayBoatType();
+        String boatType = sc.next().toLowerCase();
+        type = registerBoatType(boatType);
 
+        mainView.displayBoatLength();
+        String temp = sc.next();
+        double length = Double.parseDouble(temp);
+
+        boatController.editBoat(ownerId, boatId, type, length);
+    }
+
+    /**
+     * Method for deletion of a certain boat.
+     */
+    public void deleteBoat() {
+        sc = new Scanner(System.in);
+
+        mainView.displayBoatNumber();
+        int ownerId = sc.nextInt();
+
+        mainView.displayBoatId();
+        int boatId = sc.nextInt();
+
+        boatController.removeBoat(ownerId, boatId);
+    }
+
+    public void viewBoat() {
+        sc = new Scanner(System.in);
+
+        mainView.displayBoatNumber();
+        int ownerId = sc.nextInt();
+        Member member = storage.getMember(ownerId);
+
+        mainView.displayBoatId();
+        int boatId = sc.nextInt();
+
+        mainView.displayBoatInfo(member, boatId);
     }
 
     /**

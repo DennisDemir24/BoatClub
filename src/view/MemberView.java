@@ -26,19 +26,24 @@ public class MemberView {
      * @author "dd222gc Dennis Demir"
      */
     public void displayVerboseList(Member member) {
-        String s = "";
-        System.out.println(
-                "First Name: " + member.getFirstName()  +  "\n" +
+        System.out.print(
+                "First Name: " +  member.getFirstName() +  "\n" +
                         "Last Name: " +  member.getLastName() +  "\n" +
                         "Personal Number: " + member.getSocialSec() +  "\n" +
-                        "Member ID: " + member.getMemberId() +  "\n" +
+                        "Member ID: " + member.getMemberId() + "\n" +
                         "Boats: " + "\n"
         );
-        for (int i = 0; i < member.getBoatListSize(); i++) {
-            s += "Type: " +  member.getBoatIndex(i).getType() + " - " +
-                    "Length: " + member.getBoatIndex(i).getLength() + ", ";
+
+        if (member.getBoatList().size() > 0) {
+            for (int i = 0; i < member.getBoatList().size(); i++) {
+                System.out.println("\tID: " + member.getBoatList().get(i).getBoatId() + "\n" +
+                        "\tType: " + member.getBoatList().get(i).getType() + "\n" +
+                        "\tLength: " + member.getBoatList().get(i).getLength() + "\n"
+                );
+            }
+        } else {
+            System.out.println("\tNo boats registered\n");
         }
-        System.out.println(s);
         System.out.println("*************");
     }
 

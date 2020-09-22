@@ -27,6 +27,9 @@ public class BoatController {
     public void createBoat(Type boatType, double length, int ownerId) {
         Boat newBoat = new Boat(boatType, length, ownerId);
         Member member = storage.getMember(ownerId);
+        int boatId = member.getBoatList().size() + 1;
+        newBoat.setBoatId(boatId);
+
         int index = member.getBoatList().size();
 
         member.addBoat(index, newBoat);
@@ -35,48 +38,45 @@ public class BoatController {
 
     /**
      * Method that handles boat editing.
-     * @param member - The boat owner.
-     * @param oldBoat - The old boat value.
-     * @param newBoat - The new boat value.
+     * @param ownerId - The boat owners ID.
+     * @param id - The boat ID.
+     * @param type - The new boat type.
+     * @param length - The new boat length.
      * @author ph222ue (Patrik Hasselblad)
      */
-    public void editBoat(Member member, Boat oldBoat, Boat newBoat) {
-        int index = member.getBoat(oldBoat);
-        if (index == -1) {
-                throw new IllegalArgumentException("There is no boat with that description");
+    public void editBoat(int ownerId, int id, Type type, double length) {
+        Member owner = storage.getMember(ownerId);
+
+        for (int i = 0; i < owner.getBoatList().size(); i++) {
+            if (owner.getBoatList().get(i).getBoatId() == id) {
+                owner.getBoatList().get(i).setType(type);
+                owner.getBoatList().get(i).setLength(length);
+            } else {
+                System.out.println("No boat exists with that ID");
             }
-        member.addBoat(index, newBoat);
+        }
+        storage.saveData();
     }
 
     /**
      * Removes a certain boat from the member boat list.
-     * @param member - The boat owner.
-     * @param boat - The specific boat.
+     * @param ownerId - The boat owner ID.
+     * @param boatId - The specific boat ID.
      * @author ph222ue (Patrik Hasselblad)
      */
-    public void removeBoat(Member member, Boat boat) {
-        int index = member.getBoat(boat);
-            if (index == -1) {
-                throw new IllegalArgumentException("There is no boat with that description");
+    public void removeBoat(int ownerId, int boatId) {
+        Member member = storage.getMember(ownerId);
+
+        for (int i = 0; i < member.getBoatList().size(); i++) {
+
+            if (member.getBoat(boatId).getBoatId() == boatId) {
+                member.getBoatList().remove(i);
+            } else {
+                System.out.println("No boat exists with that ID");
             }
-        member.getBoatList().remove(index);
-    }
-
-    /**
-     * Method that views a certain boat.
-     * @param member - The boat owner.
-     * @param boat - The specific boat.
-     * @return Boat
-     * @author ph222ue (Patrik Hasselblad)
-     */
-    public Boat viewBoat(Member member, Boat boat) {
-        int index = member.getBoat(boat);
-
-        if (index == -1) {
-            throw new IllegalArgumentException("There is no boat with that description");
+            storage.saveData();
         }
-
-        return member.getBoatList().get(index);
+        //ToDo: When removing a boat, the ID we will be forfeit. Same with members, perhaps think about this.
     }
 
 }
