@@ -108,7 +108,6 @@ public class MainController {
         for (int i = 0; i < members; i++) {
             this.memberController.viewVerbose(i + 1);
         }
-
     }
 
     /**

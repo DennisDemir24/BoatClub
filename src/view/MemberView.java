@@ -16,7 +16,7 @@ public class MemberView {
                 "First Name: " + member.getFirstName() +  "\n" +
                         "Last Name: " +  member.getLastName() +  "\n" +
                         "Member ID: " + member.getMemberId() +  "\n" +
-                        "Number of Boats: " + member.getBoatList().size()
+                        "Number of Boats: " + member.getBoatListSize()
         );
         System.out.println("*************");
     }
@@ -44,7 +44,6 @@ public class MemberView {
         } else {
             System.out.println("\tNo boats registered\n");
         }
-
         System.out.println("*************");
     }
 
