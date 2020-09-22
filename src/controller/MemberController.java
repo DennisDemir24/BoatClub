@@ -5,7 +5,6 @@ import persistance.Storage;
 import view.MemberView;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * A class that handles the member controller
@@ -32,9 +31,6 @@ public class MemberController {
     public void create(String first, String last, int personalNumber) {
         Member member = new Member(first, last, personalNumber);
         storage.addMember(member);
-        ArrayList<Member> memList = storage.getMemberList();
-
-        memList.forEach((m) -> System.out.println(m.getFirstName()));
 
         storage.saveData();
         // Add function call for displaying correct view message
@@ -60,7 +56,6 @@ public class MemberController {
     /**
      * Method for creating a new member in the storage
      * @param id - Id of the member to be deleted from storage
-     *
      * @return - Returns deleted member
      * @author dd222gc (Dennis Demir) & ph222ue (Patrik Hasselblad)
      */
@@ -88,7 +83,6 @@ public class MemberController {
     public void viewVerbose(int id) {
         this.memView.displayVerboseList(storage.getSpecificMember(id));
     }
-
 
 
 }

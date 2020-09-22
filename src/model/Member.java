@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  * Creates members.
- * @author ph222ue (Patrik Hasselblad), dd222gc (Dennis Demir)
+ * @author ph222ue (Patrik Hasselblad) & dd222gc (Dennis Demir) & nh222mr (Nicklas Hansson)
  */
 public class Member {
     private String firstName;
@@ -43,6 +43,11 @@ public class Member {
         this.memberId = setMemberId();
     }
 
+    /**
+     * Method that recieves a unique ID based on list size.
+     * @author ph222ue (Patrik Hasselblad)
+     * @return int
+     */
     private int setMemberId() {
         Storage storage = new Storage();
         return storage.createMemberId();
@@ -78,19 +83,26 @@ public class Member {
         boatList.add(index, boat);
     }
 
-    public int getBoat(Boat boat) {
-        return boatList.indexOf(boat);
+    public Boat getBoat(int boatId) {
+        for (Boat boat : boatList) {
+            if (boat.getBoatId() == boatId) {
+                return boat;
+            }
+        }
+        return null;
     }
 
     public ArrayList<Boat> getBoatList() {
         return boatList;
     }
 
+    /*
     public int getBoatListSize() {
         return boatList.size();
-    }
+    }*/
 
+    /*
     public Boat getBoatIndex(int index) {
         return this.boatList.get(index);
-    }
+    }*/
 }
