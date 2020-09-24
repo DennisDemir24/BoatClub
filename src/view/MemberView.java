@@ -45,6 +45,7 @@ public class MemberView {
                         "\tLength: " + member.getBoatList().get(i).getLength() + "\n"
                 );
             }
+
         } else {
             System.out.println("\tNo boats registered\n");
         }
@@ -72,7 +73,7 @@ public class MemberView {
      * @author "dd222gc Dennis Demir"
      */
     public void displayMemberPersonalNumber() {
-        System.out.println("Personal Number: ");
+        System.out.println("Personal Number (6 Digits): ");
     }
 
     /**
