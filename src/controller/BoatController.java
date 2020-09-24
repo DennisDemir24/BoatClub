@@ -4,7 +4,6 @@ import model.Boat;
 import model.Member;
 import model.Type;
 import persistance.Storage;
-import view.MainView;
 
 /**
  * A class that handles the member boats; adding, editing, removing and viewing.
@@ -52,6 +51,7 @@ public class BoatController {
             if (owner.getBoatList().get(i).getBoatId() == id) {
                 owner.getBoatList().get(i).setType(type);
                 owner.getBoatList().get(i).setLength(length);
+                break;
             } else {
                 System.out.println("No boat exists with that ID");
             }
@@ -77,7 +77,7 @@ public class BoatController {
             }
             storage.saveData();
         }
-        //ToDo: When removing a boat, the ID we will be forfeit. Same with members, perhaps think about this.
+        //ToDo: When removing a boat, the ID will be forfeit. Same with members, perhaps think about this.
     }
 
 }

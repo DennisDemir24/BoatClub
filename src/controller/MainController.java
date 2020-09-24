@@ -143,7 +143,6 @@ public class MainController {
         int personalNum = sc.nextInt();
 
         while (String.valueOf(personalNum).length() < maxDigit || String.valueOf(personalNum).length() > maxDigit) {
-            System.out.println("You need to insert 6 digits.");
             memView.displayMemberPersonalNumber();
             personalNum = sc.nextInt();
         }
@@ -225,6 +224,13 @@ public class MainController {
         String boatType = sc.next().toLowerCase();
         type = registerBoatType(boatType);
 
+        while (type == null) {
+            System.out.println("Error: \"" + boatType + "\" is not a correct boat type.");
+            mainView.displayBoatType();
+            boatType = sc.next().toLowerCase();
+            type = registerBoatType(boatType);
+        }
+
         mainView.displayBoatLength();
         String temp = sc.next();
         double length = Double.parseDouble(temp);
@@ -232,7 +238,12 @@ public class MainController {
         mainView.displayBoatNumber();
         int id = sc.nextInt();
 
-        boatController.createBoat(type, length, id);
+        if (id <= storage.getMemberList().size()) {
+            boatController.createBoat(type, length, id);
+        } else {
+            mainView.displayErrorMessageIfWrongUserID();
+        }
+
     }
 
     /**
@@ -249,18 +260,31 @@ public class MainController {
         mainView.displayBoatId();
         int boatId = sc.nextInt();
 
-        mainView.displayBoatType();
-        String boatType = sc.next().toLowerCase();
-        type = registerBoatType(boatType);
-
-        mainView.displayBoatLength();
-        String temp = sc.next();
-        double length = Double.parseDouble(temp);
 
         if (ownerId <= storage.getMemberList().size()) {
-            boatController.editBoat(ownerId, boatId, type, length);
+            if (boatId <= storage.getMember(ownerId).getBoatList().size()) {
+
+                mainView.displayBoatType();
+                String boatType = sc.next().toLowerCase();
+                type = registerBoatType(boatType);
+
+                while (type == null) {
+                    System.out.println("Error: \"" + boatType + "\" is not a correct boat type.");
+                    mainView.displayBoatType();
+                    boatType = sc.next().toLowerCase();
+                    type = registerBoatType(boatType);
+                }
+
+                mainView.displayBoatLength();
+                String temp = sc.next();
+                double length = Double.parseDouble(temp);
+
+                    boatController.editBoat(ownerId, boatId, type, length);
+                } else {
+                mainView.displayErrorMessageForBoatID();
+            }
         } else {
-            mainView.displayErrorMessageForBoatID();
+            mainView.displayErrorMessageIfWrongUserID();
         }
 
 
@@ -280,9 +304,13 @@ public class MainController {
 
 
         if (ownerId <= storage.getMemberList().size()) {
-            boatController.removeBoat(ownerId, boatId);
+            if (boatId <= storage.getMember(ownerId).getBoatList().size()) {
+                boatController.removeBoat(ownerId, boatId);
+            } else {
+                mainView.displayErrorMessageForBoatID();
+            }
         } else {
-            mainView.displayErrorMessageForBoatID();
+            mainView.displayErrorMessageIfWrongUserID();
         }
     }
 
@@ -298,9 +326,13 @@ public class MainController {
 
 
         if (ownerId <= storage.getMemberList().size()) {
-            mainView.displayBoatInfo(member, boatId);
+            if (boatId <= storage.getMember(ownerId).getBoatList().size()) {
+                mainView.displayBoatInfo(member, boatId);
+            } else {
+                mainView.displayErrorMessageForBoatID();
+            }
         } else {
-            mainView.displayErrorMessageForBoatID();
+            mainView.displayErrorMessageIfWrongUserID();
         }
     }
 
@@ -310,7 +342,7 @@ public class MainController {
      * @return Type
      */
     public Type registerBoatType(String boatType) {
-        Type type;
+        Type type = null;
 
         if (boatType.equals("c")) {
             type = Type.CANOE;
@@ -322,8 +354,6 @@ public class MainController {
             type = Type.MOTORSAILER;
         } else if (boatType.equals("o")) {
             type = Type.OTHER;
-        } else {
-            throw new IllegalStateException("Unexpected value: " + boatType);
         }
 
         return type;
