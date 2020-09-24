@@ -214,7 +214,7 @@ public class MainController {
 
     /**
      * Method for creating a boat.
-     * @author ph222ue (Patrik Hasselblad)
+     * @author ph222ue (Patrik Hasselblad) & dd222gc (Dennis Demir).
      */
     public void createBoat() {
         sc = new Scanner(System.in);
@@ -248,7 +248,7 @@ public class MainController {
 
     /**
      * Method for editing an existing boat.
-     * @author ph222ue (Patrik Hasselblad)
+     * @author ph222ue (Patrik Hasselblad) & dd222gc (Dennis Demir).
      */
     public void editBoat() {
         sc = new Scanner(System.in);
@@ -292,6 +292,7 @@ public class MainController {
 
     /**
      * Method for deletion of a certain boat.
+     * @author ph222ue (Patrik Hasselblad) & dd222gc (Dennis Demir).
      */
     public void deleteBoat() {
         sc = new Scanner(System.in);
@@ -314,6 +315,10 @@ public class MainController {
         }
     }
 
+    /**
+     * Method for viewing a certain boat.
+     * @author dd222gc (Dennis Demir) & ph222ue (Patrik Hasselblad).
+     */
     public void viewBoat() {
         sc = new Scanner(System.in);
 
@@ -339,6 +344,7 @@ public class MainController {
     /**
      * Help method to determine boat type.
      * @param boatType incoming user input.
+     * @author ph222ue (Patrik Hasselblad).
      * @return Type
      */
     public Type registerBoatType(String boatType) {
