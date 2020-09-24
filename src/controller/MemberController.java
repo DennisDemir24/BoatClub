@@ -4,8 +4,6 @@ import model.Member;
 import persistance.Storage;
 import view.MemberView;
 
-import java.io.IOException;
-
 /**
  * A class that handles the member controller
  * @author dd222gc (Dennis Demir)
@@ -14,7 +12,7 @@ public class MemberController {
     private final Storage storage;
     private final MemberView memView;
 
-    public MemberController() throws IOException {
+    public MemberController() {
         this.storage = Storage.getInstance();
         this.memView = new MemberView();
     }

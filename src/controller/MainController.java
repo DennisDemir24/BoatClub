@@ -6,7 +6,6 @@ import persistance.Storage;
 import view.MainView;
 import view.MemberView;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -21,7 +20,7 @@ public class MainController {
     private final MemberView memView;
     private Scanner sc;
 
-    public MainController() throws IOException {
+    public MainController() {
         this.mainView = new MainView();
         this.memView = new MemberView();
         this.memberController = new MemberController();
@@ -82,6 +81,7 @@ public class MainController {
                     break;
                 case "0":
                     sc.close();
+                    System.exit(0);
                     break;
                 default:
                     wrongInput(input);
@@ -131,6 +131,7 @@ public class MainController {
      */
     public void createNewMember() {
         sc = new Scanner(System.in);
+        int maxDigit = 6;
 
         memView.displayMemberFirstName();
         String memFirstName = sc.nextLine();
@@ -140,6 +141,12 @@ public class MainController {
 
         memView.displayMemberPersonalNumber();
         int personalNum = sc.nextInt();
+
+        while (String.valueOf(personalNum).length() < maxDigit || String.valueOf(personalNum).length() > maxDigit) {
+            System.out.println("You need to insert 6 digits.");
+            memView.displayMemberPersonalNumber();
+            personalNum = sc.nextInt();
+        }
 
         memberController.create(memFirstName, memLastName, personalNum);
     }
@@ -166,6 +173,7 @@ public class MainController {
      */
     public void changeMemberInformation() {
         sc = new Scanner(System.in);
+        int maxDigit = 6;
 
         memView.displayMemberID();
         int memberId = sc.nextInt();
@@ -179,12 +187,12 @@ public class MainController {
         memView.displayMemberPersonalNumber();
         int personalNum = sc.nextInt();
 
-
         if (memberId <= storage.getMemberList().size()) {
             memberController.update(memberId, memFirstName, memLastName, personalNum);
         } else {
             mainView.displayErrorMessageIfWrongUserID();
         }
+
     }
 
     /**
