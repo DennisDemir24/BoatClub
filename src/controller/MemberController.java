@@ -81,4 +81,5 @@ public class MemberController {
     public void viewVerbose(int id) {
         this.memView.displayVerboseList(storage.getSpecificMember(id));
     }
+
 }
