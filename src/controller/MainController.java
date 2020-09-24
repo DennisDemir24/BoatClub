@@ -159,7 +159,6 @@ public class MainController {
             mainView.displayErrorMessageIfWrongUserID();
         }
     }
-    //ToDo: Vi måste göra felmeddelandena aningen mer lika genom programmet.
 
     /**
      * Method for editing a member.
@@ -180,7 +179,12 @@ public class MainController {
         memView.displayMemberPersonalNumber();
         int personalNum = sc.nextInt();
 
-        memberController.update(memberId, memFirstName, memLastName, personalNum);
+
+        if (memberId <= storage.getMemberList().size()) {
+            memberController.update(memberId, memFirstName, memLastName, personalNum);
+        } else {
+            mainView.displayErrorMessageIfWrongUserID();
+        }
     }
 
     /**
@@ -193,7 +197,12 @@ public class MainController {
         memView.displayMemberID();
         int memberId = sc.nextInt();
 
-        memberController.delete(memberId);
+        if (memberId <= storage.getMemberList().size()) {
+            memberController.delete(memberId);
+        } else {
+            mainView.displayErrorMessageIfWrongUserID();
+        }
+
     }
 
     /**
@@ -240,7 +249,13 @@ public class MainController {
         String temp = sc.next();
         double length = Double.parseDouble(temp);
 
-        boatController.editBoat(ownerId, boatId, type, length);
+        if (ownerId <= storage.getMemberList().size()) {
+            boatController.editBoat(ownerId, boatId, type, length);
+        } else {
+            mainView.displayErrorMessageForBoatID();
+        }
+
+
     }
 
     /**
@@ -255,7 +270,12 @@ public class MainController {
         mainView.displayBoatId();
         int boatId = sc.nextInt();
 
-        boatController.removeBoat(ownerId, boatId);
+
+        if (ownerId <= storage.getMemberList().size()) {
+            boatController.removeBoat(ownerId, boatId);
+        } else {
+            mainView.displayErrorMessageForBoatID();
+        }
     }
 
     public void viewBoat() {
@@ -268,7 +288,12 @@ public class MainController {
         mainView.displayBoatId();
         int boatId = sc.nextInt();
 
-        mainView.displayBoatInfo(member, boatId);
+
+        if (ownerId <= storage.getMemberList().size()) {
+            mainView.displayBoatInfo(member, boatId);
+        } else {
+            mainView.displayErrorMessageForBoatID();
+        }
     }
 
     /**

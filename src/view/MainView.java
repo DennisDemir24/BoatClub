@@ -56,6 +56,14 @@ public class MainView {
         System.out.println("There is no member with that ID");
     }
 
+    /**
+     * Method that display message no such boat ID
+     * @author "dd222gc Dennis Demir"
+     */
+    public void displayErrorMessageForBoatID() {
+        System.out.println("No boat exists with that ID");
+    }
+
 
     /**
      * Method that views a certain boat.
