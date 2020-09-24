@@ -129,7 +129,7 @@ public class MainController {
      * Method for creating a member
      * @author dd222gc (Dennis Demir) & nh222mr (Nicklas Hansson)
      */
-    public void createNewMember() {
+    private void createNewMember() {
         sc = new Scanner(System.in);
         int maxDigit = 6;
 
@@ -154,7 +154,7 @@ public class MainController {
      * Method to get one single member information
      * @author dd222gc (Dennis Demir)
      */
-    public void viewSpecificMember() {
+    private void viewSpecificMember() {
         sc = new Scanner(System.in);
         memView.displayMemberID();
         int memberId = sc.nextInt();
@@ -170,7 +170,7 @@ public class MainController {
      * Method for editing a member.
      * @author ph222ue (Patrik Hasselblad)
      */
-    public void changeMemberInformation() {
+    private void changeMemberInformation() {
         sc = new Scanner(System.in);
         int maxDigit = 6;
 
@@ -198,7 +198,7 @@ public class MainController {
      * Method for deleting a member.
      * @author ph222ue (Patrik Hasselblad)
      */
-    public void deleteMember() {
+    private void deleteMember() {
         sc = new Scanner(System.in);
 
         memView.displayMemberID();
@@ -216,7 +216,7 @@ public class MainController {
      * Method for creating a boat.
      * @author ph222ue (Patrik Hasselblad) & dd222gc (Dennis Demir).
      */
-    public void createBoat() {
+    private void createBoat() {
         sc = new Scanner(System.in);
         Type type;
 
@@ -250,7 +250,7 @@ public class MainController {
      * Method for editing an existing boat.
      * @author ph222ue (Patrik Hasselblad) & dd222gc (Dennis Demir).
      */
-    public void editBoat() {
+    private void editBoat() {
         sc = new Scanner(System.in);
         Type type;
 
@@ -294,7 +294,7 @@ public class MainController {
      * Method for deletion of a certain boat.
      * @author ph222ue (Patrik Hasselblad) & dd222gc (Dennis Demir).
      */
-    public void deleteBoat() {
+    private void deleteBoat() {
         sc = new Scanner(System.in);
 
         mainView.displayBoatNumber();
@@ -319,7 +319,7 @@ public class MainController {
      * Method for viewing a certain boat.
      * @author dd222gc (Dennis Demir) & ph222ue (Patrik Hasselblad).
      */
-    public void viewBoat() {
+    private void viewBoat() { // Denna strular------------------------------- Problemet är att båt-ID inte ändras om man tar bort t.ex. nr 1.
         sc = new Scanner(System.in);
 
         mainView.displayBoatNumber();
@@ -347,7 +347,7 @@ public class MainController {
      * @author ph222ue (Patrik Hasselblad).
      * @return Type
      */
-    public Type registerBoatType(String boatType) {
+    private Type registerBoatType(String boatType) {
         Type type = null;
 
         if (boatType.equals("c")) {

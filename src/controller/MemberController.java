@@ -44,7 +44,7 @@ public class MemberController {
      * @param id - int memberId
      * @author nh222mr (Nicklas Hansson) & ph222ue (Patrik Hasselblad)
      */
-    public void update(int id, String newFName, String newLName, int newSocNr) {
+    void update(int id, String newFName, String newLName, int newSocNr) {
         storage.editMember(id, newFName, newLName, newSocNr);
         storage.saveData();
     }
