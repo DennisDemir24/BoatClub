@@ -4,6 +4,7 @@ import model.Boat;
 import model.Member;
 import model.Type;
 import persistance.Storage;
+import view.MainView;
 
 /**
  * A class that handles the member boats; adding, editing, removing and viewing.
