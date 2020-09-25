@@ -307,19 +307,23 @@ public class MainController {
         if (ownerId <= storage.getMemberList().size()) {
             if (boatId <= storage.getMember(ownerId).getBoatList().size()) {
                 boatController.removeBoat(ownerId, boatId);
+
             } else {
                 mainView.displayErrorMessageForBoatID();
             }
         } else {
             mainView.displayErrorMessageIfWrongUserID();
         }
+
+
+
     }
 
     /**
      * Method for viewing a certain boat.
      * @author dd222gc (Dennis Demir) & ph222ue (Patrik Hasselblad).
      */
-    private void viewBoat() { // Denna strular------------------------------- Problemet är att båt-ID inte ändras om man tar bort t.ex. nr 1.
+    private void viewBoat() {
         sc = new Scanner(System.in);
 
         mainView.displayBoatNumber();

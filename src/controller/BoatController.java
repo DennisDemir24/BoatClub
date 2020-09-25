@@ -72,6 +72,13 @@ public class BoatController {
 
             if (member.getBoat(boatId).getBoatId() == boatId) {
                 member.getBoatList().remove(i);
+
+                for (int j = 0; j < storage.getMember(ownerId).getBoatList().size(); j++) {
+                    if (storage.getMember(ownerId).getBoatList().size() > 0) {
+                        storage.getMember(ownerId).getBoatList().get(j).setBoatId(j + 1);
+                    }
+                }
+
             } else {
                 System.out.println("No boat exists with that ID");
             }
