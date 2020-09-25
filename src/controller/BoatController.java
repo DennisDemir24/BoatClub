@@ -7,7 +7,6 @@ import persistance.Storage;
 
 /**
  * A class that handles the member boats; adding, editing, removing and viewing.
- * @author ph222ue (Patrik Hasselblad)
  */
 public class BoatController {
     private final Storage storage;
@@ -22,7 +21,6 @@ public class BoatController {
      * @param boatType - The boat type
      * @param length - The length of the boat in meters
      * @param ownerId - The id of the owner of the boat
-     * @author ph222ue (Patrik Hasselblad) & nh222mr (Nicklas Hansson)
      */
     public void createBoat(Type boatType, double length, int ownerId) {
         Boat newBoat = new Boat(boatType, length, ownerId);
@@ -42,7 +40,6 @@ public class BoatController {
      * @param id - The boat ID.
      * @param type - The new boat type.
      * @param length - The new boat length.
-     * @author ph222ue (Patrik Hasselblad)
      */
     public void editBoat(int ownerId, int id, Type type, double length) {
         Member owner = storage.getMember(ownerId);
@@ -63,7 +60,6 @@ public class BoatController {
      * Removes a certain boat from the member boat list.
      * @param ownerId - The boat owner ID.
      * @param boatId - The specific boat ID.
-     * @author ph222ue (Patrik Hasselblad)
      */
     public void removeBoat(int ownerId, int boatId) {
         Member member = storage.getMember(ownerId);
@@ -84,7 +80,6 @@ public class BoatController {
             }
             storage.saveData();
         }
-        //ToDo: When removing a boat, the ID will be forfeit. Same with members, perhaps think about this.
     }
 
 }

@@ -5,7 +5,6 @@ import model.Member;
 
 /**
  * A Class for the Main View
- * @author "dd222gc Dennis Demir"
  */
 public class MainView {
 
@@ -14,7 +13,6 @@ public class MainView {
 
     /**
      * Method that prints a welcome message.
-     * @author "dd222gc Dennis Demir"
      */
     public void displayWelcomeMessage() {
         System.out.println("**** Welcome To Boat Club ****");
@@ -23,7 +21,6 @@ public class MainView {
 
     /**
      * Method that display the menu
-     * @author "dd222gc Dennis Demir"
      */
     public void displayMenuOptions() {
         System.out.println();
@@ -42,7 +39,6 @@ public class MainView {
 
     /**
      * Method that display message for wrong input
-     * @author "dd222gc Dennis Demir"
      */
     public void displayWrongInputMessage() {
         System.out.println("Please select a number between 1 and 10 to make a choice, or 0 to quit");
@@ -50,7 +46,6 @@ public class MainView {
 
     /**
      * Method that display message for wrong member ID input
-     * @author "dd222gc Dennis Demir"
      */
     public void displayErrorMessageIfWrongUserID() {
         System.out.println("There is no member with that ID");
@@ -58,7 +53,6 @@ public class MainView {
 
     /**
      * Method that display message no such boat ID
-     * @author "dd222gc Dennis Demir"
      */
     public void displayErrorMessageForBoatID() {
         System.out.println("No boat exists with that ID");
@@ -69,7 +63,6 @@ public class MainView {
      * Method that views a certain boat.
      * @param member - The boat owner.
      * @param boatId - The specific boats ID.
-     * @author dd222gc (Dennis Demir) & ph222ue (Patrik Hasselblad)
      */
     public void displayBoatInfo(Member member, int boatId) {
         Boat boat = member.getBoat(boatId);
@@ -82,7 +75,6 @@ public class MainView {
 
     /**
      * Method that ask for boat number / Id
-     * @author "dd222gc Dennis Demir"
      */
     public void displayBoatNumber() {
         System.out.println("Owner member ID: ");
@@ -90,7 +82,6 @@ public class MainView {
 
     /**
      * Method that ask for boat legnth
-     * @author "dd222gc Dennis Demir"
      */
     public void displayBoatLength() {
         System.out.println("Boat Length: ");
@@ -98,7 +89,6 @@ public class MainView {
 
     /**
      * Method that ask for boat type
-     * @author "dd222gc Dennis Demir"
      */
     public void displayBoatType() {
         System.out.println("Boat Type (C = Canoe, S = sailboat, M = motorsailer, K = kayak, O = other): ");
@@ -106,7 +96,6 @@ public class MainView {
 
     /**
      * Method that ask for boat ID.
-     * @author ph222ue (Patrik Hasselbald)
      */
     public void displayBoatId() {
         System.out.println("Boat Id: ");

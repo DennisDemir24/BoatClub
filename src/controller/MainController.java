@@ -10,7 +10,6 @@ import java.util.Scanner;
 
 /**
  * A class that handles the main controller
- * @author dd222gc (Dennis Demir) & nh222mr (Nicklas Hansson) & ph222ue (Patrik Hasselblad)
  */
 public class MainController {
     private final MainView mainView;
@@ -31,7 +30,6 @@ public class MainController {
 
     /**
      * Start Application method
-     * @author dd222gc (Dennis Demir)
      */
     public void startMenu() {
         sc = new Scanner(System.in);
@@ -91,7 +89,6 @@ public class MainController {
 
     /**
      * Method for checking that input is a number and between 1-10
-     * @author dd222gc (Dennis Demir)
      */
     public void wrongInput(String input) {
         if (!input.matches("[1-10]")) {
@@ -101,7 +98,6 @@ public class MainController {
 
     /**
      * Method for getting member and using viewCompact to print info
-     * @author dd222gc (Dennis Demir)
      */
     private void compactList() {
         storage.loadData();
@@ -114,7 +110,6 @@ public class MainController {
 
     /**
      * Method for getting member and using viewVerbose to print info
-     * @author dd222gc (Dennis Demir)
      */
     private void verboseList() {
         storage.loadData();
@@ -127,7 +122,6 @@ public class MainController {
 
     /**
      * Method for creating a member
-     * @author dd222gc (Dennis Demir) & nh222mr (Nicklas Hansson)
      */
     private void createNewMember() {
         sc = new Scanner(System.in);
@@ -152,7 +146,6 @@ public class MainController {
 
     /**
      * Method to get one single member information
-     * @author dd222gc (Dennis Demir)
      */
     private void viewSpecificMember() {
         sc = new Scanner(System.in);
@@ -168,7 +161,6 @@ public class MainController {
 
     /**
      * Method for editing a member.
-     * @author ph222ue (Patrik Hasselblad)
      */
     private void changeMemberInformation() {
         sc = new Scanner(System.in);
@@ -196,7 +188,6 @@ public class MainController {
 
     /**
      * Method for deleting a member.
-     * @author ph222ue (Patrik Hasselblad)
      */
     private void deleteMember() {
         sc = new Scanner(System.in);
@@ -214,7 +205,6 @@ public class MainController {
 
     /**
      * Method for creating a boat.
-     * @author ph222ue (Patrik Hasselblad) & dd222gc (Dennis Demir).
      */
     private void createBoat() {
         sc = new Scanner(System.in);
@@ -248,7 +238,6 @@ public class MainController {
 
     /**
      * Method for editing an existing boat.
-     * @author ph222ue (Patrik Hasselblad) & dd222gc (Dennis Demir).
      */
     private void editBoat() {
         sc = new Scanner(System.in);
@@ -292,7 +281,6 @@ public class MainController {
 
     /**
      * Method for deletion of a certain boat.
-     * @author ph222ue (Patrik Hasselblad) & dd222gc (Dennis Demir).
      */
     private void deleteBoat() {
         sc = new Scanner(System.in);
@@ -321,7 +309,6 @@ public class MainController {
 
     /**
      * Method for viewing a certain boat.
-     * @author dd222gc (Dennis Demir) & ph222ue (Patrik Hasselblad).
      */
     private void viewBoat() {
         sc = new Scanner(System.in);
@@ -348,7 +335,6 @@ public class MainController {
     /**
      * Help method to determine boat type.
      * @param boatType incoming user input.
-     * @author ph222ue (Patrik Hasselblad).
      * @return Type
      */
     private Type registerBoatType(String boatType) {

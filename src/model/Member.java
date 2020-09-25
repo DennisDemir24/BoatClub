@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 /**
  * Creates members.
- * @author ph222ue (Patrik Hasselblad) & dd222gc (Dennis Demir) & nh222mr (Nicklas Hansson)
  */
 public class Member {
     private String firstName;
@@ -22,7 +21,6 @@ public class Member {
      * @param lN - Last name
      * @param socialNr - social security number.
      * @param loadedBoatList - The Member boat list.
-     * @author ph222ue (Patrik Hasselblad)
      */
     public Member(@JsonProperty("firstName") String fN, @JsonProperty("lastName") String lN, @JsonProperty("socialSec") int socialNr, @JsonProperty("memberId") int id, @JsonProperty("boatList") ArrayList<Boat> loadedBoatList) {
         this.firstName = fN;
@@ -34,7 +32,6 @@ public class Member {
 
     /**
      * Terminal constructor.
-     * @author dd222gc (Dennis Demir), ph222ue (Patrik Hasselblad)
      */
     public Member(String fN, String lN, int socialNr) {
         this.firstName = fN;
@@ -45,7 +42,6 @@ public class Member {
 
     /**
      * Method that recieves a unique ID based on list size.
-     * @author ph222ue (Patrik Hasselblad)
      * @return int
      */
     private int setMemberId() {

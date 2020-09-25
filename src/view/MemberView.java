@@ -4,7 +4,6 @@ import model.Member;
 
 /**
  * Class that handles message displays.
- * @author "dd222gc Dennis Demir"
  */
 public class MemberView {
 
@@ -13,7 +12,6 @@ public class MemberView {
 
     /**
      * Method that display the compact list
-     * @author "dd222gc Dennis Demir"
      */
     public void displayCompactList(Member member) {
         System.out.println(
@@ -27,7 +25,6 @@ public class MemberView {
 
     /**
      * Method that display the verbose list
-     * @author "dd222gc Dennis Demir"
      */
     public void displayVerboseList(Member member) {
         System.out.print(
@@ -54,7 +51,6 @@ public class MemberView {
 
     /**
      * Method that ask for members name
-     * @author "dd222gc Dennis Demir"
      */
     public void displayMemberFirstName() {
         System.out.println("First Name: ");
@@ -62,7 +58,6 @@ public class MemberView {
 
     /**
      * Method that ask for members last name
-     * @author "dd222gc Dennis Demir"
      */
     public void displayMemberLastName() {
         System.out.println("Last Name: ");
@@ -70,7 +65,6 @@ public class MemberView {
 
     /**
      * Method that ask for members personal number / social security number
-     * @author "dd222gc Dennis Demir"
      */
     public void displayMemberPersonalNumber() {
         System.out.println("Personal Number (6 Digits): ");
@@ -78,7 +72,6 @@ public class MemberView {
 
     /**
      * Method that ask for members personal number / social security number
-     * @author "dd222gc Dennis Demir"
      */
     public void displayMemberID() {
         System.out.println("Member ID: ");

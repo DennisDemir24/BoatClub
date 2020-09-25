@@ -4,7 +4,6 @@ import org.codehaus.jackson.annotate.JsonProperty;
 
 /**
  * Boat constructor with getters & setters.
- * @author ph222ue (Patrik Hasselblad) & dd222gc (Dennis Demir) & nh222mr (Nicklas Hansson)
  */
 public class Boat {
     private Type type;
@@ -18,7 +17,6 @@ public class Boat {
      * @param length - Length of boat.
      * @param ownerId - Id of owner.
      * @param boatId - Unique boat ID.
-     * @author ph222ue (Patrik Hasselblad)
      */
     public Boat(@JsonProperty("type") Type boatType, @JsonProperty("length") double length, @JsonProperty("ownerId") int ownerId, @JsonProperty("boatId") int boatId) {
         this.type = boatType;
@@ -29,7 +27,6 @@ public class Boat {
 
     /**
      * Terminal constructor.
-     * @author ph222ue (Patrik Hasselblad)
      */
     public Boat(Type boatType, double length, int ownerId) {
         this.type = boatType;

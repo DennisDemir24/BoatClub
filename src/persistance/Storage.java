@@ -11,7 +11,6 @@ import java.util.List;
 
 /**
  * Class to handle database and storage.
- * @author ph222ue (Patrik Hasselblad)
  */
 public class Storage {
     private ArrayList<Member> members;
@@ -35,7 +34,6 @@ public class Storage {
      * Adds a new member.
      * @exception IllegalArgumentException - is thrown if member already exists.
      * @param member Member to be added.
-     * @author ph222ue (Patrik Hasselblad)
      */
     public void addMember(Member member) {
         if (this.members.contains(member)) {
@@ -47,7 +45,6 @@ public class Storage {
     /**
      * Returns the number of members.
      * @return int
-     * @author ph222ue (Patrik Hasselblad)
      */
     public int registrySize() {
         return this.members.size();
@@ -56,7 +53,6 @@ public class Storage {
     /**
      * Method that creates a unique member-Id based on the members-list length.
      * @return int.
-     * @author ph222ue (Patrik Hasselblad)
      */
     public int createMemberId() {
         return members.size() + 1;
@@ -68,7 +64,6 @@ public class Storage {
      * @param fName - New first name.
      * @param lName - New last name.
      * @param socNr - New social security number.
-     * @author ph222ue (Patrik Hasselblad)
      */
     public void editMember(int id, String fName, String lName, int socNr) {
 
@@ -89,7 +84,6 @@ public class Storage {
     /**
      * Method that removes a member with a certain Id.
      * @param id - member Id to search for in the List.
-     * @author ph222ue (Patrik Hasselblad)
      */
     public void deleteMember(int id) {
         for (int i = 0; i < members.size(); i ++) {
@@ -103,7 +97,6 @@ public class Storage {
      * Method to return a specific member.
      * @param memberId - the member sought for.
      * @return Member
-     * @author ph222ue (Patrik Hasselblad)
      */
     public Member getMember(int memberId) {
 
@@ -117,7 +110,6 @@ public class Storage {
 
     /**
      * Method that loads data from a JSON file.
-     * @author ph222ue (Patrik Hasselblad)
      */
     public void loadData() {
         File file = new File("members.json");
@@ -128,11 +120,9 @@ public class Storage {
             System.out.println("The database is empty.");
         }
     }
-    //ToDo: Programmet laddar fler gånger än det behöver, detta kan vara värt att kolla på.
 
     /**
      * Method that saves member data to a JSON file.
-     * @author ph222ue (Patrik Hasselblad)
      */
     public void saveData() {
         try {
@@ -145,7 +135,6 @@ public class Storage {
     /**
      * Method to return a list of all members
      * @return ArrayList
-     * @author ph222ue (Patrik Hasselblad)
      */
     public ArrayList<Member> getMemberList() {
         return members;
@@ -153,10 +142,9 @@ public class Storage {
 
     /**
      * Method that gets member with id from database(JSON file)
-     * @author dd222gc (Dennis Demir)
      */
     public Member getSpecificMember(int index) {
         return this.members.get(index - 1);
     }
-    //ToDo: Vi hämtar använder på 2 sätt, kanske kan vi slå ihop dessa till enbart 1 metod.
+
 }
