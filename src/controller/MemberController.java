@@ -4,21 +4,17 @@ import model.Member;
 import persistance.Storage;
 import view.MemberView;
 
-import java.io.IOException;
-
 /**
  * A class that handles the member controller
  * @author dd222gc (Dennis Demir)
  */
 public class MemberController {
     private final Storage storage;
-    private final BoatController boatController;
     private final MemberView memView;
 
-    public MemberController() throws IOException {
+    public MemberController() {
         this.storage = Storage.getInstance();
         this.memView = new MemberView();
-        this.boatController = new BoatController();
     }
 
     /**
@@ -48,7 +44,7 @@ public class MemberController {
      * @param id - int memberId
      * @author nh222mr (Nicklas Hansson) & ph222ue (Patrik Hasselblad)
      */
-    public void update(int id, String newFName, String newLName, int newSocNr) {
+    void update(int id, String newFName, String newLName, int newSocNr) {
         storage.editMember(id, newFName, newLName, newSocNr);
         storage.saveData();
     }
@@ -65,7 +61,7 @@ public class MemberController {
     }
 
     /**
-     * Method for viewing member with specific id in compact.
+     * Method for viewing member with specific id.
      * @param id - Id of the targeted member to view
      *
      * @author dd222gc (Dennis Demir)
@@ -75,12 +71,13 @@ public class MemberController {
     }
 
     /**
-     * Method for viewing member with specific id in verbose.
-     * @param id - Id of the targeted member to view
+     * Method for viewing member with specific id.
+     * @param id - Id of the targeted member to view.
      *
      * @author dd222gc (Dennis Demir)
      */
     public void viewVerbose(int id) {
         this.memView.displayVerboseList(storage.getSpecificMember(id));
     }
+
 }

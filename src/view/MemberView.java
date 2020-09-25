@@ -2,6 +2,10 @@ package view;
 
 import model.Member;
 
+/**
+ * Class that handles message displays.
+ * @author "dd222gc Dennis Demir"
+ */
 public class MemberView {
 
     public MemberView() {
@@ -16,7 +20,7 @@ public class MemberView {
                 "First Name: " + member.getFirstName() +  "\n" +
                         "Last Name: " +  member.getLastName() +  "\n" +
                         "Member ID: " + member.getMemberId() +  "\n" +
-                        "Number of Boats: " + member.getBoatListSize()
+                        "Number of Boats: " + member.getBoatList().size()
         );
         System.out.println("*************");
     }
@@ -41,12 +45,12 @@ public class MemberView {
                         "\tLength: " + member.getBoatList().get(i).getLength() + "\n"
                 );
             }
+
         } else {
             System.out.println("\tNo boats registered\n");
         }
         System.out.println("*************");
     }
-
 
     /**
      * Method that ask for members name
@@ -56,6 +60,10 @@ public class MemberView {
         System.out.println("First Name: ");
     }
 
+    /**
+     * Method that ask for members last name
+     * @author "dd222gc Dennis Demir"
+     */
     public void displayMemberLastName() {
         System.out.println("Last Name: ");
     }
@@ -65,7 +73,7 @@ public class MemberView {
      * @author "dd222gc Dennis Demir"
      */
     public void displayMemberPersonalNumber() {
-        System.out.println("Personal Number: ");
+        System.out.println("Personal Number (6 Digits): ");
     }
 
     /**

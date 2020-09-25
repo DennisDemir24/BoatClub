@@ -6,7 +6,6 @@ import persistance.Storage;
 import view.MainView;
 import view.MemberView;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -21,7 +20,7 @@ public class MainController {
     private final MemberView memView;
     private Scanner sc;
 
-    public MainController() throws IOException {
+    public MainController() {
         this.mainView = new MainView();
         this.memView = new MemberView();
         this.memberController = new MemberController();
@@ -37,51 +36,67 @@ public class MainController {
     public void startMenu() {
         sc = new Scanner(System.in);
 
-        int input;
+        String input;
         do {
             mainView.displayWelcomeMessage();
-            input = sc.nextInt();
+            input = sc.next();
 
-            if (input == 0) {
+            if (input == "0") {
                 sc.close();
                 break;
             }
 
+
+
             switch (input) {
-                case 1:
+                case "1":
                     compactList();
                     break;
-                case 2:
+                case "2":
                     verboseList();
                     break;
-                case 3:
+                case "3":
                     createNewMember();
                     break;
-                case 4:
+                case "4":
                     changeMemberInformation();
                     break;
-                case 5:
+                case "5":
                     deleteMember();
                     break;
-                case 6:
+                case "6":
                     viewSpecificMember();
                     break;
-                case 7:
+                case "7":
                     createBoat();
                     break;
-                case 8:
+                case "8":
                     editBoat();
                     break;
-                case 9:
+                case "9":
                     deleteBoat();
                     break;
-                case 10:
+                case "10":
                     viewBoat();
                     break;
+                case "0":
+                    sc.close();
+                    System.exit(0);
+                    break;
                 default:
-                    System.out.println("Please use a number to make a choice");
+                    wrongInput(input);
             }
         } while (true);
+    }
+
+    /**
+     * Method for checking that input is a number and between 1-10
+     * @author dd222gc (Dennis Demir)
+     */
+    public void wrongInput(String input) {
+        if (!input.matches("[1-10]")) {
+            mainView.displayWrongInputMessage();
+        }
     }
 
     /**
@@ -114,8 +129,9 @@ public class MainController {
      * Method for creating a member
      * @author dd222gc (Dennis Demir) & nh222mr (Nicklas Hansson)
      */
-    public void createNewMember() {
+    private void createNewMember() {
         sc = new Scanner(System.in);
+        int maxDigit = 6;
 
         memView.displayMemberFirstName();
         String memFirstName = sc.nextLine();
@@ -126,6 +142,11 @@ public class MainController {
         memView.displayMemberPersonalNumber();
         int personalNum = sc.nextInt();
 
+        while (String.valueOf(personalNum).length() < maxDigit || String.valueOf(personalNum).length() > maxDigit) {
+            memView.displayMemberPersonalNumber();
+            personalNum = sc.nextInt();
+        }
+
         memberController.create(memFirstName, memLastName, personalNum);
     }
 
@@ -133,7 +154,7 @@ public class MainController {
      * Method to get one single member information
      * @author dd222gc (Dennis Demir)
      */
-    public void viewSpecificMember() {
+    private void viewSpecificMember() {
         sc = new Scanner(System.in);
         memView.displayMemberID();
         int memberId = sc.nextInt();
@@ -141,7 +162,7 @@ public class MainController {
         if (memberId <= storage.getMemberList().size()) {
             this.memberController.viewCompact(memberId);
         } else {
-            System.out.println("There is no member with that ID");
+            mainView.displayErrorMessageIfWrongUserID();
         }
     }
 
@@ -149,8 +170,9 @@ public class MainController {
      * Method for editing a member.
      * @author ph222ue (Patrik Hasselblad)
      */
-    public void changeMemberInformation() {
+    private void changeMemberInformation() {
         sc = new Scanner(System.in);
+        int maxDigit = 6;
 
         memView.displayMemberID();
         int memberId = sc.nextInt();
@@ -164,33 +186,50 @@ public class MainController {
         memView.displayMemberPersonalNumber();
         int personalNum = sc.nextInt();
 
-        memberController.update(memberId, memFirstName, memLastName, personalNum);
+        if (memberId <= storage.getMemberList().size()) {
+            memberController.update(memberId, memFirstName, memLastName, personalNum);
+        } else {
+            mainView.displayErrorMessageIfWrongUserID();
+        }
+
     }
 
     /**
      * Method for deleting a member.
      * @author ph222ue (Patrik Hasselblad)
      */
-    public void deleteMember() {
+    private void deleteMember() {
         sc = new Scanner(System.in);
 
         memView.displayMemberID();
         int memberId = sc.nextInt();
 
-        memberController.delete(memberId);
+        if (memberId <= storage.getMemberList().size()) {
+            memberController.delete(memberId);
+        } else {
+            mainView.displayErrorMessageIfWrongUserID();
+        }
+
     }
 
     /**
      * Method for creating a boat.
-     * @author ph222ue (Patrik Hasselblad)
+     * @author ph222ue (Patrik Hasselblad) & dd222gc (Dennis Demir).
      */
-    public void createBoat() {
+    private void createBoat() {
         sc = new Scanner(System.in);
         Type type;
 
         mainView.displayBoatType();
         String boatType = sc.next().toLowerCase();
         type = registerBoatType(boatType);
+
+        while (type == null) {
+            System.out.println("Error: \"" + boatType + "\" is not a correct boat type.");
+            mainView.displayBoatType();
+            boatType = sc.next().toLowerCase();
+            type = registerBoatType(boatType);
+        }
 
         mainView.displayBoatLength();
         String temp = sc.next();
@@ -199,14 +238,19 @@ public class MainController {
         mainView.displayBoatNumber();
         int id = sc.nextInt();
 
-        boatController.createBoat(type, length, id);
+        if (id <= storage.getMemberList().size()) {
+            boatController.createBoat(type, length, id);
+        } else {
+            mainView.displayErrorMessageIfWrongUserID();
+        }
+
     }
 
     /**
      * Method for editing an existing boat.
-     * @author ph222ue (Patrik Hasselblad)
+     * @author ph222ue (Patrik Hasselblad) & dd222gc (Dennis Demir).
      */
-    public void editBoat() {
+    private void editBoat() {
         sc = new Scanner(System.in);
         Type type;
 
@@ -216,21 +260,41 @@ public class MainController {
         mainView.displayBoatId();
         int boatId = sc.nextInt();
 
-        mainView.displayBoatType();
-        String boatType = sc.next().toLowerCase();
-        type = registerBoatType(boatType);
 
-        mainView.displayBoatLength();
-        String temp = sc.next();
-        double length = Double.parseDouble(temp);
+        if (ownerId <= storage.getMemberList().size()) {
+            if (boatId <= storage.getMember(ownerId).getBoatList().size()) {
 
-        boatController.editBoat(ownerId, boatId, type, length);
+                mainView.displayBoatType();
+                String boatType = sc.next().toLowerCase();
+                type = registerBoatType(boatType);
+
+                while (type == null) {
+                    System.out.println("Error: \"" + boatType + "\" is not a correct boat type.");
+                    mainView.displayBoatType();
+                    boatType = sc.next().toLowerCase();
+                    type = registerBoatType(boatType);
+                }
+
+                mainView.displayBoatLength();
+                String temp = sc.next();
+                double length = Double.parseDouble(temp);
+
+                    boatController.editBoat(ownerId, boatId, type, length);
+                } else {
+                mainView.displayErrorMessageForBoatID();
+            }
+        } else {
+            mainView.displayErrorMessageIfWrongUserID();
+        }
+
+
     }
 
     /**
      * Method for deletion of a certain boat.
+     * @author ph222ue (Patrik Hasselblad) & dd222gc (Dennis Demir).
      */
-    public void deleteBoat() {
+    private void deleteBoat() {
         sc = new Scanner(System.in);
 
         mainView.displayBoatNumber();
@@ -239,10 +303,27 @@ public class MainController {
         mainView.displayBoatId();
         int boatId = sc.nextInt();
 
-        boatController.removeBoat(ownerId, boatId);
+
+        if (ownerId <= storage.getMemberList().size()) {
+            if (boatId <= storage.getMember(ownerId).getBoatList().size()) {
+                boatController.removeBoat(ownerId, boatId);
+
+            } else {
+                mainView.displayErrorMessageForBoatID();
+            }
+        } else {
+            mainView.displayErrorMessageIfWrongUserID();
+        }
+
+
+
     }
 
-    public void viewBoat() {
+    /**
+     * Method for viewing a certain boat.
+     * @author dd222gc (Dennis Demir) & ph222ue (Patrik Hasselblad).
+     */
+    private void viewBoat() {
         sc = new Scanner(System.in);
 
         mainView.displayBoatNumber();
@@ -252,16 +333,26 @@ public class MainController {
         mainView.displayBoatId();
         int boatId = sc.nextInt();
 
-        mainView.displayBoatInfo(member, boatId);
+
+        if (ownerId <= storage.getMemberList().size()) {
+            if (boatId <= storage.getMember(ownerId).getBoatList().size()) {
+                mainView.displayBoatInfo(member, boatId);
+            } else {
+                mainView.displayErrorMessageForBoatID();
+            }
+        } else {
+            mainView.displayErrorMessageIfWrongUserID();
+        }
     }
 
     /**
      * Help method to determine boat type.
      * @param boatType incoming user input.
+     * @author ph222ue (Patrik Hasselblad).
      * @return Type
      */
-    public Type registerBoatType(String boatType) {
-        Type type;
+    private Type registerBoatType(String boatType) {
+        Type type = null;
 
         if (boatType.equals("c")) {
             type = Type.CANOE;
@@ -273,8 +364,6 @@ public class MainController {
             type = Type.MOTORSAILER;
         } else if (boatType.equals("o")) {
             type = Type.OTHER;
-        } else {
-            throw new IllegalStateException("Unexpected value: " + boatType);
         }
 
         return type;

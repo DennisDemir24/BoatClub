@@ -41,6 +41,31 @@ public class MainView {
     }
 
     /**
+     * Method that display message for wrong input
+     * @author "dd222gc Dennis Demir"
+     */
+    public void displayWrongInputMessage() {
+        System.out.println("Please select a number between 1 and 10 to make a choice, or 0 to quit");
+    }
+
+    /**
+     * Method that display message for wrong member ID input
+     * @author "dd222gc Dennis Demir"
+     */
+    public void displayErrorMessageIfWrongUserID() {
+        System.out.println("There is no member with that ID");
+    }
+
+    /**
+     * Method that display message no such boat ID
+     * @author "dd222gc Dennis Demir"
+     */
+    public void displayErrorMessageForBoatID() {
+        System.out.println("No boat exists with that ID");
+    }
+
+
+    /**
      * Method that views a certain boat.
      * @param member - The boat owner.
      * @param boatId - The specific boats ID.
@@ -79,6 +104,10 @@ public class MainView {
         System.out.println("Boat Type (C = Canoe, S = sailboat, M = motorsailer, K = kayak, O = other): ");
     }
 
+    /**
+     * Method that ask for boat ID.
+     * @author ph222ue (Patrik Hasselbald)
+     */
     public void displayBoatId() {
         System.out.println("Boat Id: ");
     }

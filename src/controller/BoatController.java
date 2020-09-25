@@ -51,6 +51,7 @@ public class BoatController {
             if (owner.getBoatList().get(i).getBoatId() == id) {
                 owner.getBoatList().get(i).setType(type);
                 owner.getBoatList().get(i).setLength(length);
+                break;
             } else {
                 System.out.println("No boat exists with that ID");
             }
@@ -71,12 +72,19 @@ public class BoatController {
 
             if (member.getBoat(boatId).getBoatId() == boatId) {
                 member.getBoatList().remove(i);
+
+                for (int j = 0; j < storage.getMember(ownerId).getBoatList().size(); j++) {
+                    if (storage.getMember(ownerId).getBoatList().size() > 0) {
+                        storage.getMember(ownerId).getBoatList().get(j).setBoatId(j + 1);
+                    }
+                }
+
             } else {
                 System.out.println("No boat exists with that ID");
             }
             storage.saveData();
         }
-        //ToDo: When removing a boat, the ID we will be forfeit. Same with members, perhaps think about this.
+        //ToDo: When removing a boat, the ID will be forfeit. Same with members, perhaps think about this.
     }
 
 }
