@@ -1,6 +1,7 @@
 package controller;
 
 import model.Member;
+import model.Register;
 import model.Type;
 import persistance.Storage;
 import view.MainView;
@@ -18,6 +19,7 @@ public class MainController {
     private final BoatController boatController;
     private final Storage storage;
     private final MemberView memView;
+    private final Register register;
     private Scanner sc;
 
     public MainController() {
@@ -26,6 +28,7 @@ public class MainController {
         this.memberController = new MemberController();
         this.storage = new Storage();
         this.boatController = new BoatController();
+        this.register = new Register();
     }
 
 
@@ -147,7 +150,7 @@ public class MainController {
             personalNum = sc.nextInt();
         }
 
-        memberController.create(memFirstName, memLastName, personalNum);
+        register.createNewMember(memFirstName, memLastName, personalNum);
     }
 
     /**
@@ -187,7 +190,7 @@ public class MainController {
         int personalNum = sc.nextInt();
 
         if (memberId <= storage.getMemberList().size()) {
-            memberController.update(memberId, memFirstName, memLastName, personalNum);
+            register.updateMember(memberId, memFirstName, memLastName, personalNum);
         } else {
             mainView.displayErrorMessageIfWrongUserID();
         }
@@ -205,7 +208,7 @@ public class MainController {
         int memberId = sc.nextInt();
 
         if (memberId <= storage.getMemberList().size()) {
-            memberController.delete(memberId);
+            register.deleteMember(memberId);
         } else {
             mainView.displayErrorMessageIfWrongUserID();
         }
@@ -279,8 +282,8 @@ public class MainController {
                 String temp = sc.next();
                 double length = Double.parseDouble(temp);
 
-                    boatController.editBoat(ownerId, boatId, type, length);
-                } else {
+                boatController.editBoat(ownerId, boatId, type, length);
+            } else {
                 mainView.displayErrorMessageForBoatID();
             }
         } else {

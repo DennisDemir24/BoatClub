@@ -18,49 +18,6 @@ public class MemberController {
     }
 
     /**
-     * Method for creating a new member
-     * @param first - String - first name of new member
-     * @param last - String - last name of new member
-     * @param personalNumber - int - social security number of new member
-     * @author dd222gc (Dennis Demir) & nh222mr (Nicklas Hansson) & ph222ue (Patrik Hasselblad)
-     */
-    public void create(String first, String last, int personalNumber) {
-        Member member = new Member(first, last, personalNumber);
-        storage.addMember(member);
-
-        storage.saveData();
-        // Add function call for displaying correct view message
-    }
-
-    /**
-     * Method for returning a new member from the storage
-     * @param id - int memberId
-     * @author nh222mr (Nicklas Hansson)
-     */
-    public Member read(int id) { return storage.getMember(id); }
-
-    /**
-     * Method for returning a new member from the storage
-     * @param id - int memberId
-     * @author nh222mr (Nicklas Hansson) & ph222ue (Patrik Hasselblad)
-     */
-    void update(int id, String newFName, String newLName, int newSocNr) {
-        storage.editMember(id, newFName, newLName, newSocNr);
-        storage.saveData();
-    }
-
-    /**
-     * Method for creating a new member in the storage
-     * @param id - Id of the member to be deleted from storage
-     * @return - Returns deleted member
-     * @author dd222gc (Dennis Demir) & ph222ue (Patrik Hasselblad)
-     */
-    public void delete(int id) {
-        storage.deleteMember(id);
-        storage.saveData();
-    }
-
-    /**
      * Method for viewing member with specific id.
      * @param id - Id of the targeted member to view
      *

@@ -3,6 +3,7 @@ package persistance;
 import model.Member;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
+import view.MainView;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,10 +18,12 @@ public class Storage {
     private ArrayList<Member> members;
     private final ObjectMapper mapper;
     private static Storage INSTANCE;
+    private final MainView view;
 
     public Storage() {
         this.members = new ArrayList<>();
         this.mapper = new ObjectMapper();
+        this.view = new MainView();
         loadData();
     }
 
@@ -39,8 +42,9 @@ public class Storage {
      */
     public void addMember(Member member) {
         if (this.members.contains(member)) {
-            throw new IllegalArgumentException("Member already exists.");
+            throw new IllegalArgumentException();
         }
+
         this.members.add(member);
     }
 
@@ -128,7 +132,6 @@ public class Storage {
             System.out.println("The database is empty.");
         }
     }
-    //ToDo: Programmet laddar fler gånger än det behöver, detta kan vara värt att kolla på.
 
     /**
      * Method that saves member data to a JSON file.
@@ -158,5 +161,4 @@ public class Storage {
     public Member getSpecificMember(int index) {
         return this.members.get(index - 1);
     }
-    //ToDo: Vi hämtar använder på 2 sätt, kanske kan vi slå ihop dessa till enbart 1 metod.
 }
