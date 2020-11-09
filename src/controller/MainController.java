@@ -120,7 +120,7 @@ public class MainController {
      * @author dd222gc (Dennis Demir)
      */
     private void verboseList() {
-        storage.loadData();
+        //storage.loadData();
         int members = this.storage.registrySize();
 
         for (int i = 0; i < members; i++) {
@@ -162,10 +162,10 @@ public class MainController {
         memView.displayMemberID();
         int memberId = sc.nextInt();
 
-        if (memberId <= storage.getMemberList().size()) {
-            this.memberController.viewCompact(memberId);
-        } else {
-            mainView.displayErrorMessageIfWrongUserID();
+        int members = this.storage.registrySize();
+
+        for (int i = 0; i < members; i++) {
+            this.memView.displayCompactList(storage.getSpecificMember(memberId));
         }
     }
 

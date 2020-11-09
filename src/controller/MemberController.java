@@ -8,7 +8,7 @@ import view.MemberView;
  * A class that handles the member controller
  * @author dd222gc (Dennis Demir)
  */
-public class MemberController {
+public class MemberController extends BoatController {
     private final Storage storage;
     private final MemberView memView;
 

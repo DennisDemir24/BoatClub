@@ -82,9 +82,6 @@ public class Storage {
                 member.setFirstName(fName);
                 member.setLastName(lName);
                 member.setSocialSec(socNr);
-            } else {
-                System.out.println("There is no member with that ID");
-                System.out.println();
             }
         }
 
@@ -129,7 +126,6 @@ public class Storage {
         try {
             members = mapper.readValue(file, new TypeReference<List<Member>>(){});
         } catch (IOException e) {
-            System.out.println("The database is empty.");
         }
     }
 
