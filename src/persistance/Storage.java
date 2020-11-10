@@ -45,6 +45,8 @@ public class Storage {
         }
 
         this.members.add(member);
+        saveData();
+        loadData();
     }
 
     /**
@@ -76,6 +78,7 @@ public class Storage {
                 member.setFirstName(fName);
                 member.setLastName(lName);
                 member.setSocialSec(socNr);
+                saveData();
             }
         }
 
@@ -89,6 +92,7 @@ public class Storage {
         for (int i = 0; i < members.size(); i ++) {
             if (members.get(i).getMemberId() == id) {
                 members.remove(i);
+                saveData();
             }
         }
     }

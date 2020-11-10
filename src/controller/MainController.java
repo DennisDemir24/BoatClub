@@ -121,7 +121,7 @@ public class MainController {
      * @author dd222gc (Dennis Demir)
      */
     private void verboseList() {
-        //storage.loadData();
+        storage.loadData();
         int members = this.storage.registrySize();
 
         for (int i = 0; i < members; i++) {
