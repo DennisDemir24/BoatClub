@@ -1,7 +1,6 @@
 package controller;
 
-import model.Member;
-import persistance.Storage;
+import model.persistance.Storage;
 import view.MemberView;
 
 /**

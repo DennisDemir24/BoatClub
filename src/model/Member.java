@@ -1,7 +1,7 @@
 package model;
 
 import org.codehaus.jackson.annotate.JsonProperty;
-import persistance.Storage;
+import model.persistance.Storage;
 
 import java.util.ArrayList;
 

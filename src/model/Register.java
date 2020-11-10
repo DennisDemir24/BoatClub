@@ -1,6 +1,6 @@
 package model;
 
-import persistance.Storage;
+import model.persistance.Storage;
 
 public class Register {
     private final Storage storage;

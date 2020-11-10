@@ -1,4 +1,4 @@
-package persistance;
+package model.persistance;
 
 import model.Member;
 import org.codehaus.jackson.map.ObjectMapper;

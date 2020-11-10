@@ -4,7 +4,7 @@ import model.Boat;
 import model.Member;
 import model.Register;
 import model.Type;
-import persistance.Storage;
+import model.persistance.Storage;
 import view.MainView;
 import view.MemberView;
 
