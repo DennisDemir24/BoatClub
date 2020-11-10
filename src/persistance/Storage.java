@@ -8,6 +8,7 @@ import view.MainView;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -142,12 +143,14 @@ public class Storage {
     }
 
     /**
-     * Method to return a list of all members
+     * Method to return a list copy of all members
      * @return ArrayList
      * @author ph222ue (Patrik Hasselblad)
      */
     public ArrayList<Member> getMemberList() {
-        return members;
+        ArrayList<Member> listCopy = new ArrayList<>();
+        Collections.copy(listCopy, members);
+        return listCopy;
     }
 
     /**

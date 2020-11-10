@@ -1,5 +1,6 @@
 package controller;
 
+import model.Boat;
 import model.Member;
 import model.Register;
 import model.Type;
@@ -339,7 +340,8 @@ public class MainController {
 
         if (ownerId <= storage.getMemberList().size()) {
             if (boatId <= storage.getMember(ownerId).getBoatList().size()) {
-                mainView.displayBoatInfo(member, boatId);
+                Boat boat = member.getBoat(boatId); //---------------------------------------------------------- Ändring
+                mainView.displayBoatInfo(member, boat);
             } else {
                 mainView.displayErrorMessageForBoatID();
             }
