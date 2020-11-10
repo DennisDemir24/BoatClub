@@ -139,8 +139,7 @@ public class Storage {
      * @author ph222ue (Patrik Hasselblad)
      */
     public ArrayList<Member> getMemberList() {
-        ArrayList<Member> listCopy = new ArrayList<>();
-        listCopy.addAll(members);
+        ArrayList<Member> listCopy = new ArrayList<>(members);
 
         return listCopy;
     }
@@ -150,8 +149,7 @@ public class Storage {
      * @author dd222gc (Dennis Demir)
      */
     public Member getSpecificMember(int index) {
-        ArrayList<Member> listCopy = new ArrayList<>();
-        listCopy.addAll(members);
+        ArrayList<Member> listCopy = new ArrayList<>(members);
 
         return listCopy.get(index - 1);
     }

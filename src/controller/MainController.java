@@ -163,10 +163,10 @@ public class MainController {
         memView.displayMemberID();
         int memberId = sc.nextInt();
 
-        int members = this.storage.registrySize();
-
-        for (int i = 0; i < members; i++) {
+        if (memberId > 0 && memberId <= this.storage.registrySize()) {
             this.memView.displayCompactList(storage.getSpecificMember(memberId));
+        } else {
+            memView.displayMemberIdError();
         }
     }
 

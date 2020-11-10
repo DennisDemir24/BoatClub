@@ -84,4 +84,8 @@ public class MemberView {
         System.out.println("Member ID: ");
     }
 
+    public void displayMemberIdError() {
+        System.out.println("No member with that ID\n");
+    }
+
 }
