@@ -70,8 +70,6 @@ public class MainView {
      * @author dd222gc (Dennis Demir) & ph222ue (Patrik Hasselblad)
      */
     public void displayBoatInfo(Member member, Boat boat) {
-
-
         System.out.println("Boat Owner: " + member.getFirstName() + " " + member.getLastName() + "\n" +
                 "Boat ID: " + boat.getBoatId() + "\n" +
                 "Boat Type: " + boat.getType() + "\n" +

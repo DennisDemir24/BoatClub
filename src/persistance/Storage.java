@@ -8,7 +8,6 @@ import view.MainView;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -38,7 +37,6 @@ public class Storage {
     /**
      * Adds a new member.
      * @exception IllegalArgumentException - is thrown if member already exists.
-     * @param member Member to be added.
      * @author ph222ue (Patrik Hasselblad)
      */
     public void addMember(Member member) {
@@ -69,17 +67,12 @@ public class Storage {
 
     /**
      * Method that alters a certain member's information.
-     * @param id - The id of the member.
-     * @param fName - New first name.
-     * @param lName - New last name.
-     * @param socNr - New social security number.
      * @author ph222ue (Patrik Hasselblad)
      */
     public void editMember(int id, String fName, String lName, int socNr) {
 
         for (Member member : members) {
             if (member.getMemberId() == id) {
-                System.out.println(member.getMemberId());
                 member.setFirstName(fName);
                 member.setLastName(lName);
                 member.setSocialSec(socNr);
@@ -90,7 +83,6 @@ public class Storage {
 
     /**
      * Method that removes a member with a certain Id.
-     * @param id - member Id to search for in the List.
      * @author ph222ue (Patrik Hasselblad)
      */
     public void deleteMember(int id) {
@@ -103,7 +95,6 @@ public class Storage {
 
     /**
      * Method to return a specific member.
-     * @param memberId - the member sought for.
      * @return Member
      * @author ph222ue (Patrik Hasselblad)
      */
@@ -149,7 +140,8 @@ public class Storage {
      */
     public ArrayList<Member> getMemberList() {
         ArrayList<Member> listCopy = new ArrayList<>();
-        Collections.copy(listCopy, members);
+        listCopy.addAll(members);
+
         return listCopy;
     }
 
@@ -158,6 +150,9 @@ public class Storage {
      * @author dd222gc (Dennis Demir)
      */
     public Member getSpecificMember(int index) {
-        return this.members.get(index - 1);
+        ArrayList<Member> listCopy = new ArrayList<>();
+        listCopy.addAll(members);
+
+        return listCopy.get(index - 1);
     }
 }
