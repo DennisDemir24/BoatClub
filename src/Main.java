@@ -17,4 +17,3 @@ public class Main {
         main.startMenu();
     }
 }
-//Todo: Vi skulle kanske förtydliga vissa delar av outputen. För att göra det tydligare för användarna vad dem ska göra.

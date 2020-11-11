@@ -229,7 +229,7 @@ public class MainController {
         type = registerBoatType(boatType);
 
         while (type == null) {
-            System.out.println("Error: \"" + boatType + "\" is not a correct boat type.");
+            memView.displayBoatTypeError();
             mainView.displayBoatType();
             boatType = sc.next().toLowerCase();
             type = registerBoatType(boatType);
@@ -273,7 +273,7 @@ public class MainController {
                 type = registerBoatType(boatType);
 
                 while (type == null) {
-                    System.out.println("Error: \"" + boatType + "\" is not a correct boat type.");
+                    memView.displayBoatTypeError();
                     mainView.displayBoatType();
                     boatType = sc.next().toLowerCase();
                     type = registerBoatType(boatType);
@@ -340,7 +340,7 @@ public class MainController {
 
         if (ownerId <= storage.getMemberList().size()) {
             if (boatId <= storage.getMember(ownerId).getBoatList().size()) {
-                Boat boat = member.getBoat(boatId); //---------------------------------------------------------- Ändring
+                Boat boat = member.getBoat(boatId);
                 mainView.displayBoatInfo(member, boat);
             } else {
                 mainView.displayErrorMessageForBoatID();
@@ -352,7 +352,6 @@ public class MainController {
 
     /**
      * Help method to determine boat type.
-     * @param boatType incoming user input.
      * @author ph222ue (Patrik Hasselblad).
      * @return Type
      */
