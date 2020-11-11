@@ -64,6 +64,10 @@ public class MainView {
         System.out.println("No boat exists with that ID");
     }
 
+    public void displayErrorMessageForBoatType() {
+        System.out.println("Error: There is no such boat type.");
+    }
+
 
     /**
      * Method that views a certain boat.
