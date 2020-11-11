@@ -5,6 +5,7 @@ import model.Member;
 import model.Register;
 import model.Type;
 import model.persistance.Storage;
+import view.MemberView;
 
 /**
  * A class that handles the member boats; adding, editing, removing and viewing.
@@ -12,18 +13,17 @@ import model.persistance.Storage;
  */
 public class BoatController {
     private final Storage storage;
-    private final Register register = new Register();
+    private final Register register;
+    private final MemberView memView;
 
     public BoatController () {
         this.storage = Storage.getInstance();
-
+        this.register = new Register();
+        this.memView = new MemberView();
     }
 
     /**
      * Adds a boat to a certain member.
-     * @param boatType - The boat type
-     * @param length - The length of the boat in meters
-     * @param ownerId - The id of the owner of the boat
      * @author ph222ue (Patrik Hasselblad) & nh222mr (Nicklas Hansson)
      */
     public void createBoat(Type boatType, double length, int ownerId) {
@@ -34,18 +34,12 @@ public class BoatController {
 
         int index = member.getBoatList().size();
 
-
-
         member.addBoat(index, newBoat);
         register.createNewBoat();
     }
 
     /**
      * Method that handles boat editing.
-     * @param ownerId - The boat owners ID.
-     * @param id - The boat ID.
-     * @param type - The new boat type.
-     * @param length - The new boat length.
      * @author ph222ue (Patrik Hasselblad)
      */
     public void editBoat(int ownerId, int id, Type type, double length) {
@@ -57,7 +51,7 @@ public class BoatController {
                 owner.getBoatList().get(i).setLength(length);
                 break;
             } else {
-                System.out.println("No boat exists with that ID");
+                memView.displayBoatIdError();
             }
         }
         register.updateBoat();
@@ -65,8 +59,6 @@ public class BoatController {
 
     /**
      * Removes a certain boat from the member boat list.
-     * @param ownerId - The boat owner ID.
-     * @param boatId - The specific boat ID.
      * @author ph222ue (Patrik Hasselblad)
      */
     public void removeBoat(int ownerId, int boatId) {
@@ -84,7 +76,7 @@ public class BoatController {
                 }
 
             } else {
-                System.out.println("No boat exists with that ID");
+                memView.displayBoatIdError();
             }
             register.deleteBoat();
         }

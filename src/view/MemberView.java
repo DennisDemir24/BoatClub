@@ -88,4 +88,12 @@ public class MemberView {
         System.out.println("No member with that ID\n");
     }
 
+    public void displayBoatIdError() {
+        System.out.println("No boat exists with that ID\n");
+    }
+
+    public void displayBoatTypeError() {
+        System.out.println("Invalid boat type.\n");
+    }
+
 }

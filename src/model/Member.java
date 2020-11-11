@@ -18,10 +18,6 @@ public class Member {
 
     /**
      * A JSON friendly constructor used by Storage when loading from file.
-     * @param fN - first name
-     * @param lN - Last name
-     * @param socialNr - social security number.
-     * @param loadedBoatList - The Member boat list.
      * @author ph222ue (Patrik Hasselblad)
      */
     public Member(@JsonProperty("firstName") String fN, @JsonProperty("lastName") String lN, @JsonProperty("socialSec") int socialNr, @JsonProperty("memberId") int id, @JsonProperty("boatList") ArrayList<Boat> loadedBoatList) {
@@ -93,6 +89,7 @@ public class Member {
     }
 
     public ArrayList<Boat> getBoatList() {
-        return boatList;
+        ArrayList<Boat> listCopy = new ArrayList<>(boatList);
+        return listCopy;
     }
 }

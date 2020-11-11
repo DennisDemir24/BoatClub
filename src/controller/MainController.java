@@ -230,6 +230,7 @@ public class MainController {
 
         while (type == null) {
             mainView.displayErrorMessageForBoatType();
+            memView.displayBoatTypeError();
             mainView.displayBoatType();
             boatType = sc.next().toLowerCase();
             type = registerBoatType(boatType);
@@ -274,6 +275,7 @@ public class MainController {
 
                 while (type == null) {
                     mainView.displayErrorMessageForBoatType();
+                    memView.displayBoatTypeError();
                     mainView.displayBoatType();
                     boatType = sc.next().toLowerCase();
                     type = registerBoatType(boatType);
@@ -352,7 +354,6 @@ public class MainController {
 
     /**
      * Help method to determine boat type.
-     * @param boatType incoming user input.
      * @author ph222ue (Patrik Hasselblad).
      * @return Type
      */
