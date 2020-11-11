@@ -38,59 +38,51 @@ public class MainController {
      * @author dd222gc (Dennis Demir)
      */
     public void startMenu() {
-        sc = new Scanner(System.in);
-
-        String input;
-        do {
+        while(true) {
             mainView.displayWelcomeMessage();
-            input = sc.next();
-
-            if (input == "0") {
-                sc.close();
-                break;
-            }
 
 
 
-            switch (input) {
-                case "1":
+            switch (mainView.getMenuActions()) {
+                case VIEW_COMPACT:
                     compactList();
                     break;
-                case "2":
+                case VIEW_VERBOSE:
                     verboseList();
                     break;
-                case "3":
+                case CREATE_MEMBER:
                     createNewMember();
                     break;
-                case "4":
+                case UPDATE_MEMBER_INFO:
                     changeMemberInformation();
                     break;
-                case "5":
+                case DELETE_MEMBER:
                     deleteMember();
                     break;
-                case "6":
+                case VIEW_SPECIFIC_MEMBER:
                     viewSpecificMember();
                     break;
-                case "7":
+                case CREATE_BOAT:
                     createBoat();
                     break;
-                case "8":
+                case EDIT_BOAT:
                     editBoat();
                     break;
-                case "9":
+                case DELETE_BOAT:
                     deleteBoat();
                     break;
-                case "10":
+                case VIEW_BOAT:
                     viewBoat();
                     break;
-                case "0":
+                case QUIT:
                     sc.close();
                     System.exit(0);
                     break;
+                case DEFAULT:
                 default:
-                    wrongInput(input);
+                    break;
             }
-        } while (true);
+        }
     }
 
     /**
