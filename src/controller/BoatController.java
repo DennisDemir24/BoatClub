@@ -2,6 +2,7 @@ package controller;
 
 import model.Boat;
 import model.Member;
+import model.Register;
 import model.Type;
 import model.persistance.Storage;
 
@@ -11,6 +12,7 @@ import model.persistance.Storage;
  */
 public class BoatController {
     private final Storage storage;
+    private final Register register = new Register();
 
     public BoatController () {
         this.storage = Storage.getInstance();
@@ -32,8 +34,10 @@ public class BoatController {
 
         int index = member.getBoatList().size();
 
+
+
         member.addBoat(index, newBoat);
-        storage.saveData();
+        register.createNewBoat();
     }
 
     /**
@@ -56,7 +60,7 @@ public class BoatController {
                 System.out.println("No boat exists with that ID");
             }
         }
-        storage.saveData();
+        register.updateBoat();
     }
 
     /**
@@ -82,9 +86,8 @@ public class BoatController {
             } else {
                 System.out.println("No boat exists with that ID");
             }
-            storage.saveData();
+            register.deleteBoat();
         }
-        //ToDo: When removing a boat, the ID will be forfeit. Same with members, perhaps think about this.
     }
 
 }

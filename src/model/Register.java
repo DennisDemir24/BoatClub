@@ -23,4 +23,16 @@ public class Register {
     public void updateMember(int id, String newFirstName, String newLastName, int newSocNr) {
         storage.editMember(id, newFirstName, newLastName, newSocNr);
     }
+
+    public void createNewBoat() {
+        storage.boatAction();
+    }
+
+    public void deleteBoat() {
+        storage.boatAction();
+    }
+
+    public void updateBoat() {
+        storage.boatAction();
+    }
 }

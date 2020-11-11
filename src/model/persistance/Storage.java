@@ -49,6 +49,10 @@ public class Storage {
         loadData();
     }
 
+    public void boatAction() {
+        saveData();
+    }
+
     /**
      * Returns the number of members.
      * @return int
@@ -129,7 +133,7 @@ public class Storage {
      * Method that saves member data to a JSON file.
      * @author ph222ue (Patrik Hasselblad)
      */
-    public void saveData() {
+    private void saveData() {
         try {
             mapper.writeValue(new File("members.json"), this.members);
         } catch (Exception e) {
