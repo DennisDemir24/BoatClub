@@ -75,7 +75,7 @@ public class MainController {
                     viewBoat();
                     break;
                 case QUIT:
-                    sc.close();
+//                    sc.close();
                     System.exit(0);
                     break;
                 case DEFAULT:
@@ -198,7 +198,7 @@ public class MainController {
         memView.displayMemberID();
         int memberId = sc.nextInt();
 
-        if (memberId <= storage.size()) {
+        if (memberId <= storage.size() + 1) {
             register.deleteMember(memberId);
         } else {
             mainView.displayErrorMessageIfWrongUserID();

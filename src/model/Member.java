@@ -13,7 +13,7 @@ public class Member {
     private String firstName;
     private String lastName;
     private int socialSec;
-    private final int memberId;
+    private int memberId;
     private ArrayList<Boat> boatList = new ArrayList<>();
 
     /**
@@ -47,6 +47,10 @@ public class Member {
     private int setMemberId() {
         Storage storage = new Storage();
         return storage.createMemberId();
+    }
+
+    public void adjustMemberId(int id) {
+        this.memberId = id;
     }
 
     public String getFirstName() {

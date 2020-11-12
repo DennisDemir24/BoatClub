@@ -97,6 +97,9 @@ public class Storage {
         for (int i = 0; i < members.size(); i ++) {
             if (members.get(i).getMemberId() == id) {
                 members.remove(i);
+                for (int j = 0; j < members.size(); j++) {
+                    members.get(j).adjustMemberId(j + 1);
+                }
                 saveData();
             }
         }
