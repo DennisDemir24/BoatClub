@@ -1,13 +1,17 @@
 package view;
 
+import controller.MenuActions;
 import model.Boat;
 import model.Member;
+
+import java.util.Scanner;
 
 /**
  * A Class for the Main View
  * @author "dd222gc Dennis Demir"
  */
 public class MainView {
+    private Scanner s = new Scanner(System.in);
 
     public MainView() {
     }
@@ -19,6 +23,45 @@ public class MainView {
     public void displayWelcomeMessage() {
         System.out.println("**** Welcome To Boat Club ****");
         displayMenuOptions();
+    }
+
+    public MenuActions getMenuActions() {
+        int input;
+
+        while (!s.hasNextInt()) {
+            s.next();
+            System.out.println("Invalid input. Please provide a number between 1-10, and 0 to quit the app");
+        }
+
+        input = s.nextInt();
+        s.nextLine();
+
+        switch (input) {
+            case 1:
+                return MenuActions.VIEW_COMPACT;
+            case 2:
+                return MenuActions.VIEW_VERBOSE;
+            case 3:
+                return MenuActions.CREATE_MEMBER;
+            case 4:
+                return MenuActions.UPDATE_MEMBER_INFO;
+            case 5:
+                return MenuActions.DELETE_MEMBER;
+            case 6:
+                return MenuActions.VIEW_SPECIFIC_MEMBER;
+            case 7:
+                return MenuActions.CREATE_BOAT;
+            case 8:
+                return MenuActions.EDIT_BOAT;
+            case 9:
+                return MenuActions.DELETE_BOAT;
+            case 10:
+                return MenuActions.VIEW_BOAT;
+            case 0:
+                return MenuActions.QUIT;
+            default:
+                return MenuActions.DEFAULT;
+        }
     }
 
     /**
@@ -62,6 +105,10 @@ public class MainView {
      */
     public void displayErrorMessageForBoatID() {
         System.out.println("No boat exists with that ID");
+    }
+
+    public void displayErrorMessageForBoatType() {
+        System.out.println("Error: There is no such boat type.");
     }
 
 
