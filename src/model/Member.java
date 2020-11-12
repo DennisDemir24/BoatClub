@@ -89,7 +89,6 @@ public class Member {
     }
 
     public ArrayList<Boat> getBoatList() {
-        ArrayList<Boat> listCopy = new ArrayList<>(boatList);
-        return listCopy;
+        return boatList;
     }
 }

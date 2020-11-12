@@ -51,6 +51,7 @@ public class Storage {
 
     public void boatAction() {
         saveData();
+        loadData();
     }
 
     /**

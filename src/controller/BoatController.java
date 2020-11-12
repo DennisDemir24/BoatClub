@@ -4,22 +4,23 @@ import model.Boat;
 import model.Member;
 import model.Register;
 import model.Type;
-import model.persistance.Storage;
 import view.MemberView;
+
+import java.util.ArrayList;
 
 /**
  * A class that handles the member boats; adding, editing, removing and viewing.
  * @author ph222ue (Patrik Hasselblad)
  */
 public class BoatController {
-    private final Storage storage;
+    private final ArrayList<Member> storage;
     private final Register register;
     private final MemberView memView;
 
     public BoatController () {
-        this.storage = Storage.getInstance();
         this.register = new Register();
         this.memView = new MemberView();
+        this.storage = new ArrayList<Member>(register.getStorageList());
     }
 
     /**
@@ -28,7 +29,7 @@ public class BoatController {
      */
     public void createBoat(Type boatType, double length, int ownerId) {
         Boat newBoat = new Boat(boatType, length, ownerId);
-        Member member = storage.getMember(ownerId);
+        Member member = storage.get(ownerId - 1);
         int boatId = member.getBoatList().size() + 1;
         newBoat.setBoatId(boatId);
 
@@ -43,7 +44,7 @@ public class BoatController {
      * @author ph222ue (Patrik Hasselblad)
      */
     public void editBoat(int ownerId, int id, Type type, double length) {
-        Member owner = storage.getMember(ownerId);
+        Member owner = storage.get(ownerId - 1);
 
         for (int i = 0; i < owner.getBoatList().size(); i++) {
             if (owner.getBoatList().get(i).getBoatId() == id) {
@@ -62,16 +63,17 @@ public class BoatController {
      * @author ph222ue (Patrik Hasselblad)
      */
     public void removeBoat(int ownerId, int boatId) {
-        Member member = storage.getMember(ownerId);
+//        Member member = storage.getMember(ownerId);
+        Member member = storage.get(ownerId - 1);
 
         for (int i = 0; i < member.getBoatList().size(); i++) {
 
             if (member.getBoat(boatId).getBoatId() == boatId) {
                 member.getBoatList().remove(i);
 
-                for (int j = 0; j < storage.getMember(ownerId).getBoatList().size(); j++) {
-                    if (storage.getMember(ownerId).getBoatList().size() > 0) {
-                        storage.getMember(ownerId).getBoatList().get(j).setBoatId(j + 1);
+                for (int j = 0; j < storage.get(ownerId - 1).getBoatList().size(); j++) {
+                    if (storage.get(ownerId - 1).getBoatList().size() > 0) {
+                        storage.get(ownerId - 1).getBoatList().get(j).setBoatId(j + 1);
                     }
                 }
 

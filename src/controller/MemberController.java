@@ -1,19 +1,24 @@
 package controller;
 
-import model.persistance.Storage;
+import model.Member;
+import model.Register;
 import view.MemberView;
+
+import java.util.ArrayList;
 
 /**
  * A class that handles the member controller
  * @author dd222gc (Dennis Demir)
  */
 public class MemberController extends BoatController {
-    private final Storage storage;
+    private final ArrayList<Member> storage;
     private final MemberView memView;
+    private final Register register;
 
     public MemberController() {
-        this.storage = Storage.getInstance();
+        this.register = new Register();
         this.memView = new MemberView();
+        this.storage = register.getStorageList();
     }
 
     /**
@@ -23,7 +28,7 @@ public class MemberController extends BoatController {
      * @author dd222gc (Dennis Demir)
      */
     public void viewCompact(int id) {
-        this.memView.displayCompactList(storage.getSpecificMember(id));
+        this.memView.displayCompactList(storage.get(id - 1));
     }
 
     /**
@@ -33,7 +38,7 @@ public class MemberController extends BoatController {
      * @author dd222gc (Dennis Demir)
      */
     public void viewVerbose(int id) {
-        this.memView.displayVerboseList(storage.getSpecificMember(id));
+        this.memView.displayVerboseList(storage.get(id - 1));
     }
 
 }

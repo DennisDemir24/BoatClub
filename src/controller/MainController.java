@@ -4,10 +4,10 @@ import model.Boat;
 import model.Member;
 import model.Register;
 import model.Type;
-import model.persistance.Storage;
 import view.MainView;
 import view.MemberView;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -18,7 +18,7 @@ public class MainController {
     private final MainView mainView;
     private final MemberController memberController;
     private final BoatController boatController;
-    private final Storage storage;
+    private final ArrayList<Member> storage;
     private final MemberView memView;
     private final Register register;
     private Scanner sc;
@@ -27,9 +27,9 @@ public class MainController {
         this.mainView = new MainView();
         this.memView = new MemberView();
         this.memberController = new MemberController();
-        this.storage = new Storage();
-        this.boatController = new BoatController();
         this.register = new Register();
+        this.storage = register.getStorageList();
+        this.boatController = new BoatController();
     }
 
 
@@ -108,8 +108,7 @@ public class MainController {
      * @author dd222gc (Dennis Demir)
      */
     private void compactList() {
-        storage.loadData();
-        int members = this.storage.registrySize();
+        int members = this.storage.size();
 
         for (int i = 0; i < members; i++) {
             this.memberController.viewCompact(i + 1);
@@ -121,8 +120,7 @@ public class MainController {
      * @author dd222gc (Dennis Demir)
      */
     private void verboseList() {
-        storage.loadData();
-        int members = this.storage.registrySize();
+        int members = this.storage.size();
 
         for (int i = 0; i < members; i++) {
             this.memberController.viewVerbose(i + 1);
@@ -163,8 +161,8 @@ public class MainController {
         memView.displayMemberID();
         int memberId = sc.nextInt();
 
-        if (memberId > 0 && memberId <= this.storage.registrySize()) {
-            this.memView.displayCompactList(storage.getSpecificMember(memberId));
+        if (memberId > 0 && memberId <= this.storage.size()) {
+            this.memView.displayCompactList(storage.get(memberId - 1));
         } else {
             memView.displayMemberIdError();
         }
@@ -190,7 +188,7 @@ public class MainController {
         memView.displayMemberPersonalNumber();
         int personalNum = sc.nextInt();
 
-        if (memberId <= storage.getMemberList().size()) {
+        if (memberId <= storage.size()) {
             register.updateMember(memberId, memFirstName, memLastName, personalNum);
         } else {
             mainView.displayErrorMessageIfWrongUserID();
@@ -208,7 +206,7 @@ public class MainController {
         memView.displayMemberID();
         int memberId = sc.nextInt();
 
-        if (memberId <= storage.getMemberList().size()) {
+        if (memberId <= storage.size()) {
             register.deleteMember(memberId);
         } else {
             mainView.displayErrorMessageIfWrongUserID();
@@ -242,7 +240,7 @@ public class MainController {
         mainView.displayBoatNumber();
         int id = sc.nextInt();
 
-        if (id <= storage.getMemberList().size()) {
+        if (id <= storage.size()) {
             boatController.createBoat(type, length, id);
         } else {
             mainView.displayErrorMessageIfWrongUserID();
@@ -265,8 +263,8 @@ public class MainController {
         int boatId = sc.nextInt();
 
 
-        if (ownerId <= storage.getMemberList().size()) {
-            if (boatId <= storage.getMember(ownerId).getBoatList().size()) {
+        if (ownerId <= storage.size()) {
+            if (boatId <= storage.get(ownerId - 1).getBoatList().size()) {
 
                 mainView.displayBoatType();
                 String boatType = sc.next().toLowerCase();
@@ -308,8 +306,8 @@ public class MainController {
         int boatId = sc.nextInt();
 
 
-        if (ownerId <= storage.getMemberList().size()) {
-            if (boatId <= storage.getMember(ownerId).getBoatList().size()) {
+        if (ownerId <= storage.size()) {
+            if (boatId <= storage.get(ownerId - 1).getBoatList().size()) {
                 boatController.removeBoat(ownerId, boatId);
 
             } else {
@@ -332,14 +330,14 @@ public class MainController {
 
         mainView.displayBoatNumber();
         int ownerId = sc.nextInt();
-        Member member = storage.getMember(ownerId);
+        Member member = storage.get(ownerId - 1);
 
         mainView.displayBoatId();
         int boatId = sc.nextInt();
 
 
-        if (ownerId <= storage.getMemberList().size()) {
-            if (boatId <= storage.getMember(ownerId).getBoatList().size()) {
+        if (ownerId <= storage.size()) {
+            if (boatId <= storage.get(ownerId - 1).getBoatList().size()) {
                 Boat boat = member.getBoat(boatId);
                 mainView.displayBoatInfo(member, boat);
             } else {
