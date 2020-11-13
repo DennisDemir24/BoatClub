@@ -259,7 +259,7 @@ public class MainController {
         if (ownerId <= storage.size()) {
             if (boatId <= storage.get(ownerId - 1).getBoatList().size()) {
 
-                //mainView.displayBoatType();
+                mainView.displayBoatType();
                 String boatType = sc.next().toLowerCase();
                 type = registerBoatType(boatType);
 
@@ -367,6 +367,9 @@ public class MainController {
                 break;
             case OTHER:
                 type = Type.OTHER;
+            case DEFAULT:
+            default:
+                break;
         }
 
 

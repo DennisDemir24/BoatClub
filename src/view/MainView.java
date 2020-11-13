@@ -88,7 +88,7 @@ public class MainView {
             case 5:
                 return Type.OTHER;
             default:
-                return Type.OTHER;
+                return Type.DEFAULT;
         }
     }
 

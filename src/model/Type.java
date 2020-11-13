@@ -5,5 +5,6 @@ public enum Type {
         MOTORSAILER,
         KAYAK,
         CANOE,
-        OTHER
+        OTHER,
+        DEFAULT
     }
