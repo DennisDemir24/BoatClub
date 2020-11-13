@@ -180,6 +180,11 @@ public class MainController {
         memView.displayMemberPersonalNumber();
         int personalNum = sc.nextInt();
 
+        while (String.valueOf(personalNum).length() < maxDigit || String.valueOf(personalNum).length() > maxDigit) {
+            memView.displayMemberPersonalNumber();
+            personalNum = sc.nextInt();
+        }
+
         if (memberId <= storage.size()) {
             register.updateMember(memberId, memFirstName, memLastName, personalNum);
         } else {
