@@ -130,7 +130,7 @@ public class Storage {
         try {
             members = mapper.readValue(file, new TypeReference<List<Member>>(){});
         } catch (IOException e) {
-            e.printStackTrace();
+
         }
     }
 

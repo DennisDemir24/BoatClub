@@ -214,16 +214,12 @@ public class MainController {
         sc = new Scanner(System.in);
         Type type;
 
-        mainView.displayBoatType();
-        String boatType = sc.next().toLowerCase();
-        type = registerBoatType(boatType);
+        type = registerBoatType();
 
         while (type == null) {
             mainView.displayErrorMessageForBoatType();
             memView.displayBoatTypeError();
-            mainView.displayBoatType();
-            boatType = sc.next().toLowerCase();
-            type = registerBoatType(boatType);
+            type = registerBoatType();
         }
 
         mainView.displayBoatLength();
@@ -259,16 +255,12 @@ public class MainController {
         if (ownerId <= storage.size()) {
             if (boatId <= storage.get(ownerId - 1).getBoatList().size()) {
 
-                mainView.displayBoatType();
-                String boatType = sc.next().toLowerCase();
-                type = registerBoatType(boatType);
+                type = registerBoatType();
 
                 while (type == null) {
                     mainView.displayErrorMessageForBoatType();
                     memView.displayBoatTypeError();
-                    mainView.displayBoatType();
-                    boatType = sc.next().toLowerCase();
-                    type = registerBoatType(boatType);
+                    type = registerBoatType();
                 }
 
                 mainView.displayBoatLength();
@@ -347,7 +339,7 @@ public class MainController {
      * @author ph222ue (Patrik Hasselblad).
      * @return Type
      */
-    private Type registerBoatType(String boatType) {
+    private Type registerBoatType() {
         Type type = null;
 
         mainView.displayBoatType();
