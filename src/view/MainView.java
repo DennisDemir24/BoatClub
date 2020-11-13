@@ -3,6 +3,7 @@ package view;
 import controller.MenuActions;
 import model.Boat;
 import model.Member;
+import model.Type;
 
 import java.util.Scanner;
 
@@ -61,6 +62,33 @@ public class MainView {
                 return MenuActions.QUIT;
             default:
                 return MenuActions.DEFAULT;
+        }
+    }
+
+    public Type getBoatTypes() {
+        int input;
+
+        while (!s.hasNextInt()) {
+            s.next();
+            System.out.println("Invalid input. Please provide a number between 1-10, and 0 to quit the app");
+        }
+
+        input = s.nextInt();
+        s.nextLine();
+
+        switch (input) {
+            case 1:
+                return Type.CANOE;
+            case 2:
+                return Type.SAILBOAT;
+            case 3:
+                return Type.MOTORSAILER;
+            case 4:
+                return Type.KAYAK;
+            case 5:
+                return Type.OTHER;
+            default:
+                return Type.OTHER;
         }
     }
 
@@ -144,7 +172,7 @@ public class MainView {
      * @author "dd222gc Dennis Demir"
      */
     public void displayBoatType() {
-        System.out.println("Boat Type (C = Canoe, S = sailboat, M = motorsailer, K = kayak, O = other): ");
+        System.out.println("Boat Type (1 = Canoe, 2 = sailboat, 3 = motorsailer, 4 = kayak, 5 = other): ");
     }
 
     /**

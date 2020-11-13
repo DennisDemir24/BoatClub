@@ -259,7 +259,7 @@ public class MainController {
         if (ownerId <= storage.size()) {
             if (boatId <= storage.get(ownerId - 1).getBoatList().size()) {
 
-                mainView.displayBoatType();
+                //mainView.displayBoatType();
                 String boatType = sc.next().toLowerCase();
                 type = registerBoatType(boatType);
 
@@ -350,17 +350,25 @@ public class MainController {
     private Type registerBoatType(String boatType) {
         Type type = null;
 
-        if (boatType.equals("c")) {
-            type = Type.CANOE;
-        } else if (boatType.equals("s")) {
-            type = Type.SAILBOAT;
-        } else if (boatType.equals("k")) {
-            type = Type.KAYAK;
-        } else if (boatType.equals("m")) {
-            type = Type.MOTORSAILER;
-        } else if (boatType.equals("o")) {
-            type = Type.OTHER;
+        mainView.displayBoatType();
+
+        switch (mainView.getBoatTypes()) {
+            case CANOE:
+                type = Type.CANOE;
+                break;
+            case SAILBOAT:
+                type = Type.SAILBOAT;
+                break;
+            case KAYAK:
+                type = Type.KAYAK;
+                break;
+            case MOTORSAILER:
+                type = Type.MOTORSAILER;
+                break;
+            case OTHER:
+                type = Type.OTHER;
         }
+
 
         return type;
     }
