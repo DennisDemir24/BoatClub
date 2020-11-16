@@ -63,7 +63,6 @@ public class BoatController {
      * @author ph222ue (Patrik Hasselblad)
      */
     public void removeBoat(int ownerId, int boatId) {
-//        Member member = storage.getMember(ownerId);
         Member member = storage.get(ownerId - 1);
 
         for (int i = 0; i < member.getBoatList().size(); i++) {

@@ -75,7 +75,6 @@ public class MainController {
                     viewBoat();
                     break;
                 case QUIT:
-//                    sc.close();
                     System.exit(0);
                     break;
                 case DEFAULT:
@@ -85,15 +84,6 @@ public class MainController {
         }
     }
 
-    /**
-     * Method for checking that input is a number and between 1-10
-     * @author dd222gc (Dennis Demir)
-     */
-    public void wrongInput(String input) {
-        if (!input.matches("[1-10]")) {
-            mainView.displayWrongInputMessage();
-        }
-    }
 
     /**
      * Method for getting member and using viewCompact to print info
