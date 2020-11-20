@@ -1,0 +1,9 @@
+MV Separation:
+	* Storage should be part of the model - We moved storage to the package "model.persistence".
+	* Storage had a printout, this was removed.
+	* All saving and loading to and from file is now handled through the Register-class and is encapsulated.
+OO-Design:
+	* Storage now returns a copy of the memberlist.
+Code:
+	* Namings in the code have had a revamp and no better suits the software, as intended. 
+	* Comments have been reduced.
