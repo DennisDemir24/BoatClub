@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author dd222gc (Dennis Demir)
  */
 public class MemberController extends BoatController {
-    private final ArrayList<Member> storage;
+    private ArrayList<Member> storage;
     private final MemberView memView;
     private final Register register;
 
@@ -28,6 +28,7 @@ public class MemberController extends BoatController {
      * @author dd222gc (Dennis Demir)
      */
     public void viewCompact(int id) {
+        this.storage = register.getStorageList();
         this.memView.displayCompactList(storage.get(id - 1));
     }
 
@@ -38,6 +39,7 @@ public class MemberController extends BoatController {
      * @author dd222gc (Dennis Demir)
      */
     public void viewVerbose(int id) {
+        this.storage = register.getStorageList();
         this.memView.displayVerboseList(storage.get(id - 1));
     }
 

@@ -20,7 +20,7 @@ public class BoatController {
     public BoatController () {
         this.register = new Register();
         this.memView = new MemberView();
-        this.storage = new ArrayList<Member>(register.getStorageList());
+        this.storage = register.getStorageList();
     }
 
     /**

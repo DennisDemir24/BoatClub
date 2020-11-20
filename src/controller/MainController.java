@@ -18,7 +18,7 @@ public class MainController {
     private final MainView mainView;
     private final MemberController memberController;
     private final BoatController boatController;
-    private final ArrayList<Member> storage;
+    private ArrayList<Member> storage;
     private final MemberView memView;
     private final Register register;
     private Scanner sc;
@@ -90,6 +90,7 @@ public class MainController {
      * @author dd222gc (Dennis Demir)
      */
     private void compactList() {
+        this.storage = register.getStorageList();
         int members = this.storage.size();
 
         for (int i = 0; i < members; i++) {
@@ -102,6 +103,7 @@ public class MainController {
      * @author dd222gc (Dennis Demir)
      */
     private void verboseList() {
+        this.storage = register.getStorageList();
         int members = this.storage.size();
 
         for (int i = 0; i < members; i++) {
