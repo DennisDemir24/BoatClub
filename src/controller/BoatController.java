@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author ph222ue (Patrik Hasselblad)
  */
 public class BoatController {
-    private final ArrayList<Member> storage;
+    private ArrayList<Member> storage;
     private final Register register;
     private final MemberView memView;
 
@@ -28,6 +28,7 @@ public class BoatController {
      * @author ph222ue (Patrik Hasselblad) & nh222mr (Nicklas Hansson)
      */
     public void createBoat(Type boatType, double length, int ownerId) {
+        this.storage = register.getStorageList();
         Boat newBoat = new Boat(boatType, length, ownerId);
         Member member = storage.get(ownerId - 1);
         int boatId = member.getBoatList().size() + 1;
@@ -44,6 +45,8 @@ public class BoatController {
      * @author ph222ue (Patrik Hasselblad)
      */
     public void editBoat(int ownerId, int id, Type type, double length) {
+        this.storage = register.getStorageList();
+
         Member owner = storage.get(ownerId - 1);
 
         for (int i = 0; i < owner.getBoatList().size(); i++) {
@@ -63,6 +66,8 @@ public class BoatController {
      * @author ph222ue (Patrik Hasselblad)
      */
     public void removeBoat(int ownerId, int boatId) {
+        this.storage = register.getStorageList();
+
         Member member = storage.get(ownerId - 1);
 
         for (int i = 0; i < member.getBoatList().size(); i++) {
