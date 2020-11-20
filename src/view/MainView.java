@@ -112,14 +112,6 @@ public class MainView {
     }
 
     /**
-     * Method that display message for wrong input
-     * @author "dd222gc Dennis Demir"
-     */
-    public void displayWrongInputMessage() {
-        System.out.println("Please select a number between 1 and 10 to make a choice, or 0 to quit");
-    }
-
-    /**
      * Method that display message for wrong member ID input
      * @author "dd222gc Dennis Demir"
      */
