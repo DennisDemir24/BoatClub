@@ -3,7 +3,6 @@ package model.persistance;
 import model.Member;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
-import view.MainView;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,18 +11,16 @@ import java.util.List;
 
 /**
  * Class to handle database and storage.
- * @author ph222ue (Patrik Hasselblad)
+ * @author ph222ue (Patrik Hasselblad) & nh222mr (Nicklas Hansson)
  */
 public class Storage {
     private ArrayList<Member> members;
     private final ObjectMapper mapper;
     private static Storage INSTANCE;
-    private final MainView view;
 
     public Storage() {
         this.members = new ArrayList<>();
         this.mapper = new ObjectMapper();
-        this.view = new MainView();
         loadData();
     }
 
@@ -52,15 +49,6 @@ public class Storage {
     public void boatAction() {
         saveData();
         loadData();
-    }
-
-    /**
-     * Returns the number of members.
-     * @return int
-     * @author ph222ue (Patrik Hasselblad)
-     */
-    public int registrySize() {
-        return this.members.size();
     }
 
     /**
@@ -106,21 +94,6 @@ public class Storage {
     }
 
     /**
-     * Method to return a specific member.
-     * @return Member
-     * @author ph222ue (Patrik Hasselblad)
-     */
-    public Member getMember(int memberId) {
-
-        for (Member mem : members) {
-            if (mem.getMemberId() == memberId) {
-                return mem;
-            }
-        }
-        return null;
-    }
-
-    /**
      * Method that loads data from a JSON file.
      * @author ph222ue (Patrik Hasselblad)
      */
@@ -130,7 +103,7 @@ public class Storage {
         try {
             members = mapper.readValue(file, new TypeReference<List<Member>>(){});
         } catch (IOException e) {
-
+            e.printStackTrace();
         }
     }
 
@@ -152,18 +125,6 @@ public class Storage {
      * @author ph222ue (Patrik Hasselblad)
      */
     public ArrayList<Member> getMemberList() {
-        ArrayList<Member> listCopy = new ArrayList<>(members);
-
-        return listCopy;
-    }
-
-    /**
-     * Method that gets member with id from database(JSON file)
-     * @author dd222gc (Dennis Demir)
-     */
-    public Member getSpecificMember(int index) {
-        ArrayList<Member> listCopy = new ArrayList<>(members);
-
-        return listCopy.get(index - 1);
+        return new ArrayList<>(members);
     }
 }
