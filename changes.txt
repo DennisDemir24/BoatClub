@@ -7,3 +7,13 @@ OO-Design:
 Code:
 	* Namings in the code have had a revamp and no better suits the software, as intended. 
 	* Comments have been reduced.
+Sequence Diagrams:
+	* Object messages with () are now in sequence diagrams.
+	* Loop and calls are in the diagrams.
+Hidden Dependencies:
+	* Menu calls are re-done with enums and have no hidden dependencies between view and controller
+	* Register boat types have no hidden dependencies between view and controller.
+Class Diagram:
+	* The class diagram now contains associations and multiplicity.
+	* Class diagram now shows the architectural modules.
+	* Class diagram missing dependencies fixed.
