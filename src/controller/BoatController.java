@@ -48,7 +48,7 @@ public class BoatController {
 
         for (int i = 0; i < owner.getBoatList().size(); i++) {
             if (owner.getBoatList().get(i).getBoatId() == id) {
-                owner.getBoatList().get(i).setType(boatType);
+                owner.getBoatList().get(i).setBoatType(boatType);
                 owner.getBoatList().get(i).setLength(length);
                 break;
             } else {

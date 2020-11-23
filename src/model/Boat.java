@@ -53,7 +53,7 @@ public class Boat {
         return boatId;
     }
 
-    public void setType(BoatType boatType) {
+    public void setBoatType(BoatType boatType) {
         this.boatType = boatType;
     }
 
