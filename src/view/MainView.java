@@ -1,6 +1,5 @@
 package view;
 
-import controller.MenuActions;
 import model.Boat;
 import model.Member;
 import model.BoatType;

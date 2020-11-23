@@ -1,4 +1,4 @@
-package controller;
+package view;
 
 public enum MenuActions {
     VIEW_COMPACT,
