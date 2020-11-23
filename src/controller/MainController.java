@@ -1,9 +1,6 @@
 package controller;
 
-import model.Boat;
-import model.Member;
-import model.Register;
-import model.Type;
+import model.*;
 import view.MainView;
 import view.MemberView;
 
@@ -209,14 +206,14 @@ public class MainController {
      */
     private void createBoat() {
         sc = new Scanner(System.in);
-        Type type;
+        BoatType boatType;
 
-        type = registerBoatType();
+        boatType = registerBoatType();
 
-        while (type == null) {
+        while (boatType == null) {
             mainView.displayErrorMessageForBoatType();
             memView.displayBoatTypeError();
-            type = registerBoatType();
+            boatType = registerBoatType();
         }
 
         mainView.displayBoatLength();
@@ -227,7 +224,7 @@ public class MainController {
         int id = sc.nextInt();
 
         if (id <= storage.size()) {
-            boatController.createBoat(type, length, id);
+            boatController.createBoat(boatType, length, id);
         } else {
             mainView.displayErrorMessageIfWrongUserID();
         }
@@ -240,7 +237,7 @@ public class MainController {
      */
     private void editBoat() {
         sc = new Scanner(System.in);
-        Type type;
+        BoatType boatType;
 
         mainView.displayBoatNumber();
         int ownerId = sc.nextInt();
@@ -252,19 +249,19 @@ public class MainController {
         if (ownerId <= storage.size()) {
             if (boatId <= storage.get(ownerId - 1).getBoatList().size()) {
 
-                type = registerBoatType();
+                boatType = registerBoatType();
 
-                while (type == null) {
+                while (boatType == null) {
                     mainView.displayErrorMessageForBoatType();
                     memView.displayBoatTypeError();
-                    type = registerBoatType();
+                    boatType = registerBoatType();
                 }
 
                 mainView.displayBoatLength();
                 String temp = sc.next();
                 double length = Double.parseDouble(temp);
 
-                boatController.editBoat(ownerId, boatId, type, length);
+                boatController.editBoat(ownerId, boatId, boatType, length);
             } else {
                 mainView.displayErrorMessageForBoatID();
             }
@@ -332,36 +329,36 @@ public class MainController {
     }
 
     /**
-     * Help method to determine boat type.
+     * Help method to determine boat boatType.
      * @author ph222ue (Patrik Hasselblad).
      * @return Type
      */
-    private Type registerBoatType() {
-        Type type = null;
+    private BoatType registerBoatType() {
+        BoatType boatType = null;
 
         mainView.displayBoatType();
 
         switch (mainView.getBoatTypes()) {
             case CANOE:
-                type = Type.CANOE;
+                boatType = BoatType.CANOE;
                 break;
             case SAILBOAT:
-                type = Type.SAILBOAT;
+                boatType = BoatType.SAILBOAT;
                 break;
             case KAYAK:
-                type = Type.KAYAK;
+                boatType = BoatType.KAYAK;
                 break;
             case MOTORSAILER:
-                type = Type.MOTORSAILER;
+                boatType = BoatType.MOTORSAILER;
                 break;
             case OTHER:
-                type = Type.OTHER;
+                boatType = BoatType.OTHER;
             case DEFAULT:
             default:
                 break;
         }
 
 
-        return type;
+        return boatType;
     }
 }

@@ -7,7 +7,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
  * @author ph222ue (Patrik Hasselblad) & dd222gc (Dennis Demir) & nh222mr (Nicklas Hansson)
  */
 public class Boat {
-    private Type type;
+    private BoatType boatType;
     private double length;
     private final int ownerId;
     private int boatId;
@@ -20,8 +20,8 @@ public class Boat {
      * @param boatId - Unique boat ID.
      * @author ph222ue (Patrik Hasselblad)
      */
-    public Boat(@JsonProperty("type") Type boatType, @JsonProperty("length") double length, @JsonProperty("ownerId") int ownerId, @JsonProperty("boatId") int boatId) {
-        this.type = boatType;
+    public Boat(@JsonProperty("boatType") BoatType boatType, @JsonProperty("length") double length, @JsonProperty("ownerId") int ownerId, @JsonProperty("boatId") int boatId) {
+        this.boatType = boatType;
         this.length = length;
         this.ownerId = ownerId;
         this.boatId = boatId;
@@ -31,8 +31,8 @@ public class Boat {
      * Terminal constructor.
      * @author ph222ue (Patrik Hasselblad)
      */
-    public Boat(Type boatType, double length, int ownerId) {
-        this.type = boatType;
+    public Boat(BoatType boatType, double length, int ownerId) {
+        this.boatType = boatType;
         this.length = length;
         this.ownerId = ownerId;
     }
@@ -45,16 +45,16 @@ public class Boat {
         return length;
     }
 
-    public Type getType() {
-        return type;
+    public BoatType getBoatType() {
+        return boatType;
     }
 
     public int getBoatId() {
         return boatId;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setType(BoatType boatType) {
+        this.boatType = boatType;
     }
 
     public void setLength(double length) {

@@ -1,9 +1,6 @@
 package controller;
 
-import model.Boat;
-import model.Member;
-import model.Register;
-import model.Type;
+import model.*;
 import view.MemberView;
 
 import java.util.ArrayList;
@@ -27,7 +24,7 @@ public class BoatController {
      * Adds a boat to a certain member.
      * @author ph222ue (Patrik Hasselblad) & nh222mr (Nicklas Hansson)
      */
-    public void createBoat(Type boatType, double length, int ownerId) {
+    public void createBoat(BoatType boatType, double length, int ownerId) {
         this.storage = register.getStorageList();
         Boat newBoat = new Boat(boatType, length, ownerId);
         Member member = storage.get(ownerId - 1);
@@ -44,14 +41,14 @@ public class BoatController {
      * Method that handles boat editing.
      * @author ph222ue (Patrik Hasselblad)
      */
-    public void editBoat(int ownerId, int id, Type type, double length) {
+    public void editBoat(int ownerId, int id, BoatType boatType, double length) {
         this.storage = register.getStorageList();
 
         Member owner = storage.get(ownerId - 1);
 
         for (int i = 0; i < owner.getBoatList().size(); i++) {
             if (owner.getBoatList().get(i).getBoatId() == id) {
-                owner.getBoatList().get(i).setType(type);
+                owner.getBoatList().get(i).setType(boatType);
                 owner.getBoatList().get(i).setLength(length);
                 break;
             } else {

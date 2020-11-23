@@ -3,7 +3,7 @@ package view;
 import controller.MenuActions;
 import model.Boat;
 import model.Member;
-import model.Type;
+import model.BoatType;
 
 import java.util.Scanner;
 
@@ -65,7 +65,7 @@ public class MainView {
         }
     }
 
-    public Type getBoatTypes() {
+    public BoatType getBoatTypes() {
         int input;
 
         while (!s.hasNextInt()) {
@@ -78,17 +78,17 @@ public class MainView {
 
         switch (input) {
             case 1:
-                return Type.CANOE;
+                return BoatType.CANOE;
             case 2:
-                return Type.SAILBOAT;
+                return BoatType.SAILBOAT;
             case 3:
-                return Type.MOTORSAILER;
+                return BoatType.MOTORSAILER;
             case 4:
-                return Type.KAYAK;
+                return BoatType.KAYAK;
             case 5:
-                return Type.OTHER;
+                return BoatType.OTHER;
             default:
-                return Type.DEFAULT;
+                return BoatType.DEFAULT;
         }
     }
 
@@ -139,7 +139,7 @@ public class MainView {
     public void displayBoatInfo(Member member, Boat boat) {
         System.out.println("Boat Owner: " + member.getFirstName() + " " + member.getLastName() + "\n" +
                 "Boat ID: " + boat.getBoatId() + "\n" +
-                "Boat Type: " + boat.getType() + "\n" +
+                "Boat Type: " + boat.getBoatType() + "\n" +
                 "Boat Length: " + boat.getLength() + "\n");
     }
 

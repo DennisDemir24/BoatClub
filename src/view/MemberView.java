@@ -41,7 +41,7 @@ public class MemberView {
         if (member.getBoatList().size() > 0) {
             for (int i = 0; i < member.getBoatList().size(); i++) {
                 System.out.println("\tID: " + member.getBoatList().get(i).getBoatId() + "\n" +
-                        "\tType: " + member.getBoatList().get(i).getType() + "\n" +
+                        "\tType: " + member.getBoatList().get(i).getBoatType() + "\n" +
                         "\tLength: " + member.getBoatList().get(i).getLength() + "\n"
                 );
             }
